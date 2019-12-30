@@ -83,7 +83,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2050">
+            <state relative-caret-position="-1700">
               <caret line="82" column="22" lean-forward="true" selection-start-line="82" selection-start-column="22" selection-end-line="82" selection-end-column="22" />
             </state>
           </provider>
@@ -223,7 +223,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577708074183" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577708380345" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="SDKs" />
@@ -317,7 +317,7 @@
       <workItem from="1577702716806" duration="2138000" />
       <workItem from="1577706066843" duration="283000" />
       <workItem from="1577706400680" duration="302000" />
-      <workItem from="1577706750803" duration="1218000" />
+      <workItem from="1577706750803" duration="1459000" />
     </task>
     <task id="LOCAL-00001" summary="Added Company的Controller,Service,Dao">
       <created>1577681687394</created>
@@ -340,7 +340,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577707877870</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Updated 忽略.gitignore里面匹配的文件">
+      <created>1577708119147</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1577708119147</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -376,7 +383,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22082000" />
+    <option name="totallyTimeSpent" value="22323000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -388,7 +395,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.28214827" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -470,7 +477,8 @@
     <MESSAGE value="Merge branch 'master' of https://github.com/Han-YLun/Saas_ihrm&#10;&#10;# Conflicts:&#10;#&#9;README.md" />
     <MESSAGE value="Fixed 运行时Plugins出错" />
     <MESSAGE value="Added .gitignore file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added .gitignore file" />
+    <MESSAGE value="Updated 忽略.gitignore里面匹配的文件" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated 忽略.gitignore里面匹配的文件" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/ihrm_common/src/main/java/com/ihrm/common/entity/ResultCode.java">
@@ -683,7 +691,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2050">
+        <state relative-caret-position="-1700">
           <caret line="82" column="22" lean-forward="true" selection-start-line="82" selection-start-column="22" selection-end-line="82" selection-end-column="22" />
         </state>
       </provider>
