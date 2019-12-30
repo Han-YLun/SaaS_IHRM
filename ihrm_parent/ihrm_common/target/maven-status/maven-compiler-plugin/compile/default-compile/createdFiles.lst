@@ -1,0 +1,6 @@
+com\ihrm\common\handler\BaseExceptionHandler.class
+com\ihrm\common\entity\Result.class
+com\ihrm\common\exception\CommonException.class
+com\ihrm\common\entity\PageResult.class
+com\ihrm\common\entity\ResultCode.class
+com\ihrm\common\utils\IdWorker.class
