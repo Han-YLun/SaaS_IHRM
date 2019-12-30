@@ -11,6 +11,12 @@
         <module name="ihrm_company" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel target="8">
+      <module name="ihrm_common" target="1.8" />
+      <module name="ihrm_common_model" target="1.8" />
+      <module name="ihrm_company" target="1.8" />
+      <module name="ihrm_parent" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
