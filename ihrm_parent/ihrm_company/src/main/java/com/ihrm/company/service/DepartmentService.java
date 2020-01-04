@@ -1,11 +1,18 @@
 package com.ihrm.company.service;
 
+import com.ihrm.common.service.BaseService;
 import com.ihrm.common.utils.IdWorker;
 import com.ihrm.company.dao.DepartmentDao;
 import com.ihrm.domain.company.Department;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import javax.swing.text.html.HTMLDocument;
 import java.util.List;
 
 /**
@@ -14,7 +21,7 @@ import java.util.List;
  **/
 
 @Service
-public class DepartmentService {
+public class DepartmentService extends BaseService {
 
     @Autowired
     private DepartmentDao departmentDao;
@@ -59,8 +66,10 @@ public class DepartmentService {
     /**
      * 查询全部部门列表
      */
-    public List<Department> findAll(){
-        return departmentDao.findAll();
+    public List<Department> findAll(String companyId){
+
+
+        return departmentDao.findAll(getSpec(companyId));
     }
 
     /**
