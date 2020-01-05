@@ -11,6 +11,7 @@
         <module>ihrm_common</module>
         <module>ihrm_common_model</module>
         <module>ihrm_company</module>
+        <module>ihrm_system</module>
     </modules>
 
     <packaging>pom</packaging>
