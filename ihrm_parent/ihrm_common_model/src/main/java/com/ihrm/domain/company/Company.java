@@ -55,7 +55,7 @@ public class Company implements Serializable {
      */
     private String name;
     /**
-     * 企业登录账号ID
+     * 用户登录账号ID
      */
     private String managerId;
     /**

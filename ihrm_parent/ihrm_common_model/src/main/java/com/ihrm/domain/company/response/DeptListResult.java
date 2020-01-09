@@ -2,7 +2,6 @@ package com.ihrm.domain.company.response;
 
 import com.ihrm.domain.company.Company;
 import com.ihrm.domain.company.Department;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

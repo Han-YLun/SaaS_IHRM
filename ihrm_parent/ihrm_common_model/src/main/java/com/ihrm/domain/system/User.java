@@ -93,11 +93,8 @@ public class User implements Serializable {
     private String departmentName;
 
 
-    /**
-     * 忽略json转化
-     */
-    @JsonIgnore
     @ManyToMany
+    @JsonIgnore
     @JoinTable(name="pe_user_role",joinColumns={@JoinColumn(name="user_id",referencedColumnName="id")},
             inverseJoinColumns={@JoinColumn(name="role_id",referencedColumnName="id")}
     )

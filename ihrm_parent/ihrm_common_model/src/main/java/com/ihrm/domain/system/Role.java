@@ -26,7 +26,7 @@ public class Role implements Serializable {
      */
     private String description;
     /**
-     * 企业id
+     * 用户id
      */
     private String companyId;
 

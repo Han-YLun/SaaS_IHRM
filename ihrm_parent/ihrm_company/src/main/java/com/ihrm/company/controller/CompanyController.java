@@ -19,7 +19,7 @@ public class CompanyController {
     @Autowired
     private CompanyService companyService;
 
-    //保存企业
+    //保存用户
     @RequestMapping(value="",method = RequestMethod.POST)
     public Result save(@RequestBody Company company)  {
         //业务操作
@@ -27,7 +27,7 @@ public class CompanyController {
         return new Result(ResultCode.SUCCESS);
     }
 
-    //根据id更新企业
+    //根据id更新用户
     /**
      * 1.方法
      * 2.请求参数
@@ -41,14 +41,14 @@ public class CompanyController {
         return new Result(ResultCode.SUCCESS);
     }
 
-    //根据id删除企业
+    //根据id删除用户
     @RequestMapping(value="/{id}",method = RequestMethod.DELETE)
     public Result delete(@PathVariable(value="id") String id) {
         companyService.deleteById(id);
         return new Result(ResultCode.SUCCESS);
     }
 
-    //根据id查询企业
+    //根据id查询用户
     @RequestMapping(value="/{id}",method = RequestMethod.GET)
     public Result findById(@PathVariable(value="id") String id) throws CommonException {
         //throw new CommonException(ResultCode.UNAUTHORISE);
@@ -58,7 +58,7 @@ public class CompanyController {
         return result;
     }
 
-    //查询全部企业列表
+    //查询全部用户列表
     @RequestMapping(value="",method = RequestMethod.GET)
     public Result findAll() {
         //int i = 1/0;
