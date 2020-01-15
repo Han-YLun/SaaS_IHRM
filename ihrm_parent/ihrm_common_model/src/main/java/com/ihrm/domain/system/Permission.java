@@ -20,6 +20,8 @@ import java.io.Serializable;
 @DynamicUpdate(true)
 public class Permission implements Serializable {
     private static final long serialVersionUID = -4990810027542971546L;
+
+    
     /**
      * 主键
      */
@@ -34,6 +36,8 @@ public class Permission implements Serializable {
      */
     private Integer type;
 
+
+    //权限编码
     private String code;
 
     /**
@@ -43,6 +47,7 @@ public class Permission implements Serializable {
 
     private String pid;
 
+    //可见状态
     private Integer enVisible;
 
     public Permission(String name, Integer type, String code, String description) {

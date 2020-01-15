@@ -18,8 +18,10 @@ import java.util.List;
  * @date: 2020/01/15
  **/
 
+//解决跨域
+@CrossOrigin
 @RestController
-@RequestMapping("/sys")
+@RequestMapping(value = "/sys")
 public class RoleController extends BaseController {
 
     @Autowired
