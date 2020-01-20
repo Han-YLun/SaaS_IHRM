@@ -14,4 +14,5 @@ import java.util.List;
   */
 public interface PermissionDao extends JpaRepository<Permission, String>, JpaSpecificationExecutor<Permission> {
 
+    List<Permission> findByTypeAndPid(int type,String pid);
 }

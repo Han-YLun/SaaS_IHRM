@@ -7,6 +7,7 @@ import com.ihrm.common.entity.ResultCode;
 import com.ihrm.domain.company.Company;
 import com.ihrm.domain.company.response.DeptListResult;
 import com.ihrm.domain.system.User;
+import com.ihrm.domain.system.response.UserResult;
 import com.ihrm.system.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -29,6 +30,22 @@ public class UserController extends BaseController {
     @Autowired
     private UserService userService;
 
+
+    /**
+     * 分配角色
+     */
+    @RequestMapping(value = "/user/assignRoles" , method = RequestMethod.PUT)
+    public Result save(@RequestBody Map<String,Object> map){
+
+        //获取被分配的用户id
+        String userId = (String) map.get("id");
+        //获取到角色的id列表
+        List<String> roleIds = (List<String>) map.get("roleIds");
+        //调用service完成角色分配
+        userService.assignRoles(userId , roleIds);
+
+        return new Result(ResultCode.SUCCESS);
+    }
 
     /**
      * 保存
@@ -67,8 +84,10 @@ public class UserController extends BaseController {
      */
     @RequestMapping(value = "/user/{id}" , method = RequestMethod.GET)
     public Result findById(@PathVariable(value = "id") String id){
-        User User = userService.findById(id);
-        return new Result(ResultCode.SUCCESS , User);
+        //添加roleIds(用户已经具有的角色id数组)
+        User user = userService.findById(id);
+        UserResult userResult = new UserResult(user);
+        return new Result(ResultCode.SUCCESS , userResult);
     }
 
     /**
@@ -91,4 +110,5 @@ public class UserController extends BaseController {
         userService.deleteById(id);
         return new Result(ResultCode.SUCCESS);
     }
+
 }
