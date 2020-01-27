@@ -4,16 +4,26 @@ import com.ihrm.common.controller.BaseController;
 import com.ihrm.common.entity.PageResult;
 import com.ihrm.common.entity.Result;
 import com.ihrm.common.entity.ResultCode;
+import com.ihrm.common.exception.CommonException;
+import com.ihrm.common.utils.JwtUtils;
 import com.ihrm.domain.company.Company;
 import com.ihrm.domain.company.response.DeptListResult;
 import com.ihrm.domain.system.User;
+import com.ihrm.domain.system.response.ProfileResult;
 import com.ihrm.domain.system.response.UserResult;
 import com.ihrm.system.service.UserService;
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+import io.jsonwebtoken.Claims;
+import javafx.beans.binding.ObjectExpression;
+import org.hibernate.event.service.internal.EventListenerServiceInitiator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.websocket.server.PathParam;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -30,6 +40,8 @@ public class UserController extends BaseController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private JwtUtils jwtUtils;
 
     /**
      * 分配角色
@@ -109,6 +121,57 @@ public class UserController extends BaseController {
     public Result delete(@PathVariable(value = "id") String id){
         userService.deleteById(id);
         return new Result(ResultCode.SUCCESS);
+    }
+
+    /**
+     * 用户登录
+     */
+    @RequestMapping(value = "/login" , method = RequestMethod.POST)
+    public Result login(@RequestBody Map<String,Object> loginMap){
+        String mobile = (String) loginMap.get("mobile");
+        String password = (String) loginMap.get("password");
+
+
+        User user = userService.findByMobile(mobile);
+
+        //登录失败
+        if (user == null || !user.getPassword().equals(password)){
+            return new Result(ResultCode.MOBILEORPASSWORDERROR);
+        }else {
+            //登录成功
+            Map<String, Object> map = new HashMap<>();
+            map.put("companyId" , user.getCompanyId());
+            map.put("companyName" , user.getCompanyName());
+            String token = jwtUtils.createJwt(user.getId(), user.getUsername(), map);
+            return new Result(ResultCode.SUCCESS,token);
+        }
+    }
+
+    /**
+     * 用户登录成功之后,获取用户信息
+     */
+    @RequestMapping(value = "/profile" , method = RequestMethod.POST)
+    public Result profile(HttpServletRequest request) throws Exception {
+
+        /**
+         * 从请求头中获取token数据
+         *    1.获取请求头信息： 名称=Authorization
+         *    2.替换Bearer+空格
+         *    3.解析token
+         *    4.解析clamis
+         */
+        String authorization = request.getHeader("Authorization");
+        if (StringUtils.isEmpty(authorization)){
+            throw new CommonException(ResultCode.UNAUTHENTICATED);
+        }
+        //2.替换Bearer+空格
+        String token = authorization.replace("Bearer ","");
+        //3.解析token
+        Claims claims = jwtUtils.parseJwt(token);
+
+        String userId = claims.getId();
+        User user = userService.findById(userId);
+        return new Result(ResultCode.SUCCESS,new ProfileResult(user));
     }
 
 }

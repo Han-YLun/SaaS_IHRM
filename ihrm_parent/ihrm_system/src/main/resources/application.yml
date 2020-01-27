@@ -17,3 +17,7 @@ spring:
     database: MySQL
     show-sql: true
     open-in-view: true
+jwt:
+  config:
+    key: saas-ihrm
+    ttl: 3600000
