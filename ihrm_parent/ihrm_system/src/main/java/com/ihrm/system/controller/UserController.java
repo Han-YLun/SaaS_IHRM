@@ -6,23 +6,19 @@ import com.ihrm.common.entity.Result;
 import com.ihrm.common.entity.ResultCode;
 import com.ihrm.common.exception.CommonException;
 import com.ihrm.common.utils.JwtUtils;
-import com.ihrm.domain.company.Company;
-import com.ihrm.domain.company.response.DeptListResult;
+import com.ihrm.domain.system.Permission;
 import com.ihrm.domain.system.User;
 import com.ihrm.domain.system.response.ProfileResult;
 import com.ihrm.domain.system.response.UserResult;
+import com.ihrm.system.service.PermissionService;
 import com.ihrm.system.service.UserService;
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import io.jsonwebtoken.Claims;
-import javafx.beans.binding.ObjectExpression;
-import org.hibernate.event.service.internal.EventListenerServiceInitiator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.websocket.server.PathParam;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,7 +37,13 @@ public class UserController extends BaseController {
     private UserService userService;
 
     @Autowired
+    private PermissionService permissionService;
+
+
+    @Autowired
     private JwtUtils jwtUtils;
+
+    
 
     /**
      * 分配角色
@@ -168,10 +170,24 @@ public class UserController extends BaseController {
         String token = authorization.replace("Bearer ","");
         //3.解析token
         Claims claims = jwtUtils.parseJwt(token);
-
         String userId = claims.getId();
+        //获取用户信息
         User user = userService.findById(userId);
-        return new Result(ResultCode.SUCCESS,new ProfileResult(user));
+        //根据不同的用户级别获取用户权限
+        ProfileResult result = null;
+
+        if ("user".equals(user.getLevel())){
+            result = new ProfileResult(user);
+        }else{
+            Map map = new HashMap();
+            if ("coAdmin".equals(user.getLevel())){
+                map.put("enVisible" , "1");
+            }
+            List<Permission> list = permissionService.findAll(map);
+            result = new ProfileResult(user , list);
+        }
+
+        return new Result(ResultCode.SUCCESS,result);
     }
 
 }

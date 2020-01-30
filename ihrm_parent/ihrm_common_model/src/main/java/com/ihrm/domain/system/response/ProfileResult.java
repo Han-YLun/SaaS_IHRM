@@ -6,10 +6,7 @@ import com.ihrm.domain.system.User;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 @Setter
 @Getter
@@ -39,6 +36,33 @@ public class ProfileResult {
                 }else {
                     apis.add(code);
                 }
+            }
+        }
+
+        this.roles.put("menus",menus);
+        this.roles.put("points",points);
+        this.roles.put("apis",apis);
+    }
+
+
+    public ProfileResult(User user, List<Permission> list){
+        this.mobile = user.getMobile();
+        this.username = user.getUsername();
+        this.company = user.getCompanyName();
+
+        Set<String> menus = new HashSet<>();
+        Set<String> points = new HashSet<>();
+        Set<String> apis = new HashSet<>();
+        
+        for (Permission perm : list) {
+
+            String code = perm.getCode();
+            if(perm.getType() == 1) {
+                menus.add(code);
+            }else if(perm.getType() == 2) {
+                points.add(code);
+            }else {
+                apis.add(code);
             }
         }
 
