@@ -155,21 +155,6 @@ public class UserController extends BaseController {
     @RequestMapping(value = "/profile" , method = RequestMethod.POST)
     public Result profile(HttpServletRequest request) throws Exception {
 
-        /**
-         * 从请求头中获取token数据
-         *    1.获取请求头信息： 名称=Authorization
-         *    2.替换Bearer+空格
-         *    3.解析token
-         *    4.解析clamis
-         */
-        String authorization = request.getHeader("Authorization");
-        if (StringUtils.isEmpty(authorization)){
-            throw new CommonException(ResultCode.UNAUTHENTICATED);
-        }
-        //2.替换Bearer+空格
-        String token = authorization.replace("Bearer ","");
-        //3.解析token
-        Claims claims = jwtUtils.parseJwt(token);
         String userId = claims.getId();
         //获取用户信息
         User user = userService.findById(userId);
