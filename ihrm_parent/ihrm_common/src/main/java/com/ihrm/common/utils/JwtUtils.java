@@ -7,6 +7,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.Date;
 import java.util.Map;
@@ -18,6 +19,7 @@ import java.util.Map;
 @Getter
 @Setter
 @ConfigurationProperties("jwt.config")
+@Configuration
 public class JwtUtils {
 
     //签名私钥

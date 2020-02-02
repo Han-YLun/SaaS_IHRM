@@ -6,7 +6,9 @@ import com.ihrm.common.entity.Result;
 import com.ihrm.common.entity.ResultCode;
 import com.ihrm.common.exception.CommonException;
 import com.ihrm.common.utils.JwtUtils;
+import com.ihrm.common.utils.PermissionConstants;
 import com.ihrm.domain.system.Permission;
+import com.ihrm.domain.system.Role;
 import com.ihrm.domain.system.User;
 import com.ihrm.domain.system.response.ProfileResult;
 import com.ihrm.domain.system.response.UserResult;
@@ -119,7 +121,7 @@ public class UserController extends BaseController {
     /**
      * 根据Id删除
      */
-    @RequestMapping(value = "/user/{id}" , method = RequestMethod.DELETE)
+    @RequestMapping(value = "/user/{id}" , method = RequestMethod.DELETE , name = "API-USER-DELETE")
     public Result delete(@PathVariable(value = "id") String id){
         userService.deleteById(id);
         return new Result(ResultCode.SUCCESS);
@@ -141,7 +143,18 @@ public class UserController extends BaseController {
             return new Result(ResultCode.MOBILEORPASSWORDERROR);
         }else {
             //登录成功
+            //API权限字符串
+            StringBuilder sb = new StringBuilder();
+            //获取到所有的可访问API权限
+            for (Role role : user.getRoles()) {
+                for (Permission perm : role.getPermissions()) {
+                    if (perm.getType() == PermissionConstants.PY_API){
+                        sb.append(perm.getCode()).append(",");
+                    }
+                }
+            }
             Map<String, Object> map = new HashMap<>();
+            map.put("apis" , sb.toString());//可访问的API权限字符串
             map.put("companyId" , user.getCompanyId());
             map.put("companyName" , user.getCompanyName());
             String token = jwtUtils.createJwt(user.getId(), user.getUsername(), map);
