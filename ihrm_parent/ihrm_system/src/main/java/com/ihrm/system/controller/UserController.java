@@ -14,13 +14,21 @@ import com.ihrm.domain.system.response.ProfileResult;
 import com.ihrm.domain.system.response.UserResult;
 import com.ihrm.system.service.PermissionService;
 import com.ihrm.system.service.UserService;
+import com.mysql.jdbc.profiler.ProfilerEvent;
 import io.jsonwebtoken.Claims;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.crypto.hash.Md5Hash;
+import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -121,6 +129,7 @@ public class UserController extends BaseController {
     /**
      * 根据Id删除
      */
+    @RequiresPermissions(value = "API-USER-DELETE")
     @RequestMapping(value = "/user/{id}" , method = RequestMethod.DELETE , name = "API-USER-DELETE")
     public Result delete(@PathVariable(value = "id") String id){
         userService.deleteById(id);
@@ -135,8 +144,25 @@ public class UserController extends BaseController {
         String mobile = (String) loginMap.get("mobile");
         String password = (String) loginMap.get("password");
 
+        try {
+            //构造登录令牌
+            password = new Md5Hash(password , mobile , 3).toString();
+            UsernamePasswordToken upToken = new UsernamePasswordToken(mobile , password);
+            //获取subject
+            Subject subject = SecurityUtils.getSubject();
+            //调用login方法,进入realm完成认证
+            subject.login(upToken);
+            //获取sessionId
+            String sessionId = (String) subject.getSession().getId();
+            //构造返回结果
+            return new Result(ResultCode.SUCCESS , sessionId);
+        }catch (Exception e){
+            return new Result(ResultCode.MOBILEORPASSWORDERROR);
+        }
 
-        User user = userService.findByMobile(mobile);
+
+
+  /*      User user = userService.findByMobile(mobile);
 
         //登录失败
         if (user == null || !user.getPassword().equals(password)){
@@ -159,7 +185,7 @@ public class UserController extends BaseController {
             map.put("companyName" , user.getCompanyName());
             String token = jwtUtils.createJwt(user.getId(), user.getUsername(), map);
             return new Result(ResultCode.SUCCESS,token);
-        }
+        }*/
     }
 
     /**
@@ -168,6 +194,14 @@ public class UserController extends BaseController {
     @RequestMapping(value = "/profile" , method = RequestMethod.POST)
     public Result profile(HttpServletRequest request) throws Exception {
 
+        //获取session中的安全数据
+        Subject subject = SecurityUtils.getSubject();
+        //subject获取所有的安全集合
+        PrincipalCollection principals = subject.getPrincipals();
+        //获取安全数据
+        ProfileResult result = (ProfileResult) principals.getPrimaryPrincipal();
+
+/*
         String userId = claims.getId();
         //获取用户信息
         User user = userService.findById(userId);
@@ -184,6 +218,7 @@ public class UserController extends BaseController {
             List<Permission> list = permissionService.findAll(map);
             result = new ProfileResult(user , list);
         }
+*/
 
         return new Result(ResultCode.SUCCESS,result);
     }
