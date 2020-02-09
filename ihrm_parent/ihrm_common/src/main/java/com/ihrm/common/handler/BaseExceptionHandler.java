@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 @ControllerAdvice
 public class BaseExceptionHandler {
 
-/*    @ExceptionHandler(value = Exception.class)
+    @ExceptionHandler(value = Exception.class)
     @ResponseBody
     public Result error(HttpServletRequest request, HttpServletResponse response,Exception e) {
         if(e.getClass() == CommonException.class) {
@@ -32,9 +32,9 @@ public class BaseExceptionHandler {
             Result result = new Result(ResultCode.SERVER_ERROR);
             return result;
         }
-    }*/
+    }
 
-    @ExceptionHandler(value = Exception.class)
+    @ExceptionHandler(value = AuthorizationException.class)
     @ResponseBody
     public Result error(HttpServletRequest request, HttpServletResponse response,AuthorizationException e) {
         return new Result(ResultCode.UNAUTHORISE);
