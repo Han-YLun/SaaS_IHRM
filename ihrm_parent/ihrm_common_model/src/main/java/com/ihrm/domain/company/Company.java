@@ -1,10 +1,9 @@
 package com.ihrm.domain.company;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -55,7 +54,7 @@ public class Company implements Serializable {
      */
     private String name;
     /**
-     * 用户登录账号ID
+     * 企业登录账号ID
      */
     private String managerId;
     /**

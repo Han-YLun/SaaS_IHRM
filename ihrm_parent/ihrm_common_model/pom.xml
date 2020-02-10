@@ -10,17 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>ihrm_common_model</artifactId>
-    <packaging>pom</packaging>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.ihrm</groupId>
-            <artifactId>ihrm_common</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

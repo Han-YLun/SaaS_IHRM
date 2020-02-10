@@ -9,7 +9,10 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 /**
- * 按钮资源
+ * Created with IDEA
+ * Author:xzengsf
+ * Date:2018/3/22 10:24
+ * Description: 菜单权限实体类
  */
 @Entity
 @Table(name = "pe_permission_point")

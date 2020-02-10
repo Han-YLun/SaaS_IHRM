@@ -26,12 +26,12 @@ public class Role implements Serializable {
      */
     private String description;
     /**
-     * 用户id
+     * 企业id
      */
     private String companyId;
 
     @JsonIgnore
-    @ManyToMany(mappedBy="roles")   //不维护中间表
+    @ManyToMany(mappedBy="roles")  //不维护中间表
     private Set<User> users = new HashSet<User>(0);//角色与用户   多对多
 
 

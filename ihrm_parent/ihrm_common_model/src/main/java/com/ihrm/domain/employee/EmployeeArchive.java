@@ -10,10 +10,7 @@ import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * @author: hyl
- * @date: 2020/02/10
- **/
+
 @Entity
 @Table(name = "em_archive")
 @Data
