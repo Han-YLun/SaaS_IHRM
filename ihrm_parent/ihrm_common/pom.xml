@@ -47,7 +47,7 @@
                         </goals>
                     </execution>
                 </executions>
-                <!--<configuration>
+              <!--  <configuration>
                     <doCheck>false</doCheck>
                     <doUpdate>false</doUpdate>
                 </configuration>-->
