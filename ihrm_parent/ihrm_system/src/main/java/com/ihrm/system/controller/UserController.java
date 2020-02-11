@@ -16,6 +16,8 @@ import com.ihrm.system.service.PermissionService;
 import com.ihrm.system.service.UserService;
 import com.mysql.jdbc.profiler.ProfilerEvent;
 import io.jsonwebtoken.Claims;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -26,9 +28,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,7 +58,69 @@ public class UserController extends BaseController {
     @Autowired
     private JwtUtils jwtUtils;
 
-    
+
+    /**
+     * 导入Excel,添加用户
+     */
+    @RequestMapping(value = "/user/import" , method = RequestMethod.POST)
+    public Result importUser(@RequestParam(name = "file") MultipartFile file) throws Exception {
+        //1.解析excel
+        //1.1根据Excel文件创建工作簿
+        Workbook wb = new XSSFWorkbook(file.getInputStream());
+        //1.2获取sheet
+        Sheet sheet = wb.getSheetAt(0);
+        //1.3获取sheet中的每一行和每一个单元格
+        //2.获取用户数据列表
+        List<User> list = new ArrayList<>();
+        for (int rowNumber = 1; rowNumber <= sheet.getLastRowNum(); rowNumber++) {
+            Row row = sheet.getRow(rowNumber);//根据索引获取每一行
+            Object[] values = new Object[row.getLastCellNum()];
+            for (int celNum = 1; celNum < row.getLastCellNum(); celNum++){
+                Cell cell = row.getCell(celNum);
+                Object value = getCellValue(cell);
+                values[celNum] = value;
+            }
+            User user = new User(values);
+            list.add(user);
+
+        }
+        //3.批量保存用户
+        userService.saveAll(list , companyId , companyName);
+        return new Result(ResultCode.SUCCESS);
+    }
+
+
+    public static Object getCellValue(Cell cell){
+        //获取到单元格的属性类型
+        CellType cellType = cell.getCellType();
+        //根据单元格数据类型获取数据
+        Object value = null;
+        switch (cellType){
+            case STRING:
+                value = cell.getStringCellValue();
+                break;
+            case BLANK:
+                value = cell.getBooleanCellValue();
+                break;
+            case NUMERIC:
+                if (DateUtil.isCellDateFormatted(cell)){
+                    //日期格式
+                    value = cell.getDateCellValue();
+                }else{
+                    //数字
+                    value = cell.getNumericCellValue();
+                }
+                break;
+            case FORMULA:   //公式
+                value = cell.getCellFormula();
+                break;
+            default:
+                break;
+        }
+        return value;
+    }
+
+
 
     /**
      * 分配角色

@@ -1,8 +1,10 @@
 package com.ihrm.system.service;
 
 import com.ihrm.common.utils.IdWorker;
+import com.ihrm.domain.company.Department;
 import com.ihrm.domain.system.Role;
 import com.ihrm.domain.system.User;
+import com.ihrm.system.client.DepartmentFeignClient;
 import com.ihrm.system.dao.RoleDao;
 import com.ihrm.system.dao.UserDao;
 import org.apache.shiro.crypto.hash.Md5Hash;
@@ -11,6 +13,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -34,6 +37,9 @@ public class UserService {
 
     @Autowired
     private IdWorker idWorker;
+
+    @Autowired
+    private DepartmentFeignClient departmentFeignClient;
 
 
     /**
@@ -154,6 +160,37 @@ public class UserService {
         user.setRoles(roles);
         //更新用户
         userDao.save(user);
+    }
+
+    /**
+     *  批量用户保存
+     * @param list  用户list
+     * @param companyId 用户所属公司id
+     * @param companyName   用户所属公司名称
+     */
+    @Transactional
+    public void saveAll(List<User> list, String companyId, String companyName) {
+        for (User user : list) {
+            //默认密码
+            user.setPassword(new Md5Hash("123456" , user.getMobile() , 3).toString());
+            //id
+            user.setId(idWorker.nextId() + "");
+            //基本属性
+            user.setCompanyId(companyId);
+            user.setCompanyName(companyName);
+            user.setInServiceStatus(1);
+            user.setEnableState(1);
+            user.setLevel("user");
+
+            //填充部门的属性
+            Department department = departmentFeignClient.findByCode(user.getDepartmentId(), companyId);
+            if (department != null){
+                user.setDepartmentId(department.getId());
+                user.setDepartmentName(department.getName());
+            }
+
+            userDao.save(user);
+        }
     }
 }
 

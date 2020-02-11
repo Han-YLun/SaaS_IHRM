@@ -108,7 +108,7 @@ public class User implements Serializable {
         //用户名	手机号	工号	聘用 形式	入职 时间	部门编码
         this.username = values[1].toString();
         this.mobile = values[2].toString();
-        this.workNumber = new DecimalFormat("#").format(values[3]).toString();
+        this.workNumber = new DecimalFormat("#").format(values[3]);
         this.formOfEmployment =((Double) values[4]).intValue();
         this.timeOfEntry = (Date) values[5];
         this.departmentId = values[6].toString(); //部门编码 != 部门id

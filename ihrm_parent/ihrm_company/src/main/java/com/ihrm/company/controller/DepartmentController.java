@@ -88,4 +88,13 @@ public class DepartmentController extends BaseController {
         departmentService.deleteById(id);
         return new Result(ResultCode.SUCCESS);
     }
+
+    /**
+     *  根据部门编码和公司id查询部门
+     */
+    @RequestMapping(value = "/department/search" , method = RequestMethod.POST)
+    public Department findByCode(@RequestParam("code") String code,@RequestParam("companyId") String companyId){
+        return departmentService.findByCode(code , companyId);
+
+    }
 }
