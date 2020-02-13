@@ -1,6 +1,7 @@
 package com.ihrm.domain.system;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ihrm.domain.poi.ExcelAttribute;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,10 +31,12 @@ public class User implements Serializable {
     /**
      * 手机号码
      */
+    @ExcelAttribute(sort = 2)
     private String mobile;
     /**
      * 用户名称
      */
+    @ExcelAttribute(sort = 1)
     private String username;
     /**
      * 密码
@@ -56,21 +59,25 @@ public class User implements Serializable {
     /**
      * 部门ID
      */
+    @ExcelAttribute(sort = 6)
     private String departmentId;
 
     /**
      * 入职时间
      */
+    @ExcelAttribute(sort = 5)
     private Date timeOfEntry;
 
     /**
      * 聘用形式
      */
+    @ExcelAttribute(sort = 4)
     private Integer formOfEmployment;
 
     /**
      * 工号
      */
+    @ExcelAttribute(sort = 3)
     private String workNumber;
 
     /**
