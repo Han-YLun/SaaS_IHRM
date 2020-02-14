@@ -1,0 +1,9 @@
+D:\it\github\SaaS_HRM\shiro-test\shiro_springboot\src\main\java\cn\itcast\shiro\controller\UserController.java
+D:\it\github\SaaS_HRM\shiro-test\shiro_springboot\src\main\java\cn\itcast\shiro\realm\CustomRealm.java
+D:\it\github\SaaS_HRM\shiro-test\shiro_springboot\src\main\java\cn\itcast\shiro\ShiroConfiguration.java
+D:\it\github\SaaS_HRM\shiro-test\shiro_springboot\src\main\java\cn\itcast\shiro\service\UserService.java
+D:\it\github\SaaS_HRM\shiro-test\shiro_springboot\src\main\java\cn\itcast\shiro\domain\User.java
+D:\it\github\SaaS_HRM\shiro-test\shiro_springboot\src\main\java\cn\itcast\shiro\dao\UserDao.java
+D:\it\github\SaaS_HRM\shiro-test\shiro_springboot\src\main\java\cn\itcast\shiro\domain\Permission.java
+D:\it\github\SaaS_HRM\shiro-test\shiro_springboot\src\main\java\cn\itcast\shiro\ShiroApplication.java
+D:\it\github\SaaS_HRM\shiro-test\shiro_springboot\src\main\java\cn\itcast\shiro\domain\Role.java

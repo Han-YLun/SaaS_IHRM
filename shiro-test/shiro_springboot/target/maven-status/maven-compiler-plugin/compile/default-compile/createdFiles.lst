@@ -1,0 +1,9 @@
+cn\itcast\shiro\domain\Role.class
+cn\itcast\shiro\dao\UserDao.class
+cn\itcast\shiro\domain\User.class
+cn\itcast\shiro\ShiroApplication.class
+cn\itcast\shiro\controller\UserController.class
+cn\itcast\shiro\realm\CustomRealm.class
+cn\itcast\shiro\domain\Permission.class
+cn\itcast\shiro\ShiroConfiguration.class
+cn\itcast\shiro\service\UserService.class
