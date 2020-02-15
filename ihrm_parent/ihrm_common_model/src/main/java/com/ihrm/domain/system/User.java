@@ -111,6 +111,8 @@ public class User implements Serializable {
      */
     private String level;
 
+    private String staffPhoto;  //用户头像
+
     public User(Object [] values) {
         //用户名	手机号	工号	聘用 形式	入职 时间	部门编码
         this.username = values[1].toString();

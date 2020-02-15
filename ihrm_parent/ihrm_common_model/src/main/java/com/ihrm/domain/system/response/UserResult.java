@@ -89,6 +89,8 @@ public class UserResult implements Serializable {
 
     private String departmentName;
 
+    private String staffPhoto;  //用户头像
+
     private List<String> roleIds = new ArrayList<>();
 
     public UserResult(User user) {
