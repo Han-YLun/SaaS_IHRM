@@ -1,37 +1,34 @@
 package com.ihrm.employee.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.ihrm.common.controller.BaseController;
 import com.ihrm.common.entity.PageResult;
 import com.ihrm.common.entity.Result;
 import com.ihrm.common.entity.ResultCode;
-import com.ihrm.common.exception.CommonException;
 import com.ihrm.common.poi.ExcelExportUtil;
-import com.ihrm.common.poi.ExcelImportUtil;
 import com.ihrm.common.utils.BeanMapUtils;
 import com.ihrm.common.utils.DownloadUtils;
 import com.ihrm.domain.employee.*;
 import com.ihrm.domain.employee.response.EmployeeReportResult;
 import com.ihrm.employee.service.*;
-import io.jsonwebtoken.Claims;
-
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.export.JRHtmlExporterParameter;
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletResponse;
-import java.io.*;
-import java.net.URLEncoder;
-import java.util.*;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -56,6 +53,46 @@ public class EmployeeController extends BaseController {
 
     @Autowired
     private ArchiveService archiveService;
+
+    /**
+     * 打印员工pdf报表
+     */
+    @RequestMapping(value = "/{id}/pdf" , method = RequestMethod.GET)
+    public void pdf(@PathVariable String id) throws IOException {
+        //1.引入jasper文件
+        Resource resource = new ClassPathResource("templates/profile.jasper");
+        InputStream is = resource.getInputStream();
+
+        //2.构造数据
+        //用户详情数据
+        UserCompanyPersonal personal = userCompanyPersonalService.findById(id);
+        //用户岗位信息数据
+        UserCompanyJobs jobs = userCompanyJobsService.findById(id);
+
+        //用户头像
+        String staffPhoto = "http://q5qm6t73r.bkt.clouddn.com/" + id + "?t=100";
+
+        //3.填充pdf模版数据,并输出pdf
+        Map params = new HashMap();
+        params.put("staffPhoto" , staffPhoto);
+
+        Map<String, Object> personalMap = BeanMapUtils.beanToMap(personal);
+        Map<String, Object> jobsMap = BeanMapUtils.beanToMap(jobs);
+
+        params.putAll(personalMap);
+        params.putAll(jobsMap);
+
+        ServletOutputStream sos = response.getOutputStream();
+        try{
+            JasperPrint print = JasperFillManager.fillReport(is , params , new JREmptyDataSource());
+            JasperExportManager.exportReportToPdfStream(print , sos);
+        }catch (JRException e){
+            e.printStackTrace();
+        }finally {
+            sos.flush();
+        }
+
+    }
 
 
     /**

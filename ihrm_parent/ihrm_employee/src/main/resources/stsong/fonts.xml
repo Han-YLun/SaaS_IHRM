@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<fontFamilies>
+
+    <!--<fontFamily name="Lobster Two">-->
+    <!--<normal>lobstertwo/LobsterTwo-Regular.otf</normal>-->
+    <!--<bold>lobstertwo/LobsterTwo-Bold.otf</bold>-->
+    <!--<italic>lobstertwo/LobsterTwo-Italic.otf</italic>-->
+    <!--<boldItalic>lobstertwo/LobsterTwo-BoldItalic.otf</boldItalic>-->
+    <!--<pdfEncoding>Identity-H</pdfEncoding>-->
+    <!--<pdfEmbedded>true</pdfEmbedded>-->
+    <!--<!–-->
+    <!--<exportFonts>-->
+    <!--<export key="net.sf.jasperreports.html">'Lobster Two', 'Times New Roman', Times, serif</export>-->
+    <!--</exportFonts>-->
+    <!--–>-->
+    <!--</fontFamily>-->
+    <fontFamily name="华文宋体">
+        <normal>stsong/stsong.TTF</normal>
+        <bold>stsong/stsong.TTF</bold>
+        <italic>stsong/stsong.TTF</italic>
+        <boldItalic>stsong/stsong.TTF</boldItalic>
+        <pdfEncoding>Identity-H</pdfEncoding>
+        <pdfEmbedded>true</pdfEmbedded>
+        <exportFonts>
+            <export key="net.sf.jasperreports.html">'华文宋体', Arial, Helvetica, sans-serif</export>
+            <export key="net.sf.jasperreports.xhtml">'华文宋体', Arial, Helvetica, sans-serif</export>
+        </exportFonts>
+        <!--
+        <locales>
+            <locale>en_US</locale>
+            <locale>de_DE</locale>
+        </locales>
+        -->
+    </fontFamily>
+</fontFamilies>
