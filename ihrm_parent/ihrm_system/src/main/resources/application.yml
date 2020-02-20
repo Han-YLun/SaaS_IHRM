@@ -36,4 +36,4 @@ ai:
   imageType: BASE64
   groupId: ArvinYL
 qr:
-  url: https://localhost:8080/#/facelogin
+  url: http://localhost:8080/#/facelogin
