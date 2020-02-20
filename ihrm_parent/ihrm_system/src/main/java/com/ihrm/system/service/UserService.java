@@ -8,6 +8,7 @@ import com.ihrm.domain.system.User;
 import com.ihrm.system.client.DepartmentFeignClient;
 import com.ihrm.system.dao.RoleDao;
 import com.ihrm.system.dao.UserDao;
+import com.ihrm.system.utils.BaiduAiUtil;
 import com.sun.org.apache.xml.internal.security.utils.Base64;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,9 @@ public class UserService {
 
     @Autowired
     private DepartmentFeignClient departmentFeignClient;
+
+    @Autowired
+    private BaiduAiUtil baiduAiUtil;
 
 
     /**
@@ -217,7 +221,7 @@ public class UserService {
 
 
     /**
-     *  完成图片处理 (上传到七牛云存储)
+     *  完成图片处理 (上传到七牛云存储并且注册到百度云AI人脸库中)
      * @param id    用户id
      * @param file  用户上传的头像文件
      * @return      请求路径
@@ -230,6 +234,16 @@ public class UserService {
         //3.更新用户头像地址
         user.setStaffPhoto(imgUrl);
         userDao.save(user);
+        //判断是否已经注册面部信息
+        Boolean faceExist = baiduAiUtil.faceExist(id);
+        String imgBase64 = Base64.encode(file.getBytes());
+        if (faceExist){
+            //更新
+            baiduAiUtil.faceUpdate(id , imgBase64);
+        }else{
+            //注册
+            baiduAiUtil.faceRegister(id , imgBase64);
+        }
         //4.返回路径
         return imgUrl;
     }

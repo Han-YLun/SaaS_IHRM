@@ -61,7 +61,7 @@ public class EmployeeController extends BaseController {
     public void pdf(@PathVariable String id) throws IOException {
         //1.引入jasper文件
         Resource resource = new ClassPathResource("templates/profile.jasper");
-        InputStream is = resource.getInputStream();
+        FileInputStream fis = new FileInputStream(resource.getFile());
 
         //2.构造数据
         //用户详情数据
@@ -74,17 +74,18 @@ public class EmployeeController extends BaseController {
 
         //3.填充pdf模版数据,并输出pdf
         Map params = new HashMap();
-        params.put("staffPhoto" , staffPhoto);
+
 
         Map<String, Object> personalMap = BeanMapUtils.beanToMap(personal);
         Map<String, Object> jobsMap = BeanMapUtils.beanToMap(jobs);
 
         params.putAll(personalMap);
         params.putAll(jobsMap);
+        params.put("staffPhoto" , "staffPhoto");
 
         ServletOutputStream sos = response.getOutputStream();
         try{
-            JasperPrint print = JasperFillManager.fillReport(is , params , new JREmptyDataSource());
+            JasperPrint print = JasperFillManager.fillReport(fis , params , new JREmptyDataSource());
             JasperExportManager.exportReportToPdfStream(print , sos);
         }catch (JRException e){
             e.printStackTrace();
