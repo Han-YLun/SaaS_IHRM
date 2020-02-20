@@ -81,7 +81,7 @@ public class EmployeeController extends BaseController {
 
         params.putAll(personalMap);
         params.putAll(jobsMap);
-        params.put("staffPhoto" , "staffPhoto");
+        params.put("staffPhoto" , staffPhoto);
 
         ServletOutputStream sos = response.getOutputStream();
         try{
