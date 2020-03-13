@@ -8,7 +8,6 @@ import com.ihrm.domain.system.response.QRCode;
 import com.ihrm.system.service.FaceLoginService;
 import com.ihrm.system.utils.BaiduAiUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.Base64Utils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 

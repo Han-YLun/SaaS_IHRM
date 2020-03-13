@@ -1,6 +1,5 @@
 package com.ihrm.system.service;
 
-import com.ihrm.common.entity.PageResult;
 import com.ihrm.common.service.BaseService;
 import com.ihrm.common.utils.IdWorker;
 import com.ihrm.common.utils.PermissionConstants;

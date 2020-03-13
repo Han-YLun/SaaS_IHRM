@@ -3,12 +3,10 @@ package com.ihrm.employee.service;
 import com.ihrm.common.service.BaseService;
 import com.ihrm.common.utils.IdWorker;
 import com.ihrm.domain.employee.EmployeeArchive;
-import com.ihrm.domain.system.User;
 import com.ihrm.employee.dao.ArchiveDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 

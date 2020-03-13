@@ -13,6 +13,7 @@
         <module>ihrm_company</module>
         <module>ihrm_system</module>
         <module>ihrm_eureka</module>
+        <module>ihrm_gate</module>
     </modules>
 
     <packaging>pom</packaging>

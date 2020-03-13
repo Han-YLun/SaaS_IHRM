@@ -1,15 +1,11 @@
 package com.ihrm.system.controller;
 
-import com.ihrm.common.entity.PageResult;
 import com.ihrm.common.entity.Result;
 import com.ihrm.common.entity.ResultCode;
 import com.ihrm.common.exception.CommonException;
 import com.ihrm.domain.system.Permission;
-import com.ihrm.domain.system.User;
 import com.ihrm.system.service.PermissionService;
-import com.ihrm.system.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -18,8 +18,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.Serializable;
-import java.security.Security;
 import java.util.concurrent.TimeUnit;
 
 @Service

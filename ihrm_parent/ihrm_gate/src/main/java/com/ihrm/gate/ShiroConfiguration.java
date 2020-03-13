@@ -1,4 +1,4 @@
-package com.ihrm.employee;
+package com.ihrm.gate;
 
 import com.ihrm.common.shiro.realm.IhrmRealm;
 import com.ihrm.common.shiro.session.CustomSessionManager;
