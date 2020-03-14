@@ -5,6 +5,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
@@ -13,15 +15,15 @@ import java.util.HashMap;
 @Component
 public class BaiduAiUtil {
 
-    @Value("${ai.appId}")
+    @Value("${ai_appId}")
     private String APP_ID;
-    @Value("${ai.apiKey}")
+    @Value("${ai_apiKey}")
     private String API_KEY;
-    @Value("${ai.secretKey}")
+    @Value("${ai_secretKey}")
     private String SECRET_KEY;
-    @Value("${ai.imageType}")
+    @Value("${ai_imageType}")
     private String IMAGE_TYPE;
-    @Value("${ai.groupId}")
+    @Value("${ai_groupId}")
     private String groupId;
 
     private AipFace client;

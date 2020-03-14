@@ -7,10 +7,10 @@ eureka:
     perferIpAddress: true
     instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
 server:
-  port: 9003
+  port: 9004
 spring:
   application:
-    name: ihrm-employee #指定服务名
+    name: ihrm-social-securitys #指定服务名
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/ihrm?useUnicode=true&characterEncoding=utf8

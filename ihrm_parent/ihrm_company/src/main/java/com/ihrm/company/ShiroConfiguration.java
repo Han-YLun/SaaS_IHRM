@@ -32,8 +32,7 @@ public class ShiroConfiguration {
     }
 
     //创建安全管理器
-    @Bean
-    public SecurityManager getSecurityManager(IhrmRealm realm){
+    public SecurityManager getSecurityManager(IhrmRealm realm) {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         securityManager.setRealm(realm);
 
@@ -41,9 +40,9 @@ public class ShiroConfiguration {
         securityManager.setSessionManager(sessionManager());
         //将自定义的redis缓存管理器注册到安全管理器中
         securityManager.setCacheManager(cacheManager());
+
         return securityManager;
     }
-
     //配置shiro的过滤器工厂
     @Bean
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager){
