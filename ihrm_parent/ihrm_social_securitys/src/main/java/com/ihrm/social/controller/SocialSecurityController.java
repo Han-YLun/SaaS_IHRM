@@ -5,16 +5,16 @@ import com.ihrm.common.entity.PageResult;
 import com.ihrm.common.entity.Result;
 import com.ihrm.common.entity.ResultCode;
 import com.ihrm.domain.company.Company;
-import com.ihrm.domain.social_security.CityPaymentItem;
-import com.ihrm.domain.social_security.CompanySettings;
-import com.ihrm.domain.social_security.UserSocialSecurity;
+import com.ihrm.domain.social_security.*;
 import com.ihrm.social.client.SystemFeignClient;
+import com.ihrm.social.service.ArchiveService;
 import com.ihrm.social.service.CompanySettingsService;
 import com.ihrm.social.service.PaymentItemService;
 import com.ihrm.social.service.UserSocialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,6 +38,9 @@ public class SocialSecurityController extends BaseController {
 
     @Autowired
     private PaymentItemService paymentItemService;
+
+    @Autowired
+    private ArchiveService archiveService;
 
     /**
      * 查询企业是否设置过社保
@@ -101,6 +104,55 @@ public class SocialSecurityController extends BaseController {
     @RequestMapping(value = "/{id}" , method = RequestMethod.PUT)
     public Result saveUserSocialSecurity(@RequestBody UserSocialSecurity uss){
         userSocialService.save(uss);
+        return new Result(ResultCode.SUCCESS);
+    }
+
+    /**
+     * 查询月份数据报表
+     *  /historys/0?yearMonth=0&opType=1
+     *  opType ： 1(当月数据)
+     */
+    @RequestMapping(value = "/historys/{yearMonth}" , method = RequestMethod.GET)
+    public Result historysDetail(@PathVariable String yearMonth , int opType) throws Exception {
+        List<ArchiveDetail> list = new ArrayList<>();
+        if (opType == 1){
+            //未归档,查询当月的数据
+            list = archiveService.getReports(yearMonth , companyId);
+        }else{
+            //未归档的数据
+            //1.根据月份和企业id查询归档历史
+            Archive archive = archiveService.findArchive(companyId , yearMonth);
+            //2.如果归档历史存在,查询归档明细
+            if (archive != null){
+                list = archiveService.findAllDetailByArchiveId(archive.getId());
+            }
+
+        }
+        return new Result(ResultCode.SUCCESS , list);
+    }
+
+
+    /**
+     * 数据归档
+     */
+    @RequestMapping(value = "/historys/{yearMonth}/archive" , method = RequestMethod.POST)
+    public Result archive(@PathVariable String yearMonth) throws Exception {
+        archiveService.archive(yearMonth , companyId);
+        return new Result(ResultCode.SUCCESS);
+    }
+
+    /**
+     * 制作新报表
+     */
+    @RequestMapping(value = "/historys/{yearMonth}/newReport" , method = RequestMethod.PUT)
+    public Result newReport(@PathVariable String yearMonth){
+        CompanySettings cs = companySettingsService.findById(companyId);
+        if (cs == null){
+            cs = new CompanySettings();
+        }
+        cs.setCompanyId(companyId);
+        cs.setDataMonth(yearMonth);
+        companySettingsService.save(cs);
         return new Result(ResultCode.SUCCESS);
     }
 

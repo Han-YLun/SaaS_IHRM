@@ -19,6 +19,9 @@ spring:
     port: 6379
 #配置路由规则
 zuul:
+  host:
+    connect-timeout-millis: 15000  #HTTP连接超时要比Hystrix的大
+    socket-timeout-millis: 60000  #socket超时
   routes:
     #路由id
     ihrm-company:
@@ -47,3 +50,6 @@ zuul:
       stripPrefix: false
       sentiviteHeaders:   #将指定路由的敏感头设置为空
       customSensitiveHeaders: true #对指定路由开启自定义敏感头
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout : 10000
