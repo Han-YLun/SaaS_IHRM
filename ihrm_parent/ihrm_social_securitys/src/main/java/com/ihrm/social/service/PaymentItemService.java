@@ -19,4 +19,13 @@ public class PaymentItemService {
 	
     @Autowired
     private CityPaymentItemDao cityPaymentItemDao;
+
+    /**
+     * 根据城市id获取参保项目
+     * @param id    城市id
+     * @return  城市对应获取参保项目
+     */
+    public List<CityPaymentItem> findAllByCityId(String id) {
+        return cityPaymentItemDao.findAllByCityId(id);
+    }
 }

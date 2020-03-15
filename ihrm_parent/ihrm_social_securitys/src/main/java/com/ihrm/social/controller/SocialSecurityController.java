@@ -5,15 +5,18 @@ import com.ihrm.common.entity.PageResult;
 import com.ihrm.common.entity.Result;
 import com.ihrm.common.entity.ResultCode;
 import com.ihrm.domain.company.Company;
+import com.ihrm.domain.social_security.CityPaymentItem;
 import com.ihrm.domain.social_security.CompanySettings;
+import com.ihrm.domain.social_security.UserSocialSecurity;
+import com.ihrm.social.client.SystemFeignClient;
 import com.ihrm.social.service.CompanySettingsService;
+import com.ihrm.social.service.PaymentItemService;
 import com.ihrm.social.service.UserSocialService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -29,6 +32,12 @@ public class SocialSecurityController extends BaseController {
 
     @Autowired
     private UserSocialService userSocialService;
+
+    @Autowired
+    private SystemFeignClient systemFeignClient;
+
+    @Autowired
+    private PaymentItemService paymentItemService;
 
     /**
      * 查询企业是否设置过社保
@@ -60,6 +69,39 @@ public class SocialSecurityController extends BaseController {
         //2.调用service进行查询
         PageResult pr = userSocialService.findAll(page , pageSize , companyId);
         return new Result(ResultCode.SUCCESS , pr);
+    }
+
+    /**
+     * 查询用户id查询用户的社保数据
+     */
+    @RequestMapping(value = "/{id}" , method = RequestMethod.GET)
+    public Result findById(@PathVariable String id){
+        Map map = new HashMap();
+        //1.根据用户id查询用户数据
+        Object user = systemFeignClient.findById(id).getData();
+        map.put("user" , user);
+        //2.根据用户id查询社保数据
+        UserSocialSecurity uss = userSocialService.findById(id);
+        map.put("userSocialSecurity" , uss);
+        return new Result(ResultCode.SUCCESS , map);
+    }
+
+    /**
+     * 查询城市id查询城市的参保项目
+     */
+    @RequestMapping(value = "/payment_item/{id}" , method = RequestMethod.GET)
+    public Result findPaymentItem(@PathVariable String id){
+        List<CityPaymentItem> list = paymentItemService.findAllByCityId(id);
+        return new Result(ResultCode.SUCCESS , list);
+    }
+
+    /**
+     * 保存或更新用户社保
+     */
+    @RequestMapping(value = "/{id}" , method = RequestMethod.PUT)
+    public Result saveUserSocialSecurity(@RequestBody UserSocialSecurity uss){
+        userSocialService.save(uss);
+        return new Result(ResultCode.SUCCESS);
     }
 
 

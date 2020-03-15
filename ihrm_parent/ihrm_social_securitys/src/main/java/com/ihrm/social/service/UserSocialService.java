@@ -38,4 +38,22 @@ public class UserSocialService {
         Page<Map> pageData = userSocialSecurityDao.findPage(companyId, new PageRequest(page - 1, pageSize));
         return new PageResult(pageData.getTotalElements() , pageData.getContent());
     }
+
+    /**
+     * 根据id查询社保数据
+     * @param id    用户id
+     * @return  根据ID查询的社保数据
+     */
+    public UserSocialSecurity findById(String id) {
+        Optional<UserSocialSecurity> userSocialSecurity = userSocialSecurityDao.findById(id);
+        return userSocialSecurity.isPresent() ? userSocialSecurity.get() : null;
+    }
+
+    /**
+     * 保存或更新用户社保
+     * @param uss   用户社保
+     */
+    public void save(UserSocialSecurity uss) {
+        userSocialSecurityDao.save(uss);
+    }
 }

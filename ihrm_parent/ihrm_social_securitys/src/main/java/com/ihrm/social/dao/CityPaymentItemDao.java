@@ -13,4 +13,5 @@ import java.util.List;
  */
 public interface CityPaymentItemDao extends JpaRepository<CityPaymentItem,String> ,JpaSpecificationExecutor<CityPaymentItem> {
 
+    List<CityPaymentItem> findAllByCityId(String id);
 }
