@@ -136,7 +136,6 @@ public class ArchiveService {
 
 	/**
 	 * 社保数据归档
-	 *
 	 */
 	public void archive(String yearMonth, String companyId) throws Exception {
 		//1.查询归档明细数据
@@ -171,5 +170,25 @@ public class ArchiveService {
 			archiveDetail.setArchiveId(archive.getId());
 			archiveDetailDao.save(archiveDetail);
 		}
+	}
+
+	/**
+	 * 通过年份查询归档数据
+	 * @param companyId	公司id
+	 * @param year	年份
+	 * @return	对应年份和公司id的归档数据
+	 */
+	public List<Archive> findByYear(String companyId, String year) {
+		return archiveDao.findByCompanyIdAndYearsMonthLike(companyId , year + "%");
+	}
+
+	/**
+	 *	根据用户id和年月查询归档明细
+	 * @param userId	用户id
+	 * @param yearMonth	年月
+	 * @return	归档明细
+	 */
+	public ArchiveDetail findUserArchiveDetail(String userId, String yearMonth) {
+		return archiveDetailDao.findByUserIdAndYearsMonth(userId , yearMonth);
 	}
 }

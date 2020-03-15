@@ -15,4 +15,6 @@ import java.util.List;
 public interface ArchiveDao extends JpaRepository<Archive,String> ,JpaSpecificationExecutor<Archive> {
 
     Archive findByCompanyIdAndYearsMonth(String companyId, String yearMonth);
+
+    List<Archive> findByCompanyIdAndYearsMonthLike(String companyId, String s);
 }

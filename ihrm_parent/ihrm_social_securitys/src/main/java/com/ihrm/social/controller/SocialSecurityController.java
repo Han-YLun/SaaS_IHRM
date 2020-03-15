@@ -156,5 +156,24 @@ public class SocialSecurityController extends BaseController {
         return new Result(ResultCode.SUCCESS);
     }
 
+    /**
+     * 查询历史归档列表
+     */
+    @RequestMapping(value = "/historys/{year}/list" , method = RequestMethod.GET)
+    public Result historyList(@PathVariable String year){
+        List<Archive> list = archiveService.findByYear(companyId , year);
+        return new Result(ResultCode.SUCCESS , list);
+    }
+
+    /**
+     * 根据用户id和考勤年月查询用户考勤归档明细
+     */
+    @RequestMapping(value = "/historys/data" , method = RequestMethod.GET)
+    public ArchiveDetail historyData(String userId, String yearMonth){
+        return archiveService.findUserArchiveDetail(userId , yearMonth);
+    }
+
+    
+
 
 }

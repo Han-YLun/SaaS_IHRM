@@ -17,4 +17,7 @@ public interface ArchiveDetailDao extends JpaRepository<ArchiveDetail, String>, 
     void deleteByArchiveId(String archiveId);
 
     List<ArchiveDetail> findByArchiveId(String archiveId);
+
+    //根据用户id和年月查询归档明细
+    ArchiveDetail findByUserIdAndYearsMonth(String userId, String yearMonth);
 }
