@@ -25,6 +25,12 @@ import java.util.Map;
 @Configuration(value = "ihrm_company")
 public class ShiroConfiguration {
 
+    @Value("${spring.redis.host}")
+    private String host;
+
+    @Value("${spring.redis.port}")
+    private int  port;
+
     //创建realm
     @Bean
     public IhrmRealm getRealm(){
@@ -32,17 +38,20 @@ public class ShiroConfiguration {
     }
 
     //创建安全管理器
-    public SecurityManager getSecurityManager(IhrmRealm realm) {
+    @Bean
+    public SecurityManager securityManager() {
+        //使用默认的安全管理器
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
-        securityManager.setRealm(realm);
-
-        //将自定义的会话管理器注册到安全管理器中
+        // 自定义session管理 使用redis
         securityManager.setSessionManager(sessionManager());
-        //将自定义的redis缓存管理器注册到安全管理器中
+        // 自定义缓存实现 使用redis
         securityManager.setCacheManager(cacheManager());
-
+        //将自定义的realm交给安全管理器统一调度管理
+        securityManager.setRealm(getRealm());
         return securityManager;
     }
+
+
     //配置shiro的过滤器工厂
     @Bean
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager){
@@ -76,12 +85,6 @@ public class ShiroConfiguration {
         return advisor;
     }
 
-
-    @Value("${spring.redis.host}")
-    private String host;
-
-    @Value("${spring.redis.port}")
-    private int  port;
 
     /**
      * redis的控制器,操作redis

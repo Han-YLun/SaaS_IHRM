@@ -41,11 +41,11 @@ public class ShiroConfiguration {
         return securityManager;
     }
 
-    //3.配置shiro的过滤器工厂
+
 
     /**
+     * 配置shiro的过滤器工厂
      * 再web程序中，shiro进行权限控制全部是通过一组过滤器集合进行控制
-     *
      */
     @Bean
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {

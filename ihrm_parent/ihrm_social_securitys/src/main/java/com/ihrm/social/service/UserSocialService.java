@@ -26,4 +26,16 @@ public class UserSocialService {
     @Autowired
     private UserSocialSecurityDao userSocialSecurityDao;
 
+    /**
+     * 分页查询用户的社保数据
+     * @param page  页数
+     * @param pageSize  每页条数
+     * @param companyId 公司id
+     * @return  分页结果
+     */
+    public PageResult findAll(int page, int pageSize, String companyId) {
+
+        Page<Map> pageData = userSocialSecurityDao.findPage(companyId, new PageRequest(page - 1, pageSize));
+        return new PageResult(pageData.getTotalElements() , pageData.getContent());
+    }
 }
