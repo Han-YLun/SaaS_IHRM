@@ -15,15 +15,15 @@ import java.util.HashMap;
 @Component
 public class BaiduAiUtil {
 
-    @Value("${ai_appId}")
+    //@Value("${ai_appId}")
     private String APP_ID;
-    @Value("${ai_apiKey}")
+    //@Value("${ai_apiKey}")
     private String API_KEY;
-    @Value("${ai_secretKey}")
+    //@Value("${ai_secretKey}")
     private String SECRET_KEY;
-    @Value("${ai_imageType}")
+    //@Value("${ai_imageType}")
     private String IMAGE_TYPE;
-    @Value("${ai_groupId}")
+    //@Value("${ai_groupId}")
     private String groupId;
 
     private AipFace client;

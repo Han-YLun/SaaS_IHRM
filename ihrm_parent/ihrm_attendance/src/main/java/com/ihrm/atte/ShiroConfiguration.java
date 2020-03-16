@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-@Configuration(value = "ihrm_attendance")
+@Configuration(value = "ihrm_attendance_shiroConfiguration")
 public class ShiroConfiguration {
 
     //1.创建realm

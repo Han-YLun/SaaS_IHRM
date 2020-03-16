@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-@Configuration
+@Configuration("ihrm_gate")
 public class ShiroConfiguration {
 
     @Value("${spring.redis.host}")

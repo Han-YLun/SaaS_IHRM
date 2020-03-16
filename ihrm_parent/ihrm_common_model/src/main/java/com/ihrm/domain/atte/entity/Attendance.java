@@ -46,7 +46,7 @@ public class Attendance extends BaseEntity implements Serializable  {
   private Date adtOutTime;
   private String adtOutPlace;
   private String adtOutHourse;
-  private String day;
+  private String day;   //考勤日期
 
   public  Attendance(AtteUploadVo vo,User user) {
 	 this.adtInTime = vo.getInTime();

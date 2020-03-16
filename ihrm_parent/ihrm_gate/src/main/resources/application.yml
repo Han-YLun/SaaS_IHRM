@@ -50,8 +50,14 @@ zuul:
       stripPrefix: false
       sentiviteHeaders:   #将指定路由的敏感头设置为空
       customSensitiveHeaders: true #对指定路由开启自定义敏感头
-    ihrm-social-cfg: #社保
+    ihrm-atte-cfg: #考勤配置
       path: /cfg/** #配置请求URL的请求规则
+      serviceId: ihrm-attendance #指定Eureka注册中心中的服务id
+      stripPrefix: false
+      sentiviteHeaders:   #将指定路由的敏感头设置为空
+      customSensitiveHeaders: true #对指定路由开启自定义敏感头
+    ihrm-atte-attendances: #考勤管理
+      path: /attendances/** #配置请求URL的请求规则
       serviceId: ihrm-attendance #指定Eureka注册中心中的服务id
       stripPrefix: false
       sentiviteHeaders:   #将指定路由的敏感头设置为空

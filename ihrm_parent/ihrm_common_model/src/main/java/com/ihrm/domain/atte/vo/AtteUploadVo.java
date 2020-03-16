@@ -10,15 +10,21 @@ import java.util.Date;
 @ToString
 public class AtteUploadVo {
 
-	//员工姓名	手机号	工号	上班时间	下班时间
 	@ExcelAttribute(sort=0,format="String")
-	private String username;
+	private String username;	//员工姓名
+
 	@ExcelAttribute(sort=1,format="String")
-	private String mobile;
+	private String mobile;		//手机号
+
 	@ExcelAttribute(sort=2,format="String")
-	private String workNumber;
+	private String workNumber;	//工号
+
 	@ExcelAttribute(sort=3,format="Date")
-	private Date inTime;
+	private Date inTime;		//上班时间
+
 	@ExcelAttribute(sort=4,format="Date")
-	private Date outTime;
+	private Date outTime;		//下班时间
+
+	@ExcelAttribute(sort = 5 , format = "String")
+	private String atteDate;	//考勤日期
 }

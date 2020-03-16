@@ -23,10 +23,4 @@ spring:
   redis:
     host: 127.0.0.1
     port: 6379
-ai_appId: 18533226
-ai_apiKey: fNPCkRCr9jQSYuWF3P53WdDs
-ai_secretKey: NSXFLWyzTBhLF0E8X7c8h4UvUzsZSAq7
-ai_imageType: BASE64
-ai_groupId: ArvinYL
-qr_url: https://localhost:8080/#/facelogin
 

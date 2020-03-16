@@ -24,7 +24,6 @@ import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
 @EnableFeignClients
 public class AttendanceApplication {
 
-
     /**
      * 启动方法
      */

@@ -3,9 +3,7 @@ package com.ihrm.social;
 
 import com.ihrm.common.shiro.realm.IhrmRealm;
 import com.ihrm.common.shiro.session.CustomSessionManager;
-import com.ihrm.system.shiro.realm.UserRealm;
 import org.apache.shiro.mgt.SecurityManager;
-import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;

@@ -12,7 +12,6 @@ import com.ihrm.social.client.EmployeeFeignClient;
 import com.ihrm.social.dao.ArchiveDao;
 import com.ihrm.social.dao.ArchiveDetailDao;
 import com.ihrm.social.dao.UserSocialSecurityDao;
-import com.netflix.discovery.converters.Auto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -48,6 +47,7 @@ public class ArchiveService {
 
 	@Autowired
 	private PaymentItemService paymentItemService;
+
 
 	
 
@@ -191,4 +191,6 @@ public class ArchiveService {
 	public ArchiveDetail findUserArchiveDetail(String userId, String yearMonth) {
 		return archiveDetailDao.findByUserIdAndYearsMonth(userId , yearMonth);
 	}
+
+
 }

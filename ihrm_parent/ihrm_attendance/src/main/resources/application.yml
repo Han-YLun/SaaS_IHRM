@@ -30,3 +30,5 @@ spring:
     database: MySQL
     show-sql: true
     open-in-view: true
+atte_holidays: 20201001,20201002,20201003,20200101 #法定节假日
+atte_workingDays: 20200927 #周六/日需要上班
