@@ -15,6 +15,7 @@
         <module>ihrm_eureka</module>
         <module>ihrm_gate</module>
         <module>ihrm_social_securitys</module>
+        <module>ihrm_attendance</module>
     </modules>
 
     <packaging>pom</packaging>
