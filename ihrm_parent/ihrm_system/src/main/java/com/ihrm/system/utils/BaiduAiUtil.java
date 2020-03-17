@@ -14,16 +14,16 @@ import java.util.HashMap;
 
 @Component
 public class BaiduAiUtil {
-
-    //@Value("${ai_appId}")
+    
+    //@Value("${my.appId}")
     private String APP_ID;
-    //@Value("${ai_apiKey}")
+    //@Value("${my.apiKey}")
     private String API_KEY;
-    //@Value("${ai_secretKey}")
+    //@Value("${my.secretKey}")
     private String SECRET_KEY;
-    //@Value("${ai_imageType}")
+    //@Value("${my.imageType}")
     private String IMAGE_TYPE;
-    //@Value("${ai_groupId}")
+    //@Value("${my.groupId}")
     private String groupId;
 
     private AipFace client;

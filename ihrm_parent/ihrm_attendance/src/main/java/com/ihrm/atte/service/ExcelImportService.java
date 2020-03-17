@@ -2,6 +2,7 @@ package com.ihrm.atte.service;
 
 import com.ihrm.atte.dao.AttendanceConfigDao;
 import com.ihrm.atte.dao.AttendanceDao;
+import com.ihrm.atte.dao.UserCDao;
 import com.ihrm.common.poi.ExcelImportUtil;
 import com.ihrm.common.utils.DateUtil;
 import com.ihrm.common.utils.IdWorker;
@@ -9,7 +10,6 @@ import com.ihrm.domain.atte.entity.Attendance;
 import com.ihrm.domain.atte.entity.AttendanceConfig;
 import com.ihrm.domain.atte.vo.AtteUploadVo;
 import com.ihrm.domain.system.User;
-import com.ihrm.system.dao.UserDao;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,7 +23,7 @@ import java.util.List;
 public class ExcelImportService {
 
     @Autowired
-    private UserDao userDao;
+    private UserCDao userDao;
 
     @Autowired
     private AttendanceDao attendanceDao;

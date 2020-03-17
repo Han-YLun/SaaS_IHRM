@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class FaceLoginService {
 
-    //@Value("${qr_url}")
+    //@Value("${my.url}")
     private String url;
 
     @Autowired

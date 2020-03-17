@@ -66,7 +66,7 @@ public class AttendanceController extends BaseController {
      * 获取月度报表归档数据
      */
     @RequestMapping(value = "/reports" , method = RequestMethod.GET)
-    public Result reports(String atteDate) throws ParseException {
+    public Result reports(String atteDate){
         List<ArchiveMonthlyInfo> list = atteService.getReports(atteDate , companyId);
         return new Result(ResultCode.SUCCESS , list);
     }
@@ -77,6 +77,15 @@ public class AttendanceController extends BaseController {
     @RequestMapping(value = "/archive/item" , method = RequestMethod.GET)
     public Result archive(String archiveDate) {
         archiveService.saveArchive(archiveDate , companyId);
+        return new Result(ResultCode.SUCCESS);
+    }
+
+    /**
+     * 新建报表
+     */
+    @RequestMapping(value = "/newReports" , method = RequestMethod.GET)
+    public Result newReports(String atteDate) {
+        atteService.newReports(atteDate , companyId);
         return new Result(ResultCode.SUCCESS);
     }
     

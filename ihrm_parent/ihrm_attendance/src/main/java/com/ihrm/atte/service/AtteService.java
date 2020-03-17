@@ -16,10 +16,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import javax.annotation.Resources;
-import javax.xml.bind.SchemaOutputResolver;
 import java.text.ParseException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class AtteService  {
@@ -53,6 +54,7 @@ public class AtteService  {
         //考勤月
         CompanySettings css = companySettingsDao.findById(companyId).get();
         String dataMonth = css.getDataMonth();
+        System.out.println(dataMonth);
         //分页查询用户
         Page<User> users = userDao.findPage(companyId, new PageRequest(page - 1, pageSize));
         List<AtteItemBO> list = new ArrayList<>();
@@ -87,6 +89,8 @@ public class AtteService  {
         //待处理的考勤数量
         map.put("tobeTaskCount" , 0);
         //当前的考勤月份
+        System.out.println(dataMonth.substring(4));
+
         int month = Integer.parseInt(dataMonth.substring(4));
         map.put("monthOfReport" , month);
         return map;
@@ -127,5 +131,16 @@ public class AtteService  {
             list.add(info);
         }
         return list;
+    }
+
+    /**
+     * 新建报表,将atte_company_settings中的月份修改为指定的数据
+     * @param atteDate 年月
+     * @param companyId 企业id
+     */
+    public void newReports(String atteDate, String companyId) {
+        CompanySettings companySettings = companySettingsDao.findById(companyId).get();
+        companySettings.setDataMonth(atteDate);
+        companySettingsDao.save(companySettings);
     }
 }

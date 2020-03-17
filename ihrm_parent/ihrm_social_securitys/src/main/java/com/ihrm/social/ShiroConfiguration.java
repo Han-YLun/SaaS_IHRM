@@ -22,7 +22,7 @@ import java.util.Map;
  * @author: hyl
  * @date: 2020/02/04
  **/
-@Configuration(value = "ihrm_social_securitys")
+@Configuration(value = "ihrm_social_securitys_shiroConfiguration")
 public class ShiroConfiguration {
 
 

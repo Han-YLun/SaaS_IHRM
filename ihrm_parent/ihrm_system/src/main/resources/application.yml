@@ -30,9 +30,10 @@ spring:
     database: MySQL
     show-sql: true
     open-in-view: true
-ai_appId: 15191935
-ai_apiKey: cyWSHgas93Vtdmt42OwbW8pu
-ai_secretKey: yf1GusMvvLBdOnyubfLubNyod9iEDEZW
-ai_imageType: BASE64
-ai_groupId: itcast
-qr_url: http://localhost:8080/#/facelogin
+my:
+  appId: 15191935
+  apiKey: cyWSHgas93Vtdmt42OwbW8pu
+  secretKey: yf1GusMvvLBdOnyubfLubNyod9iEDEZW
+  imageType: BASE64
+  groupId: itcast
+  url: http://localhost:8080/#/facelogin
