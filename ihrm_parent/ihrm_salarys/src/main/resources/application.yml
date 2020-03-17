@@ -1,0 +1,32 @@
+#spring配置
+spring:
+  #1.应用配置
+  application:
+    name: ihrm-salarys #指定服务名
+  #3.JPA
+  jpa:
+    database: MySQL
+    show-sql: true
+    open-in-view: true
+  #2.数据库连接池
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ihrm?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 111111
+    hikari:
+      maximum-pool-size: 2
+  redis:
+    host: 127.0.0.1
+    port: 6379
+#注册到eureka的服务地址
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:6868/eureka/
+  instance:
+    preferIpAddress : true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+#服务配置
+server:
+  port: 9006
