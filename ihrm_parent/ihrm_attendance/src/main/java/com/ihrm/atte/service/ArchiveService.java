@@ -66,4 +66,33 @@ public class ArchiveService {
 		archiveMonthly.setIsArchived(0);
 		archiveMonthlyDao.save(archiveMonthly);
     }
+
+	/**
+	 * 根据年份查询,当年的所有考勤历史
+	 * @param year	年份
+	 * @param companyId	企业id
+	 * @return	对应年份和对应企业id的所有考勤历史
+	 */
+	public List<ArchiveMonthly> findByYear(String year,String companyId) {
+		return archiveMonthlyDao.findByCompanyIdAndArchiveYear(companyId , year);
+    }
+
+	/**
+	 *	查询归档详情列表
+	 * @param id	atte_archive_monthly_id
+	 * @return
+	 */
+	public List<ArchiveMonthlyInfo> findMonthInfoByAmid(String id) {
+		return archiveMonthlyInfoDao.findByAtteArchiveMonthlyId(id);
+	}
+
+	/**
+	 * 根据用户id和年月查询归档明细
+	 * @param userId	用户id
+	 * @param yearMonth	年月
+	 * @return	用户id和对应年月的归档明细
+	 */
+	public ArchiveMonthlyInfo findUserArchiveDetail(String userId, String yearMonth) {
+		return	archiveMonthlyInfoDao.findByUserIdAndArchiveDate(userId , yearMonth);
+	}
 }

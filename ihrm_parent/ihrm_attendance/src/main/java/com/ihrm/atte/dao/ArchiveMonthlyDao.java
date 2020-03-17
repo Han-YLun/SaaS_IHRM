@@ -9,9 +9,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.List;
 
-/**
- * @author itcast
- */
+
 public interface ArchiveMonthlyDao extends PagingAndSortingRepository<ArchiveMonthly,String>, CrudRepository<ArchiveMonthly,String>, JpaRepository<ArchiveMonthly,String>, JpaSpecificationExecutor<ArchiveMonthly> {
 
 

@@ -6,6 +6,7 @@ import com.ihrm.atte.service.ExcelImportService;
 import com.ihrm.common.controller.BaseController;
 import com.ihrm.common.entity.Result;
 import com.ihrm.common.entity.ResultCode;
+import com.ihrm.domain.atte.entity.ArchiveMonthly;
 import com.ihrm.domain.atte.entity.ArchiveMonthlyInfo;
 import com.ihrm.domain.atte.entity.Attendance;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,6 +88,33 @@ public class AttendanceController extends BaseController {
     public Result newReports(String atteDate) {
         atteService.newReports(atteDate , companyId);
         return new Result(ResultCode.SUCCESS);
+    }
+
+    /**
+     * 归档历史列表
+     */
+    @RequestMapping(value = "/reports/year" , method = RequestMethod.GET)
+    public Result findReportsYear(String year) {
+        List<ArchiveMonthly> list = archiveService.findByYear(year , companyId);
+        return new Result(ResultCode.SUCCESS , list);
+    }
+
+    /**
+     * 查询归档详情
+     */
+    @RequestMapping(value = "/reports/{id}" , method = RequestMethod.POST)
+    public Result findInfosById(@PathVariable String id) {
+        List<ArchiveMonthlyInfo> list = archiveService.findMonthInfoByAmid(id);
+        return new Result(ResultCode.SUCCESS , list);
+    }
+
+    /**
+     * 根据用户id和月份查询已归档的考勤明细
+     */
+    @RequestMapping(value = "/archive/{userId}/{yearMonth}" , method = RequestMethod.GET)
+    public Result historyData(@PathVariable String userId,@PathVariable String yearMonth) {
+        ArchiveMonthlyInfo archiveMonthlyInfo = archiveService.findUserArchiveDetail(userId , yearMonth);
+        return new Result(ResultCode.SUCCESS , archiveMonthlyInfo);
     }
     
 }
