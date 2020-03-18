@@ -11,11 +11,14 @@ import com.ihrm.domain.system.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import rx.internal.schedulers.CachedThreadScheduler;
 
 import javax.annotation.Resource;
 import javax.naming.Name;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
+import java.util.concurrent.Executors;
 
 @Service("ihrm_attendance_archiveService")
 @Transactional
@@ -58,6 +61,7 @@ public class ArchiveService {
 			info.setStatisData(map);
 			info.setId(idWorker.nextId() + "");
 			info.setAtteArchiveMonthlyId(archiveMonthly.getId());
+			info.setArchiveDate(archiveDate);
 			archiveMonthlyInfoDao.save(info);
 		}
 		//总人数

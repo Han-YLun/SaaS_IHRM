@@ -164,10 +164,12 @@ public class ArchiveService {
 		archive.setEnterprisePayment(enterMoney);
 		archive.setPersonalPayment(personMoney);
 		archive.setTotal(enterMoney.add(personMoney));
+		
 		archiveDao.save(archive);
 		for (ArchiveDetail archiveDetail : archiveDetails) {
 			archiveDetail.setId(idWorker.nextId() + "");
 			archiveDetail.setArchiveId(archive.getId());
+			archiveDetail.setYearsMonth(yearMonth);
 			archiveDetailDao.save(archiveDetail);
 		}
 	}

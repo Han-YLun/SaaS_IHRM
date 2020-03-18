@@ -10,4 +10,6 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
  *      JpaSpecificationExecutor<实体类>
  */
 public interface ArchiveDao extends JpaRepository<SalaryArchive,String> ,JpaSpecificationExecutor<SalaryArchive> {
+
+    SalaryArchive findByCompanyIdAndYearsMonth(String companyId,String yearMonth);
 }

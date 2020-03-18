@@ -141,5 +141,16 @@ public class ArchiveMonthlyInfo extends BaseEntity implements Serializable {
         this.earlyTimes = (String) map.get("at4").toString();
         this.leaveDays = (String) map.get("at8").toString();
         this.dayOffLeaveDays = (String) map.get("at17").toString();
+        //平均工作日21.75
+        this.workingDays="21.75";
+        //是否全勤
+        this.isFullAttendanceint = Integer.parseInt(this.normalDays)>=21.75?0:1;
+        //出勤天数 = 正常 + 早退 + 迟到
+        this.actualAtteOfficialDays = Integer.parseInt(this.laterTimes) +
+                Integer.parseInt(this.normalDays) +
+                Integer.parseInt(this.earlyTimes) + "";
+        //出勤天数 = 计薪天数
+        this.salaryOfficialDays = this.actualAtteOfficialDays;
+
     }
 }

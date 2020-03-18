@@ -1,6 +1,7 @@
 package com.ihrm.salarys.dao;
 
 import com.ihrm.domain.salarys.SalaryArchiveDetail;
+import com.ihrm.domain.social_security.ArchiveDetail;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
@@ -12,4 +13,6 @@ import java.util.List;
  * JpaSpecificationExecutor<实体类>
  */
 public interface ArchiveDetailDao extends JpaRepository<SalaryArchiveDetail, String>, JpaSpecificationExecutor<SalaryArchiveDetail> {
+
+    List<SalaryArchiveDetail> findByArchiveId(String archiveId);
 }
