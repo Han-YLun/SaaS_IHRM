@@ -1,7 +1,6 @@
 package com.ihrm.salarys.service;
 
 import com.ihrm.domain.salarys.CompanySettings;
-import com.ihrm.salarys.constant.Constant;
 import com.ihrm.salarys.dao.CompanySettingsDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

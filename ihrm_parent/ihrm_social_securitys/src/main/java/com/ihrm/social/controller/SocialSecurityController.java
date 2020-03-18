@@ -168,9 +168,10 @@ public class SocialSecurityController extends BaseController {
     /**
      * 根据用户id和考勤年月查询用户考勤归档明细
      */
-    @RequestMapping(value = "/historys/data" , method = RequestMethod.GET)
-    public ArchiveDetail historyData(String userId, String yearMonth){
-        return archiveService.findUserArchiveDetail(userId , yearMonth);
+    @RequestMapping(value = "/historys/archiveDetail/{userId}/{yearMonth}" , method = RequestMethod.GET)
+    public Result historyData(@PathVariable String userId,@PathVariable String yearMonth){
+        ArchiveDetail detail = archiveService.findUserArchiveDetail(userId, yearMonth);
+        return new Result(ResultCode.SUCCESS , detail);
     }
 
     
