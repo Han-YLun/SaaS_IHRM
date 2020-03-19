@@ -1,0 +1,38 @@
+#spring配置
+spring:
+  #1.应用配置
+  application:
+    name: ihrm-audit #指定服务名
+  #2.数据库连接池
+  datasource:
+    act:
+      jdbc-url: jdbc:mysql://localhost:3306/act?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
+      username : root
+      password : root
+      driver-class-name: com.mysql.jdbc.Driver
+    ihrm:
+      jdbc-url: jdbc:mysql://localhost:3306/ihrm?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
+      username : root
+      password : root
+      driver-class-name: com.mysql.jdbc.Driver
+  redis:
+    host: 127.0.0.1
+    port: 6379
+  #3.JPA
+  jpa:
+    database: MySQL
+    show-sql: true
+    open-in-view: true
+  activiti:
+    history-level: full
+    db-history-used: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:6868/eureka/
+  instance:
+    preferIpAddress : true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+#服务配置
+server:
+  port: 9009
