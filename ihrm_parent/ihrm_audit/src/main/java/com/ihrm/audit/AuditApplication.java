@@ -16,7 +16,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 //1.配置springboot的包扫描
 @SpringBootApplication(scanBasePackages = "com.ihrm",exclude ={ SecurityAutoConfiguration.class} )
 //2.配置jpa注解的扫描
-@EntityScan(value="com.ihrm.domain")
+@EntityScan(value="com.ihrm")
 //3.注册到eureka
 @EnableEurekaClient
 @EnableDiscoveryClient

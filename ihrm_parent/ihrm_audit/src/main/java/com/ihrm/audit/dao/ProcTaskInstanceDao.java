@@ -15,5 +15,10 @@ public interface ProcTaskInstanceDao extends JpaRepository<ProcTaskInstance,Stri
 
 	ProcTaskInstance findByProcessIdAndTaskKey(String processId, String taskKey) ;
 
+	/**
+	 * 根据流程id查询,展示每个节点数据
+	 * @param processId	流程id
+	 * @return
+	 */
 	List<ProcTaskInstance> findByProcessId(String processId);
 }
