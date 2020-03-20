@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * 流程控制的controller
@@ -26,9 +27,25 @@ public class ProcessController extends BaseController {
     /**
      * 部署流程
      */
-    @RequestMapping(value = "/deplog" , method = RequestMethod.POST)
+    @RequestMapping(value = "/deploy" , method = RequestMethod.POST)
     public Result deploy(@RequestParam("file")MultipartFile file) throws IOException {
         processService.deployProcess(file , companyId);
+        return new Result(ResultCode.SUCCESS);
+    }
+
+    /**
+     * 查询所有的流程信息
+     */
+    @RequestMapping(value = "/definition" , method = RequestMethod.GET)
+    public Result definitionList() {
+        List list = processService.getProcessDefinitionList(companyId);
+        return new Result(ResultCode.SUCCESS , list);
+    }
+
+    // 挂起和恢复流程
+    @RequestMapping(value = "/suspend/{processKey}", method = RequestMethod.GET)
+    public Result setProcessStatu(@PathVariable String processKey) {
+        processService.suspendProcess(processKey);
         return new Result(ResultCode.SUCCESS);
     }
 
