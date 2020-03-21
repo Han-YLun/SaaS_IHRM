@@ -1,6 +1,7 @@
 package com.ihrm.audit.controller;
 
 import com.ihrm.audit.entity.ProcInstance;
+import com.ihrm.audit.entity.ProcTaskInstance;
 import com.ihrm.audit.service.AuditService;
 import com.ihrm.audit.service.ProcessService;
 import com.ihrm.common.controller.BaseController;
@@ -89,8 +90,18 @@ public class ProcessController extends BaseController {
     @RequestMapping(value = "/startProcess/{id}", method = RequestMethod.POST)
     public Result startProcess(@RequestBody Map map) {
         //调用service
-        ProcInstance instance = auditService.startProcess(map , companyId);
-        return new Result(ResultCode.SUCCESS , instance);
+        auditService.startProcess(map , companyId);
+        return new Result(ResultCode.SUCCESS);
+    }
+
+    /**
+     * 提交审核
+     */
+    @RequestMapping(value = "/instance/commit", method = RequestMethod.PUT)
+    public Result commit(@RequestBody ProcTaskInstance procTaskInstance) {
+        //调用service
+        auditService.commit(procTaskInstance , companyId);
+        return new Result(ResultCode.SUCCESS);
     }
 
 
