@@ -12,3 +12,21 @@
 
 * 前端 : Vue + element-ui
 * 后端 ： SpringBoot + SpringCloud + SpringMVC + SpringData
+
+
+
+## 项目存在的问题
+
+### 社保模块
+
+* 归档后日期应该为新归档的日期,但仍未老日期
+* 前端在归档在获取用户详细相信时，id读取不到
+* 在归档个人详细信息页面保存时，传往后面的cityId为空
+
+<HR/>
+
+### 工资模块
+
+* 工资模块
+
+<HR/>
