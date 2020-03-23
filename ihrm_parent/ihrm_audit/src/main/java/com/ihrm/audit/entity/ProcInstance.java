@@ -21,7 +21,7 @@ import java.util.Date;
 public class ProcInstance implements Serializable {
     private static final long serialVersionUID = 1197039778202034930L;
 
-    @Id
+	@Id
 	@Column(name = "process_id")
     private String processId; // 流程实例ID
 

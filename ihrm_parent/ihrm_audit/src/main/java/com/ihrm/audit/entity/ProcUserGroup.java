@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -20,7 +21,10 @@ public class ProcUserGroup {
 	private static final long serialVersionUID = -9084332495284489553L;
 	@Id
 	private String id;
+
 	private String name;
+
 	private String param;
+
 	private String isql;
 }

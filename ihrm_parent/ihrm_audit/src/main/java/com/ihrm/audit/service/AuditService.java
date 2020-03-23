@@ -10,7 +10,6 @@ import com.ihrm.audit.entity.ProcTaskInstance;
 import com.ihrm.audit.entity.ProcUserGroup;
 import com.ihrm.common.utils.IdWorker;
 import com.ihrm.domain.system.User;
-import com.netflix.discovery.converters.Auto;
 import org.activiti.engine.RepositoryService;
 import org.activiti.engine.RuntimeService;
 import org.activiti.engine.TaskService;
@@ -19,7 +18,6 @@ import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.IdentityLink;
 import org.activiti.engine.task.Task;
 import org.hibernate.SQLQuery;
-import org.hibernate.query.criteria.internal.predicate.NegatedPredicateWrapper;
 import org.hibernate.transform.Transformers;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +30,6 @@ import org.springframework.util.StringUtils;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.criteria.*;
-import java.security.cert.X509Certificate;
 import java.util.*;
 
 /**
@@ -224,17 +221,18 @@ public class AuditService {
         //设置业务流程状态
         instance.setProcessState(taskInstance.getHandleType());
         //根据不同的操作类型,完成不同的业务处理
-        ProcessInstance processInstance = runtimeService.createProcessInstanceQuery()
+        List<ProcessInstance> processInstanceList = runtimeService.createProcessInstanceQuery()
                                                         .processInstanceBusinessKey(processId)
-                                                        .singleResult();
+                                                        .list();
+
         User user = feignClientService.getUserInfoByUserId(taskInstance.getHandleUserId());
         if ("2".equals(taskInstance.getHandleType())){
             //如果审核通过,完成当前的任务
             //查询出当前节点,完成当前节点任务
-            Task task = taskService.createTaskQuery().processInstanceId(processInstance.getId()).singleResult();
+            Task task = taskService.createTaskQuery().processInstanceId(processInstanceList.get(0).getId()).singleResult();
             taskService.complete(task.getId());
             //查询出下一个节点,如果存在下一个流程没有结束
-            Task nextTask = taskService.createTaskQuery().processInstanceId(processInstance.getId()).singleResult();
+            Task nextTask = taskService.createTaskQuery().processInstanceId(processInstanceList.get(0).getId()).singleResult();
             if(nextTask != null) {
                 List<User> users = findCurrUsers(nextTask, user);
                 String usernames = "", userIdS = "";
@@ -251,7 +249,7 @@ public class AuditService {
             }
         }else{
             //如果审核不通过/撤销,删除流程
-            runtimeService.deleteProcessInstance(processInstance.getId() , taskInstance.getHandleOpinion());
+            runtimeService.deleteProcessInstance(processInstanceList.get(0).getId() , taskInstance.getHandleOpinion());
         }
         //更新业务流程对象,保存业务任务对象
         procInstanceDao.save(instance);
