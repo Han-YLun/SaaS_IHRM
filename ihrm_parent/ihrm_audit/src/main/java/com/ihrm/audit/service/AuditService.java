@@ -260,4 +260,8 @@ public class AuditService {
         taskInstance.setHandleTime(new Date());
         procTaskInstanceDao.save(taskInstance);
     }
+
+    public List<ProcTaskInstance> findTasksByProcess(String id) {
+        return procTaskInstanceDao.findByProcessId(id);
+    }
 }

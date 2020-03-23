@@ -87,7 +87,7 @@ public class ProcessController extends BaseController {
     /**
      * 流程申请
      */
-    @RequestMapping(value = "/startProcess/{id}", method = RequestMethod.POST)
+    @RequestMapping(value = "/startProcess", method = RequestMethod.POST)
     public Result startProcess(@RequestBody Map map) {
         //调用service
         auditService.startProcess(map , companyId);
@@ -102,6 +102,13 @@ public class ProcessController extends BaseController {
         //调用service
         auditService.commit(procTaskInstance , companyId);
         return new Result(ResultCode.SUCCESS);
+    }
+
+    //查询流程任务明细
+    @RequestMapping(value = "/instance/tasks/{id}",method = RequestMethod.GET)
+    public Result tasks(@PathVariable String id) throws IOException {
+        //调用service
+        return new Result(ResultCode.SUCCESS,auditService.findTasksByProcess(id));
     }
 
 
