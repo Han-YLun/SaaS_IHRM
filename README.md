@@ -15,6 +15,16 @@
 
 
 
+# 数据库文件
+
+数据库主要一个主数据库，数据库名为ihrm；另一个数据库名为act，是activity7使用的，可以自动生成
+
+ihrm：http://www.filedropper.com/ihrm
+
+act ： http://www.filedropper.com/act
+
+
+
 ## 项目存在的问题
 
 ### 社保模块
@@ -23,4 +33,3 @@
 * 前端在归档在获取用户详细相信时，id读取不到
 * 在归档个人详细信息页面保存时，传往后面的cityId为空
 
-<HR/>
