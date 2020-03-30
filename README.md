@@ -5,6 +5,7 @@
 * JDK : Oracle JDK 1.8
 * mysql ： 5.7
 * Maven version ： 3.5.2
+* Redis version： 2.4.5
 
 
 
@@ -22,6 +23,14 @@
 ihrm：http://www.filedropper.com/ihrm
 
 act ： http://www.filedropper.com/act
+
+
+
+#  项目讲义
+
+市面只有前7章讲义，这边讲义是全17章
+
+下载地址：https://www.filedropper.com/file_3
 
 
 
