@@ -2,7 +2,6 @@ package com.ihrm.common.interceptor;
 
 import com.ihrm.common.entity.ResultCode;
 import com.ihrm.common.exception.CommonException;
-import com.ihrm.common.utils.JwtUtils;
 import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

@@ -5,7 +5,6 @@ import com.ihrm.common.entity.PageResult;
 import com.ihrm.common.entity.Result;
 import com.ihrm.common.entity.ResultCode;
 import com.ihrm.common.poi.ExcelImportUtil;
-import com.ihrm.common.utils.JwtUtils;
 import com.ihrm.domain.system.User;
 import com.ihrm.domain.system.response.ProfileResult;
 import com.ihrm.domain.system.response.UserResult;
@@ -43,10 +42,6 @@ public class UserController extends BaseController {
     @Autowired
     private PermissionService permissionService;
 
-    @Autowired
-    private JwtUtils jwtUtils;
-
-
     @RequestMapping("/user/upload/{id}")
     public Result upload(@PathVariable String id , @RequestParam(name = "file") MultipartFile file) throws Exception {
         //1.调用service保存图片
@@ -61,63 +56,11 @@ public class UserController extends BaseController {
      */
     @RequestMapping(value = "/user/import" , method = RequestMethod.POST)
     public Result importUser(@RequestParam(name = "file") MultipartFile file) throws Exception {
-        //1.解析excel
-        //1.1根据Excel文件创建工作簿
-/*        Workbook wb = new XSSFWorkbook(file.getInputStream());
-        //1.2获取sheet
-        Sheet sheet = wb.getSheetAt(0);
-        //1.3获取sheet中的每一行和每一个单元格
-        //2.获取用户数据列表
-        List<User> list = new ArrayList<>();
-        for (int rowNumber = 1; rowNumber <= sheet.getLastRowNum(); rowNumber++) {
-            Row row = sheet.getRow(rowNumber);//根据索引获取每一行
-            Object[] values = new Object[row.getLastCellNum()];
-            for (int celNum = 1; celNum < row.getLastCellNum(); celNum++){
-                Cell cell = row.getCell(celNum);
-                Object value = getCellValue(cell);
-                values[celNum] = value;
-            }
-            User user = new User(values);
-            list.add(user);
-
-        }*/
         List<User> list = new ExcelImportUtil(User.class).readExcel(file.getInputStream(), 1, 1);
         //3.批量保存用户
         userService.saveAll(list , companyId , companyName);
         return new Result(ResultCode.SUCCESS);
     }
-
-
-    public static Object getCellValue(Cell cell){
-        //获取到单元格的属性类型
-        CellType cellType = cell.getCellType();
-        //根据单元格数据类型获取数据
-        Object value = null;
-        switch (cellType){
-            case STRING:
-                value = cell.getStringCellValue();
-                break;
-            case BLANK:
-                value = cell.getBooleanCellValue();
-                break;
-            case NUMERIC:
-                if (DateUtil.isCellDateFormatted(cell)){
-                    //日期格式
-                    value = cell.getDateCellValue();
-                }else{
-                    //数字
-                    value = cell.getNumericCellValue();
-                }
-                break;
-            case FORMULA:   //公式
-                value = cell.getCellFormula();
-                break;
-            default:
-                break;
-        }
-        return value;
-    }
-
 
 
     /**
@@ -217,6 +160,8 @@ public class UserController extends BaseController {
             Subject subject = SecurityUtils.getSubject();
             //调用login方法,进入realm完成认证
             subject.login(upToken);
+
+            //subject.getSession().setTimeout(180000);
             //获取sessionId
             String sessionId = (String) subject.getSession().getId();
             //构造返回结果

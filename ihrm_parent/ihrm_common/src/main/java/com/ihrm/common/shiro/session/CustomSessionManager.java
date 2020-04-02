@@ -18,6 +18,7 @@ public class CustomSessionManager extends DefaultWebSessionManager {
     @Override
     protected Serializable getSessionId(ServletRequest request, ServletResponse response) {
         //获取请求头Authorization中的数据
+        
         String id = WebUtils.toHttp(request).getHeader("Authorization");
         if (StringUtils.isEmpty(id)){
             //如果没有携带,生成sessionId
