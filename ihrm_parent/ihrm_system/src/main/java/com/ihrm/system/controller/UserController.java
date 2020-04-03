@@ -151,17 +151,22 @@ public class UserController extends BaseController {
     public Result login(@RequestBody Map<String,Object> loginMap){
         String mobile = (String) loginMap.get("mobile");
         String password = (String) loginMap.get("password");
+        System.out.println(mobile);
+        System.out.println(password);
+
 
         try {
             //构造登录令牌
             password = new Md5Hash(password , mobile , 3).toString();
+            System.out.println(password);
+
             UsernamePasswordToken upToken = new UsernamePasswordToken(mobile , password);
             //获取subject
             Subject subject = SecurityUtils.getSubject();
             //调用login方法,进入realm完成认证
             subject.login(upToken);
 
-            //subject.getSession().setTimeout(180000);
+            subject.getSession().setTimeout(180000);
             //获取sessionId
             String sessionId = (String) subject.getSession().getId();
             //构造返回结果
