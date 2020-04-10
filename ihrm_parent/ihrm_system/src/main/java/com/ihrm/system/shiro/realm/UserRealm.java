@@ -38,10 +38,6 @@ public class UserRealm extends IhrmRealm {
         String password = new String(upToken.getPassword());
         //根据手机号查询用户
         User user = userService.findByMobile(mobile);
-        System.out.println("AuthenticationInfo : " + mobile);
-        System.out.println("AuthenticationInfo : " + password);
-        System.out.println("AuthenticationInfo : " + user.getMobile());
-        System.out.println("AuthenticationInfo : " + user.getPassword());
 
         //根据用户是否存在,用户密码是否和输入密码一致
         if (user != null && user.getPassword().equals(password)){

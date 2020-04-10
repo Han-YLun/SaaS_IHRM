@@ -39,9 +39,6 @@ public class UserController extends BaseController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private PermissionService permissionService;
-
     @RequestMapping("/user/upload/{id}")
     public Result upload(@PathVariable String id , @RequestParam(name = "file") MultipartFile file) throws Exception {
         //1.调用service保存图片
@@ -166,7 +163,7 @@ public class UserController extends BaseController {
             //调用login方法,进入realm完成认证
             subject.login(upToken);
 
-            subject.getSession().setTimeout(180000);
+            subject.getSession().setTimeout(3600000 * 24);
             //获取sessionId
             String sessionId = (String) subject.getSession().getId();
             //构造返回结果
