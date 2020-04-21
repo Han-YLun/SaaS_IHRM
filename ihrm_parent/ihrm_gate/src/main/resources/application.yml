@@ -20,7 +20,7 @@ spring:
 #配置路由规则
 zuul:
   host:
-    connect-timeout-millis: 15000  #HTTP连接超时要比Hystrix的大
+    connect-timeout-millis: 60000  #HTTP连接超时要比Hystrix的大
     socket-timeout-millis: 60000  #socket超时
   routes:
     #路由id
@@ -76,5 +76,18 @@ zuul:
       customSensitiveHeaders: true #对指定路由开启自定义敏感头
 #防止请求超时
 ribbon:
-  ReadTimeout: 20000
-  ConnectTimeout : 10000
+  ReadTimeout: 5000
+  ConnectTimeout: 5000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 1
+  eureka:
+    enabled: true
+hystrix:
+  command:
+    default:
+      excution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000

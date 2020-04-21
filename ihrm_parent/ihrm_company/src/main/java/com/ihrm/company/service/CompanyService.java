@@ -67,4 +67,8 @@ public class CompanyService {
     public List<Company> findAll() {
         return companyDao.findAll();
     }
+
+    public Company save(Company company) {
+        return companyDao.save(company);
+    }
 }

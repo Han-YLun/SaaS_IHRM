@@ -3,6 +3,7 @@ package com.ihrm.company.controller;
 import com.ihrm.common.entity.Result;
 import com.ihrm.common.entity.ResultCode;
 import com.ihrm.common.exception.CommonException;
+import com.ihrm.company.dao.CompanyDao;
 import com.ihrm.company.service.CompanyService;
 import com.ihrm.domain.company.Company;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,5 +65,16 @@ public class CompanyController {
         Result result = new Result(ResultCode.SUCCESS);
         result.setData(list);
         return result;
+    }
+    //更新用户状态
+    @RequestMapping(value="/{id}/state/{state}",method = RequestMethod.PUT)
+    public Result findAll(@PathVariable(value = "id") String id ,
+                          @PathVariable(value = "state") Boolean state) {
+        Company company = companyService.findById(id);
+
+        int stateInt = (state == true ? 1 : 0);
+        company.setState(stateInt);
+        companyService.save(company);
+        return new Result(ResultCode.SUCCESS);
     }
 }
