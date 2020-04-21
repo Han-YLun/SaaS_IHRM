@@ -76,5 +76,5 @@ zuul:
       customSensitiveHeaders: true #对指定路由开启自定义敏感头
 #防止请求超时
 ribbon:
-  ReadTimeout: 10000
+  ReadTimeout: 20000
   ConnectTimeout : 10000

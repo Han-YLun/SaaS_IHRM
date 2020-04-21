@@ -41,8 +41,7 @@ public class ShiroConfiguration {
         return securityManager;
     }
 
-
-
+    
     /**
      * 配置shiro的过滤器工厂
      * 再web程序中，shiro进行权限控制全部是通过一组过滤器集合进行控制
@@ -118,9 +117,7 @@ public class ShiroConfiguration {
         redisCacheManager.setRedisManager(redisManager());
         return redisCacheManager;
     }
-
-
-
+    
 
     //开启对shior注解的支持
     @Bean

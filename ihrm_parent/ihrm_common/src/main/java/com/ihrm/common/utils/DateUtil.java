@@ -178,8 +178,4 @@ public class DateUtil {
 		int i = calendar.get(Calendar.DAY_OF_WEEK)-1;
 		return i==0?true:i==5?true:false;
 	}
-
-	public static void main(String[] args) throws Exception {
-		System.out.println("201801".substring(4));
-	}
 }

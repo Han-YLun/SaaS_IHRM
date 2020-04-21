@@ -8,9 +8,7 @@ import com.ihrm.common.poi.ExcelImportUtil;
 import com.ihrm.domain.system.User;
 import com.ihrm.domain.system.response.ProfileResult;
 import com.ihrm.domain.system.response.UserResult;
-import com.ihrm.system.service.PermissionService;
 import com.ihrm.system.service.UserService;
-import org.apache.poi.ss.usermodel.*;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -148,15 +146,9 @@ public class UserController extends BaseController {
     public Result login(@RequestBody Map<String,Object> loginMap){
         String mobile = (String) loginMap.get("mobile");
         String password = (String) loginMap.get("password");
-        System.out.println(mobile);
-        System.out.println(password);
-
-
         try {
             //构造登录令牌
             password = new Md5Hash(password , mobile , 3).toString();
-            System.out.println(password);
-
             UsernamePasswordToken upToken = new UsernamePasswordToken(mobile , password);
             //获取subject
             Subject subject = SecurityUtils.getSubject();
@@ -212,25 +204,6 @@ public class UserController extends BaseController {
         PrincipalCollection principals = subject.getPrincipals();
         //获取安全数据
         ProfileResult result = (ProfileResult) principals.getPrimaryPrincipal();
-
-/*
-        String userId = claims.getId();
-        //获取用户信息
-        User user = userService.findById(userId);
-        //根据不同的用户级别获取用户权限
-        ProfileResult result = null;
-
-        if ("user".equals(user.getLevel())){
-            result = new ProfileResult(user);
-        }else{
-            Map map = new HashMap();
-            if ("coAdmin".equals(user.getLevel())){
-                map.put("enVisible" , "1");
-            }
-            List<Permission> list = permissionService.findAll(map);
-            result = new ProfileResult(user , list);
-        }
-*/
 
         return new Result(ResultCode.SUCCESS,result);
     }
