@@ -9,10 +9,21 @@
 
 
 
-## 前后端技术
+## 使用技术
 
-* 前端 : Vue + Element-UI
-* 后端 ： SpringBoot + SpringCloud + SpringMVC + SpringData
+*  SpringBoot + SpringCloud + SpringMVC + SpringData
+
+## Swagger接口
+
+下载地址 ：
+
+*  链接 ： https://pan.baidu.com/s/1Ych_vKkpjf2ZaxDEII0oDw 
+* 提取码：o4ms
+
+注意事项：
+
+* 使用cmd进行目录运行nginx.exe，直接双击运行会无效
+* 然后访问localhost:801即可，也可在nginx.conf进行设置接口
 
 
 
