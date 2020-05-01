@@ -77,4 +77,15 @@ public class PermissionController {
         permissionService.deleteById(id);
         return new Result(ResultCode.SUCCESS);
     }
+
+    /**
+     * 查询所有企业可以看到的menu
+     */
+    @RequestMapping(value = "/perm/getMenus" , method = RequestMethod.GET)
+    public Result getMenus() throws CommonException {
+        List<Permission> menus = permissionService.getMenus();
+        return new Result(ResultCode.SUCCESS , menus);
+    }
+
+
 }

@@ -1,5 +1,6 @@
 package com.ihrm.system.service;
 
+import com.ihrm.common.entity.Result;
 import com.ihrm.common.entity.ResultCode;
 import com.ihrm.common.exception.CommonException;
 import com.ihrm.common.utils.BeanMapUtils;
@@ -18,6 +19,8 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -229,6 +232,14 @@ public class PermissionService {
             default:
                 throw new CommonException(ResultCode.FAIL);
         }
+    }
+
+    /**
+     * 查询所有企业可以看到的menu
+     */
+    public List<Permission> getMenus() throws CommonException {
+        List<Permission> pers = permissionDao.findByTypeAndEnVisible(1, "1");
+        return pers;
     }
 }
 

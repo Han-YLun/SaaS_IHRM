@@ -12,6 +12,7 @@ import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,14 +44,23 @@ public class UserRealm extends IhrmRealm {
         if (user != null && user.getPassword().equals(password)){
             //构造安全数据并返回(安全数据：用户基本信息,权限信息,ProfileResult)
             ProfileResult result = null;
+            //如果是员工,就把员工的信息保存
             if ("user".equals(user.getLevel())){
                 result = new ProfileResult(user);
             }else{
                 Map map = new HashMap();
+                //如果是企业管理员,就查询企业管理员可见的
                 if ("coAdmin".equals(user.getLevel())){
                     map.put("enVisible" , "1");
+                }else if ("saasAdmin".equals(user.getLevel())){
+                    //如果是SaaS管理员，只显示企业不显示的
+                    /**
+                     * 即只显示企业管理和模块管理
+                     */
+                    map.put("enVisible" , "0");
                 }
                 List<Permission> list = permissionService.findAll(map);
+
                 result = new ProfileResult(user , list);
             }
 
