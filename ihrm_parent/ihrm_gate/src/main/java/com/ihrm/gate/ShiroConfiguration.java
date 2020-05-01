@@ -72,6 +72,8 @@ public class ShiroConfiguration {
         filterMap.put("/autherror", "anon");
         filterMap.put("/employees/export/*" , "anon");
         filterMap.put("/employees/*/pdf" , "anon");
+        filterMap.put("/sys/faceLogin/**" , "anon");
+
 
         //认证之后访问（登录之后可以访问）
         filterMap.put("/**", "authc");
