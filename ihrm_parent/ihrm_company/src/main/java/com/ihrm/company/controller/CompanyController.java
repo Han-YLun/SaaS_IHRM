@@ -69,11 +69,9 @@ public class CompanyController {
     //更新用户状态
     @RequestMapping(value="/{id}/state/{state}",method = RequestMethod.PUT)
     public Result findAll(@PathVariable(value = "id") String id ,
-                          @PathVariable(value = "state") Boolean state) {
+                          @PathVariable(value = "state") int state) {
         Company company = companyService.findById(id);
-
-        int stateInt = (state == true ? 1 : 0);
-        company.setState(stateInt);
+        company.setState(state);
         companyService.save(company);
         return new Result(ResultCode.SUCCESS);
     }
