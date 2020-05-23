@@ -54,14 +54,14 @@ public class UserRealm extends IhrmRealm {
             //构造安全数据并返回(安全数据：用户基本信息,权限信息,ProfileResult)
             ProfileResult result = null;
             //如果是员工,就把员工的信息保存
-            if ("user".equals(user.getLevel())){
+            if (Constant.UserLevel.USER.equals(user.getLevel())){
                 result = new ProfileResult(user);
             }else{
                 Map map = new HashMap();
                 //如果是企业管理员,就查询企业管理员可见的
-                if ("coAdmin".equals(user.getLevel())){
+                if (Constant.UserLevel.COADMIN.equals(user.getLevel())){
                     map.put("enVisible" , "1");
-                }else if ("saasAdmin".equals(user.getLevel())){
+                }else if (Constant.UserLevel.SAASADMIN.equals(user.getLevel())){
                     //如果是SaaS管理员，只显示企业不显示的
                     /**
                      * 即只显示企业管理和模块管理
