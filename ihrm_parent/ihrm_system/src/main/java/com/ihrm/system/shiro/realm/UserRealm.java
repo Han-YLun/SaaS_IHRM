@@ -1,21 +1,30 @@
 package com.ihrm.system.shiro.realm;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.TypeReference;
+import com.google.gson.JsonObject;
+import com.ihrm.common.Constants.Constant;
+import com.ihrm.common.entity.Result;
+import com.ihrm.common.entity.ResultCode;
+import com.ihrm.common.exception.CommonException;
 import com.ihrm.common.shiro.realm.IhrmRealm;
+import com.ihrm.domain.company.Company;
 import com.ihrm.domain.system.Permission;
 import com.ihrm.domain.system.User;
 import com.ihrm.domain.system.response.ProfileResult;
+import com.ihrm.system.client.CompanyFeignClient;
 import com.ihrm.system.service.PermissionService;
 import com.ihrm.system.service.UserService;
+import io.netty.util.internal.ObjectUtil;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ObjectUtils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author: hyl
@@ -60,7 +69,6 @@ public class UserRealm extends IhrmRealm {
                     map.put("enVisible" , "0");
                 }
                 List<Permission> list = permissionService.findAll(map);
-
                 result = new ProfileResult(user , list);
             }
 
@@ -71,4 +79,6 @@ public class UserRealm extends IhrmRealm {
         //返回null,会抛出异常,表示用户名和密码不匹配
         return null;
     }
+
+    
 }

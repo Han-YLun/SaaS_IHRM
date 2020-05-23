@@ -1,13 +1,18 @@
 package com.ihrm.system.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.TypeReference;
+import com.ihrm.common.Constants.Constant;
 import com.ihrm.common.controller.BaseController;
 import com.ihrm.common.entity.PageResult;
 import com.ihrm.common.entity.Result;
 import com.ihrm.common.entity.ResultCode;
 import com.ihrm.common.poi.ExcelImportUtil;
+import com.ihrm.domain.company.Company;
 import com.ihrm.domain.system.User;
 import com.ihrm.domain.system.response.ProfileResult;
 import com.ihrm.domain.system.response.UserResult;
+import com.ihrm.system.client.CompanyFeignClient;
 import com.ihrm.system.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -17,10 +22,12 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -36,6 +43,9 @@ public class UserController extends BaseController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private CompanyFeignClient companyFeignClient;
 
     @RequestMapping("/user/upload/{id}")
     public Result upload(@PathVariable String id , @RequestParam(name = "file") MultipartFile file) throws Exception {
@@ -98,7 +108,6 @@ public class UserController extends BaseController {
 
         //获取当前的企业id
         map.put("companyId" , companyId);
-
         Page<User> pageUser = userService.findAll(map, page, size);
         //构造返回结果
         PageResult<User> pageResult = new PageResult<>(pageUser.getTotalElements(),pageUser.getContent());
@@ -147,6 +156,23 @@ public class UserController extends BaseController {
         String mobile = (String) loginMap.get("mobile");
         String password = (String) loginMap.get("password");
         try {
+
+            //如果该公司被禁止登录,直接返回
+            User user = userService.findByMobile(mobile);
+            if (!Constant.UserLevel.SAASADMIN.equals(user.getLevel())){
+                //返回时List<LinkedHashMap> ,需要对其解析
+                LinkedHashMap linkedHashMap
+                        = (LinkedHashMap) companyFeignClient.findCompanyById(user.getCompanyId()).getData();
+                Company company = JSON.parseObject(JSON.toJSONString(linkedHashMap), new TypeReference<Company>() {
+                });
+                if (!ObjectUtils.isEmpty(company)){
+                    System.out.println(company.getState());
+                    System.out.println(company);
+                    if (Constant.Company.COMPANY_DISABLE.equals(String.valueOf(company.getState()))){
+                        return new Result(ResultCode.UNAUTHORISE);
+                    }
+                }
+            }
             //构造登录令牌
             password = new Md5Hash(password , mobile , 3).toString();
             UsernamePasswordToken upToken = new UsernamePasswordToken(mobile , password);

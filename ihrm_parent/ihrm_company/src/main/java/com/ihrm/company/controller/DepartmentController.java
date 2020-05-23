@@ -95,6 +95,5 @@ public class DepartmentController extends BaseController {
     @RequestMapping(value = "/department/search" , method = RequestMethod.POST)
     public Department findByCode(@RequestParam("code") String code,@RequestParam("companyId") String companyId){
         return departmentService.findByCode(code , companyId);
-
     }
 }

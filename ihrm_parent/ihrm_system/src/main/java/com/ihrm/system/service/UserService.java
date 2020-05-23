@@ -5,7 +5,7 @@ import com.ihrm.common.utils.QiniuUploadUtil;
 import com.ihrm.domain.company.Department;
 import com.ihrm.domain.system.Role;
 import com.ihrm.domain.system.User;
-import com.ihrm.system.client.DepartmentFeignClient;
+import com.ihrm.system.client.CompanyFeignClient;
 import com.ihrm.system.dao.UserDao;
 import com.ihrm.system.dao.RoleDao;
 import com.ihrm.system.utils.BaiduAiUtil;
@@ -43,7 +43,7 @@ public class UserService {
     private IdWorker idWorker;
 
     @Autowired
-    private DepartmentFeignClient departmentFeignClient;
+    private CompanyFeignClient companyFeignClient;
 
     @Autowired
     private BaiduAiUtil baiduAiUtil;
@@ -190,7 +190,7 @@ public class UserService {
             user.setLevel("user");
 
             //填充部门的属性
-            Department department = departmentFeignClient.findByCode(user.getDepartmentId(), companyId);
+            Department department = companyFeignClient.findByCode(user.getDepartmentId(), companyId);
             if (department != null){
                 user.setDepartmentId(department.getId());
                 user.setDepartmentName(department.getName());
@@ -199,26 +199,6 @@ public class UserService {
             userDao.save(user);
         }
     }
-
-
-    /**
-     *  完成图片处理 (上传到数据库)
-     * @param id    用户id
-     * @param file  用户上传的头像文件
-     * @return      请求路径
-     */
-/*    public String uploadImage(String id, MultipartFile file) throws Exception {
-        //1.根据id查询用户
-        User user = userDao.findById(id).get();
-        //2.根据DataUrl的形式存储图片(对图片byte数组进行base64编码)
-        String encode = "data:image/png;base64," + Base64.encode(file.getBytes());
-        //3.更新用户头像地址
-        user.setStaffPhoto(encode);
-        userDao.save(user);
-        //4.返回路径
-        return encode;
-    }*/
-
 
     /**
      *  完成图片处理 (上传到七牛云存储并且注册到百度云AI人脸库中)
