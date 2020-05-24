@@ -75,19 +75,19 @@ zuul:
       sentiviteHeaders:   #将指定路由的敏感头设置为空
       customSensitiveHeaders: true #对指定路由开启自定义敏感头
 #防止请求超时
-ribbon:
-  ReadTimeout: 5000
-  ConnectTimeout: 5000
-  MaxAutoRetries: 0
-  MaxAutoRetriesNextServer: 1
-  eureka:
-    enabled: true
-hystrix:
-  command:
-    default:
-      excution:
-        timeout:
-          enabled: true
-        isolation:
-          thread:
-            timeoutInMilliseconds: 60000
+#ribbon:
+#  ReadTimeout: 5000
+#  ConnectTimeout: 5000
+#  MaxAutoRetries: 0
+#  MaxAutoRetriesNextServer: 1
+#  eureka:
+#    enabled: true
+#hystrix:
+#  command:
+#    default:
+#      excution:
+#        timeout:
+#          enabled: true
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 60000

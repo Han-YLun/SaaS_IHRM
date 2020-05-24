@@ -29,11 +29,6 @@ public class CompanyController {
     }
 
     //根据id更新企业信息
-    /**
-     * 1.方法
-     * 2.请求参数
-     * 3.响应
-     */
     @RequestMapping(value = "/{id}",method = RequestMethod.PUT)
     public Result update(@PathVariable(value="id") String id, @RequestBody Company company ) {
         //业务操作
