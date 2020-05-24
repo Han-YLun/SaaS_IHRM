@@ -40,10 +40,7 @@ public class CompanyService {
      *  4.调用dao完成更新
      */
     public void update(Company company) {
-        Company temp = companyDao.findById(company.getId()).get();
-        temp.setName(company.getName());
-        temp.setCompanyPhone(company.getCompanyPhone());
-        companyDao.save(temp);
+        companyDao.save(company);
     }
 
 
