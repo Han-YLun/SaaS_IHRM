@@ -14,8 +14,8 @@ public class QiniuUploadUtil {
 
     private static final String accessKey = "JhQMRdGXh1X5coGEbIwootTtle8RssYWqhmaaLBH";
     private static final String secretKey = "ZUNzUpHQjgj7BBauNpXwEnkZiqRAkeZJ3diJOaIB";
-    private static final String bucket = "arvinyl-ihrm";
-    private static final String prix = "http://q5qm6t73r.bkt.clouddn.com/";
+    private static final String bucket = "arvinhan-ihrm";
+    private static final String prix = "http://qav8b72pi.bkt.clouddn.com/";
     private UploadManager manager;
 
     public QiniuUploadUtil() {
