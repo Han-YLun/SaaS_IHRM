@@ -5,10 +5,13 @@ import com.ihrm.common.entity.PageResult;
 import com.ihrm.common.entity.Result;
 import com.ihrm.common.entity.ResultCode;
 import com.ihrm.domain.system.Role;
+import com.ihrm.domain.system.RoleAndUserRelations;
 import com.ihrm.domain.system.response.RoleResult;
 import com.ihrm.system.service.RoleService;
+import com.ihrm.system.service.UserAndRoleRelationsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,6 +30,9 @@ public class RoleController extends BaseController {
 
     @Autowired
     private RoleService roleService;
+
+    @Autowired
+    private UserAndRoleRelationsService userAndRoleRelationsService;
 
     /**
      * 分配权限
@@ -73,6 +79,7 @@ public class RoleController extends BaseController {
     public Result findById(@PathVariable(name = "id") String id) throws Exception {
         Role role = roleService.findById(id);
         RoleResult roleResult = new RoleResult(role);
+        System.out.println(roleResult);
         return new Result(ResultCode.SUCCESS,roleResult);
     }
 
@@ -91,4 +98,24 @@ public class RoleController extends BaseController {
         List<Role> roleList = roleService.findAll(companyId);
         return new Result(ResultCode.SUCCESS,roleList);
     }
+
+    /**
+     * 根据用户id获取全部权限
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "/role/userId/{id}", method = RequestMethod.GET)
+    public Result findRolesByUserId(@PathVariable(name = "id") String id) {
+        List<RoleAndUserRelations> roleByUserId = userAndRoleRelationsService.findRoleByUserId(id);
+        System.out.println(roleByUserId);
+        if (!ObjectUtils.isEmpty(roleByUserId)){
+            List<Role> roles = userAndRoleRelationsService.getRoleDetailByRoleId(roleByUserId);
+            System.out.println(roles);
+            if (!ObjectUtils.isEmpty(roles)){
+                return new Result(ResultCode.SUCCESS , roles);
+            }
+        }
+        return new Result(ResultCode.SUCCESS , null);
+    }
+
 }

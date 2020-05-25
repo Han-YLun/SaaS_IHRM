@@ -122,8 +122,7 @@ public class UserController extends BaseController {
     public Result findById(@PathVariable(value = "id") String id){
         //添加roleIds(用户已经具有的角色id数组)
         User user = userService.findById(id);
-        UserResult userResult = new UserResult(user);
-        return new Result(ResultCode.SUCCESS , userResult);
+        return new Result(ResultCode.SUCCESS , user);
     }
 
     /**
@@ -131,10 +130,8 @@ public class UserController extends BaseController {
      */
     @RequestMapping(value = "/user/{id}" , method = RequestMethod.PUT)
     public Result update(@PathVariable(value = "id") String id , @RequestBody User user){
-        //设置修改的用户Id
-        user.setId(id);
         //调用Service更新
-        userService.update(user);
+        userService.update(id , user);
         return new Result(ResultCode.SUCCESS);
     }
 

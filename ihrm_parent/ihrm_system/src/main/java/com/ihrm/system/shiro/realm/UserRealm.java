@@ -68,7 +68,6 @@ public class UserRealm extends IhrmRealm {
                      */
                     map.put("enVisible" , "0");
                 }
-                System.out.println();
                 List<Permission> list = permissionService.findAll(map);
                 result = new ProfileResult(user , list);
             }

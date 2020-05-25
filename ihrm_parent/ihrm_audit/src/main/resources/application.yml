@@ -35,4 +35,4 @@ eureka:
     instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
 #服务配置
 server:
-  port: 9009
+  port: 10888

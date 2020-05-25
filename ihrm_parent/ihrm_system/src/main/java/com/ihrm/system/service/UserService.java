@@ -17,6 +17,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -75,9 +76,17 @@ public class UserService {
     /**
      * 更新用户
      */
-    public void update(User user){
+    public void update(String id , User user){
+        User tempUser = userDao.findById(id).get();
+        if (!ObjectUtils.isEmpty(tempUser) && !ObjectUtils.isEmpty(user)){
+            tempUser.setUsername(user.getUsername());
+            System.out.println(user.getPassword());
+            tempUser.setPassword(user.getPassword());
+            tempUser.setWorkNumber(user.getWorkNumber());
+            tempUser.setTimeOfEntry(user.getTimeOfEntry());
+        }
         //更新用户
-        userDao.save(user);
+        userDao.save(tempUser);
     }
 
 

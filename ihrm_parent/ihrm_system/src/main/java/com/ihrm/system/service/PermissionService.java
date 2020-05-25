@@ -188,7 +188,7 @@ public class PermissionService {
 
                 //根据enVisible查询
                 if (!StringUtils.isEmpty(map.get("enVisible"))){
-                    list.add(cb.equal(root.get("enVisible").as(String.class) , (String)map.get("enVisible")));
+                    list.add(cb.equal(root.get("enVisible").as(String.class) , map.get("enVisible")));
                 }
 
                 //根据类型type进行查询
