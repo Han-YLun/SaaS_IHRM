@@ -79,7 +79,6 @@ public class RoleController extends BaseController {
     public Result findById(@PathVariable(name = "id") String id) throws Exception {
         Role role = roleService.findById(id);
         RoleResult roleResult = new RoleResult(role);
-        System.out.println(roleResult);
         return new Result(ResultCode.SUCCESS,roleResult);
     }
 
@@ -107,15 +106,13 @@ public class RoleController extends BaseController {
     @RequestMapping(value = "/role/userId/{id}", method = RequestMethod.GET)
     public Result findRolesByUserId(@PathVariable(name = "id") String id) {
         List<RoleAndUserRelations> roleByUserId = userAndRoleRelationsService.findRoleByUserId(id);
-        System.out.println(roleByUserId);
         if (!ObjectUtils.isEmpty(roleByUserId)){
             List<Role> roles = userAndRoleRelationsService.getRoleDetailByRoleId(roleByUserId);
-            System.out.println(roles);
             if (!ObjectUtils.isEmpty(roles)){
                 return new Result(ResultCode.SUCCESS , roles);
             }
         }
-        return new Result(ResultCode.SUCCESS , null);
+        return new Result(ResultCode.SUCCESS);
     }
 
 }

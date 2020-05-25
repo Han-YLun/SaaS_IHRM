@@ -412,7 +412,6 @@ public class SalaryArchiveDetail implements Serializable {
             attendanceMoney = this.currentSalaryTotalBase.
                     divide(new BigDecimal(21.75),2,ROUND_HALF_UP).
                     multiply(this.officialSalaryDays);
-            System.out.println("currentSalaryTotalBase : " + currentSalaryTotalBase);
             this.attendanceDeductionMonthly = this.currentSalaryTotalBase.subtract(attendanceMoney).toString();
         }else{
             this.attendanceDeductionMonthly = "0";
@@ -423,13 +422,8 @@ public class SalaryArchiveDetail implements Serializable {
 
 
         //计算应纳税工资 (岗位工资 + 基本工资 + 补助 - 缴纳公积金和社保)
-
-        System.out.println("providentFundIndividual : " + providentFundIndividual);
-        System.out.println("socialSecurityIndividual : " + socialSecurityIndividual);
-
         this.salaryByTax = this.currentSalaryTotalBase.subtract(this.providentFundIndividual).subtract(this.socialSecurityIndividual);
         this.salaryByTax = this.salaryByTax.compareTo(BigDecimal.ZERO)>=0?this.salaryByTax:BigDecimal.ZERO;
-        System.out.println("salaryByTax : " + salaryByTax);
         //计算税(扣除员工社保和员工公积金部门)
         this.tax = getTax(salaryByTax);
 

@@ -80,7 +80,6 @@ public class UserService {
         User tempUser = userDao.findById(id).get();
         if (!ObjectUtils.isEmpty(tempUser) && !ObjectUtils.isEmpty(user)){
             tempUser.setUsername(user.getUsername());
-            System.out.println(user.getPassword());
             tempUser.setPassword(user.getPassword());
             tempUser.setWorkNumber(user.getWorkNumber());
             tempUser.setTimeOfEntry(user.getTimeOfEntry());
