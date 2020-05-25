@@ -85,13 +85,11 @@ public class ArchiveService {
         //查询所有的用户
         Page<Map> users = userSalaryDao.findPage(companyId, null);
         //遍历用户数据
-        System.out.println(users.getContent().size());
         for (Map user : users.getContent()) {
             //构造SalaryArchiveDetail
             SalaryArchiveDetail saDetail = new SalaryArchiveDetail();
             saDetail.setUser(user);
             //获取每个用户社保数据
-            System.out.println(saDetail.getUserId());
             Object obj = socialSecurityFeignClient.historyData(saDetail.getUserId(), yearMonth).getData();
             if (obj != null){
                 ArchiveDetail socialInfo = JSON.parseObject(JSON.toJSONString(obj),  ArchiveDetail.class);
@@ -103,10 +101,8 @@ public class ArchiveService {
                             ArchiveMonthlyInfo atteInfo = JSON.parseObject(JSON.toJSONString(obj),  ArchiveMonthlyInfo.class);
                             if (atteInfo != null){
                                 saDetail.setAtteInfo(atteInfo);
-                                System.out.println(atteInfo.getSalaryOfficialDays() + "111");
                                 //获取每个用户的薪资
                                 UserSalary userSalary = salaryService.findUserSalary(saDetail.getUserId());
-                                System.out.println(4);
                                 if (userSalary != null){
                                     saDetail.setUserSalary(userSalary);
                                     //计算工资

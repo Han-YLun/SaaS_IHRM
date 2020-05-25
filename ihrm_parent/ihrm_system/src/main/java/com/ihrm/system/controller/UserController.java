@@ -166,8 +166,6 @@ public class UserController extends BaseController {
                 Company company = JSON.parseObject(JSON.toJSONString(linkedHashMap), new TypeReference<Company>() {
                 });
                 if (!ObjectUtils.isEmpty(company)){
-                    System.out.println(company.getState());
-                    System.out.println(company);
                     if (Constant.Company.COMPANY_DISABLE.equals(String.valueOf(company.getState()))){
                         return new Result(ResultCode.UNAUTHORISE);
                     }

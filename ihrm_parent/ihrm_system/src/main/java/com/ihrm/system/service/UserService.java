@@ -76,14 +76,8 @@ public class UserService {
      * 更新用户
      */
     public void update(User user){
-        //根据id查询用户
-        User target = userDao.findById(user.getId()).get();
-        //设置用户属性
-        target.setUsername(user.getUsername());
-        target.setPassword(user.getPassword());
-        target.setDepartmentId(user.getDepartmentId());
         //更新用户
-        userDao.save(target);
+        userDao.save(user);
     }
 
 

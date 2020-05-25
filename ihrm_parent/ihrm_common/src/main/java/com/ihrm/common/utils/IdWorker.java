@@ -137,7 +137,7 @@ public class IdWorker {
                 id = id % (maxDatacenterId + 1);
             }
         } catch (Exception e) {
-            System.out.println(" getDatacenterId: " + e.getMessage());
+            e.printStackTrace();
         }
         return id;
     }

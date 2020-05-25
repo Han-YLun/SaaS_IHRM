@@ -49,7 +49,6 @@ public class FaceLoginService {
         //2.生成二维码
         String content = url + "?code=" + code;
         String file = qrCodeUtil.crateQRCode(content);
-        System.out.println(file);
         //3.存入当前二维码的状态(存入redis)
         FaceLoginResult result = new FaceLoginResult("-1");
         redisTemplate.boundValueOps(getCacheKey(code)).set(result , 10 , TimeUnit.MINUTES);

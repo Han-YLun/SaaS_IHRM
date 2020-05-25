@@ -20,7 +20,6 @@ public class QRCodeUtil {
      * 生成Base64 二维码
      */
     public String crateQRCode(String content) throws IOException {
-        System.out.println(content);
         ByteArrayOutputStream os = new ByteArrayOutputStream();
         try {
             QRCodeWriter writer = new QRCodeWriter();

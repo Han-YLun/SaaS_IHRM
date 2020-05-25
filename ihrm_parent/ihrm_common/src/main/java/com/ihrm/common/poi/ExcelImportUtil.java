@@ -38,11 +38,9 @@ public class ExcelImportUtil<T> {
             // 不准确
             int rowLength = sheet.getLastRowNum();
 
-            System.out.println(sheet.getLastRowNum());
             for (int rowNum = rowIndex; rowNum <= sheet.getLastRowNum(); rowNum++) {
                 Row row = sheet.getRow(rowNum);
                 entity = (T) clazz.newInstance();
-                System.out.println(row.getLastCellNum());
                 for (int j = cellIndex; j < row.getLastCellNum(); j++) {
                     Cell cell = row.getCell(j);
                     for (Field field : fields) {

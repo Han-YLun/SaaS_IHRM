@@ -54,7 +54,6 @@ public class AtteService  {
         //考勤月
         CompanySettings css = companySettingsDao.findById(companyId).get();
         String dataMonth = css.getDataMonth();
-        System.out.println(dataMonth);
         //分页查询用户
         Page<User> users = userDao.findPage(companyId, new PageRequest(page - 1, pageSize));
         List<AtteItemBO> list = new ArrayList<>();
@@ -89,8 +88,6 @@ public class AtteService  {
         //待处理的考勤数量
         map.put("tobeTaskCount" , 0);
         //当前的考勤月份
-        System.out.println(dataMonth.substring(4));
-
         int month = Integer.parseInt(dataMonth.substring(4));
         map.put("monthOfReport" , month);
         return map;
