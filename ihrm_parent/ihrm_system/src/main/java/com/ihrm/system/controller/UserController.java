@@ -56,11 +56,17 @@ public class UserController extends BaseController {
      */
     @RequestMapping("/user/upload/{id}")
     public Result upload(@PathVariable String id , @RequestParam(name = "file") MultipartFile file) throws Exception {
+
         //1.调用service保存图片
-        String imgUrl = userService.uploadImage(id , file);
+        String imgUrl = null;
+        try {
+            //需要配置百度AI,如果不正确会抛出异常
+            imgUrl = userService.uploadImage(id , file);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         //2.返回数据
         return new Result(ResultCode.SUCCESS , imgUrl);
-        
     }
 
     /**
