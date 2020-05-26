@@ -6,6 +6,7 @@ import com.ihrm.domain.company.Department;
 import com.ihrm.domain.system.Role;
 import com.ihrm.domain.system.User;
 import com.ihrm.system.client.CompanyFeignClient;
+import com.ihrm.system.dao.UserAndRoleRelationsDao;
 import com.ihrm.system.dao.UserDao;
 import com.ihrm.system.dao.RoleDao;
 import com.ihrm.system.utils.BaiduAiUtil;
@@ -48,7 +49,6 @@ public class UserService {
 
     @Autowired
     private BaiduAiUtil baiduAiUtil;
-
 
     /**
      * 根据mobile查询用户

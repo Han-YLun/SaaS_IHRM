@@ -47,6 +47,13 @@ public class UserController extends BaseController {
     @Autowired
     private CompanyFeignClient companyFeignClient;
 
+    /**
+     * 更新用户图片
+     * @param id
+     * @param file
+     * @return
+     * @throws Exception
+     */
     @RequestMapping("/user/upload/{id}")
     public Result upload(@PathVariable String id , @RequestParam(name = "file") MultipartFile file) throws Exception {
         //1.调用service保存图片
