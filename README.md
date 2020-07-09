@@ -35,7 +35,7 @@
 
 各个模块的功能介绍：
 
-![1877030-20200618213828772-1904163693.png](https://i.loli.net/2020/06/24/w5ky4cSujpaNgiX.png)
+![1877030-20200618213828772-1904163693.png](https://camo.githubusercontent.com/d71639cd21e6fdd29e64b34b238d1fde74e9d673/68747470733a2f2f692e6c6f6c692e6e65742f323032302f30362f32342f77356b79346353756a70614e6769582e706e67)
 
 
 
@@ -64,13 +64,25 @@
 
 
 
-
-
-
-
 ## 使用技术
 
 *  SpringBoot + SpringCloud + SpringMVC + SpringData
+
+
+
+# 用户登录
+
+登录时用户名为手机号，密码大多为123456。
+
+帐号信息表在bs_user中。
+
+登录时使用MD5加密，对密码进行三次MD5加密，salt为手机号。
+
+登录时需开启redis，因为登录成功后会把登录信息存储在redis中。
+
+因为我本机的redis使用的是默认，如果设置了帐号和密码，可在ShiroConfiguration.java中配置即可。
+
+
 
 ## Swagger接口
 
@@ -86,7 +98,7 @@
 
 
 
-# 数据库文件
+## 数据库文件
 
 数据库主要一个主数据库，数据库名为ihrm；另一个数据库名为act，是activity7使用的，可以自动生成
 
@@ -113,7 +125,24 @@ act ：
 
 
 
-#  项目讲义
+## BPMN流程文件
+
+在加班、请假、离职时需要进行走流程，使用的是activity7工作流。
+
+流程BPMN文件：
+
+* 链接：链接：https://pan.baidu.com/s/1Sz2jc2782hw2LpuxVeXlSA 
+* 提取码：t9hb
+* 介绍
+  * 将BPMN文件在线上Demo部署，会直接把BPMN文件解析到act数据库
+  * act数据库会在线上Demo部署时自动创建
+  * 线上Demo部署可以网上找下，官网提供的也有
+
+
+
+
+
+##  项目讲义
 
 市面只有前7章讲义，这边讲义是全17章
 
