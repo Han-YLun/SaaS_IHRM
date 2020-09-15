@@ -11,6 +11,7 @@ import javax.persistence.Table;
 
 /**
  * (DepartmentApprover)实体类
+ * @author Administrator
  */
 @Entity
 @Table(name = "proc_user_group")

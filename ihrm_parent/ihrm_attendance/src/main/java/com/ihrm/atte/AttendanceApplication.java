@@ -35,7 +35,10 @@ public class AttendanceApplication {
         return new IdWorker();
     }
 
-    //解决jpa no session问题
+    /**
+     * 解决jpa no session问题
+     * @return
+     */
     @Bean
     public OpenEntityManagerInViewFilter openEntityManagerInViewFilter(){
         return new OpenEntityManagerInViewFilter();

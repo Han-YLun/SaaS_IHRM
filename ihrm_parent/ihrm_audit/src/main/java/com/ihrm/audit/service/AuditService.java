@@ -110,7 +110,7 @@ public class AuditService {
      * @return
      */
     public ProcInstance findInstanceDetail(String id) {
-       return procInstanceDao.findById(id).get();
+        return procInstanceDao.findById(id).get();
     }
 
     /**
@@ -160,13 +160,14 @@ public class AuditService {
         Task nextTask = taskService.createTaskQuery().processInstanceId(processInstance.getId()).singleResult();
         if(nextTask != null) {
             List<User> users = findCurrUsers(nextTask, user);
-            String usernames = "", userIdS = "";
+            StringBuilder userNameSb = new StringBuilder();
+            StringBuilder userIdS = new StringBuilder();
             for (User user1 : users) {
-                usernames += user1.getUsername() + " ";
-                userIdS += user1.getId();
+                userNameSb.append(user1.getUsername()).append(" ");
+                userIdS.append(user1.getId());
             }
-            instance.setProcCurrNodeUserId(userIdS);
-            instance.setProcCurrNodeUserName(usernames);
+            instance.setProcCurrNodeUserId(userIdS.toString());
+            instance.setProcCurrNodeUserName(userNameSb.toString());
         }
 
         procInstanceDao.save(instance);

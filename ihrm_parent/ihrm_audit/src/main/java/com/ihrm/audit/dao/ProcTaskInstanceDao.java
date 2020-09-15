@@ -1,18 +1,24 @@
 package com.ihrm.audit.dao;
 
 import com.ihrm.audit.entity.ProcTaskInstance;
-import com.ihrm.domain.atte.entity.ArchiveMonthly;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.List;
 
 
+/**
+ * @author Administrator
+ */
 public interface ProcTaskInstanceDao extends JpaRepository<ProcTaskInstance,String>, JpaSpecificationExecutor<ProcTaskInstance> {
 
 
+	/**
+	 * 通过processId和taskKey查询ProcTask
+	 * @param processId
+	 * @param taskKey
+	 * @return
+	 */
 	ProcTaskInstance findByProcessIdAndTaskKey(String processId, String taskKey) ;
 
 	/**

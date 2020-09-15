@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * 声明接口，通过feign调用其他微服务
+ * @author Administrator
  */
-//声明调用的微服务名称
 @FeignClient("ihrm-system")
 public interface SystemFeignClient {
     /**
