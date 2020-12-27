@@ -10,7 +10,7 @@ import com.ihrm.system.dao.UserAndRoleRelationsDao;
 import com.ihrm.system.dao.UserDao;
 import com.ihrm.system.dao.RoleDao;
 import com.ihrm.system.utils.BaiduAiUtil;
-import com.sun.org.apache.xml.internal.security.utils.Base64;
+import org.apache.commons.codec.binary.Base64;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -88,14 +88,12 @@ public class UserService {
         userDao.save(tempUser);
     }
 
-
     /**
      * 根据id查询用户
      */
     public User findById(String id){
         return userDao.findById(id).get();
     }
-
 
     /**
      * 查询全部用户列表
@@ -218,7 +216,7 @@ public class UserService {
         userDao.save(user);
         //判断是否已经注册面部信息
         Boolean faceExist = baiduAiUtil.faceExist(id);
-        String imgBase64 = Base64.encode(file.getBytes());
+        String imgBase64 = Base64.encodeBase64String(file.getBytes());
         if (faceExist){
             //更新
             baiduAiUtil.faceUpdate(id , imgBase64);

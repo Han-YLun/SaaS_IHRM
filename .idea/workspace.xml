@@ -2,28 +2,108 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="559357fb-92d0-4033-ae1d-4ef8ae88196a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ihrm_parent/ihrm_system/src/main/java/com/ihrm/system/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/ihrm_parent/ihrm_system/src/main/java/com/ihrm/system/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ihrm_parent/ihrm_system/src/main/java/com/ihrm/system/utils/QRCodeUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/ihrm_parent/ihrm_system/src/main/java/com/ihrm/system/utils/QRCodeUtil.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/ihrm_parent/ihrm_company/target/" />
+    <ignored path="$PROJECT_DIR$/ihrm_parent/ihrm_audit/target/" />
+    <ignored path="$PROJECT_DIR$/ihrm_parent/ihrm_common_model/target/" />
+    <ignored path="$PROJECT_DIR$/ihrm_parent/ihrm_salarys/target/" />
+    <ignored path="$PROJECT_DIR$/ihrm_parent/ihrm_common/target/" />
+    <ignored path="$PROJECT_DIR$/ihrm_parent/ihrm_gate/target/" />
+    <ignored path="$PROJECT_DIR$/ihrm_parent/ihrm_eureka/target/" />
+    <ignored path="$PROJECT_DIR$/ihrm_parent/ihrm_system/target/" />
+    <ignored path="$PROJECT_DIR$/ihrm_parent/ihrm_social_securitys/target/" />
+    <ignored path="$PROJECT_DIR$/ihrm_parent/ihrm_attendance/target/" />
+    <ignored path="$PROJECT_DIR$/ihrm_parent/target/" />
+    <ignored path="$PROJECT_DIR$/ihrm_parent/ihrm_employee/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ihrm_parent/ihrm_system/src/main/java/com/ihrm/system/utils/QRCodeUtil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="27" column="28" lean-forward="true" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
+            <state relative-caret-position="356">
+              <caret line="29" column="82" selection-start-line="29" selection-start-column="57" selection-end-line="29" selection-end-column="82" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ihrm_parent/ihrm_system/src/main/java/com/ihrm/system/service/UserService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="36">
+              <caret line="93" column="35" selection-start-line="93" selection-start-column="35" selection-end-line="93" selection-end-column="35" />
+              <folding>
+                <element signature="docComment;method#findByMobile#0;class#UserService#0" />
+                <element signature="n#!!block;n#findByMobile#0;n#UserService#0" />
+                <element signature="docComment;method#save#0;class#UserService#0" />
+                <element signature="method#save#0;class#UserService#0" />
+                <element signature="docComment;method#update#0;class#UserService#0" />
+                <element signature="method#update#0;class#UserService#0" />
+                <element signature="e#2318#2555#1" />
+                <element signature="docComment;method#findById#0;class#UserService#0" />
+                <element signature="docComment;method#findAll#0;class#UserService#0" />
+                <element signature="method#findAll#0;class#UserService#0" />
+                <element signature="class#2893:4214" />
+                <element signature="method#toPredicate#0;class#2893:4214" />
+                <element signature="e#3368#3499#1" />
+                <element signature="e#3601#3737#1" />
+                <element signature="e#3835#4117#1" />
+                <element signature="e#3904#3998#1" />
+                <element signature="e#4002#4099#1" />
+                <element signature="docComment;method#deleteById#0;class#UserService#0" />
+                <element signature="n#!!block;n#deleteById#0;n#UserService#0" />
+                <element signature="docComment;method#assignRoles#0;class#UserService#0" />
+                <element signature="method#assignRoles#0;class#UserService#0" />
+                <element signature="e#4794#4890#1" />
+                <element signature="docComment;method#saveAll#0;class#UserService#0" />
+                <element signature="method#saveAll#0;class#UserService#0" />
+                <element signature="e#5253#5982#1" />
+                <element signature="e#5804#5939#1" />
+                <element signature="docComment;method#uploadImage#0;class#UserService#0" />
+                <element signature="method#uploadImage#0;class#UserService#0" />
+                <element signature="e#6637#6717#1" />
+                <element signature="e#6721#6803#1" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>base64.encode</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -32,6 +112,9 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/ihrm_parent/.idea/encodings.xml" />
+        <option value="$PROJECT_DIR$/ihrm_parent/ihrm_system/src/main/java/com/ihrm/system/utils/QRCodeUtil.java" />
+        <option value="$PROJECT_DIR$/ihrm_parent/ihrm_system/src/main/java/com/ihrm/system/service/UserService.java" />
       </list>
     </option>
   </component>
@@ -49,9 +132,25 @@
       </MavenImportingSettings>
     </option>
   </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="ihrm_audit" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="ihrm_audit" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
   <component name="MavenRunner">
     <option name="delegateBuildToMaven" value="true" />
-    <option name="jreName" value="JDK1.7" />
+    <option name="jreName" value="1.8" />
     <option name="vmOptions" value="-Dmaven.multiModuleProjectDirectory=$MAVEN_HOME" />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
@@ -69,31 +168,42 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="poidemo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="SaaS_HRM" type="462c0819:PsiDirectoryNode" />
+              <item name="ihrm_parent" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1609057735677" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.runner" />
+    <property name="settings.editor.selected.configurable" value="File.Encoding" />
   </component>
   <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
     <option name="ruleStates">
       <list>
         <RuleState>
@@ -104,6 +214,85 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.SystemApplication">
+    <configuration name="AttendanceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="ihrm_attendance" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ihrm.atte.AttendanceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AuditApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="ihrm_audit" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ihrm.audit.AuditApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CompanyApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="ihrm_company" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ihrm.company.CompanyApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EmployeeApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="ihrm_employee" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ihrm.employee.EmployeeApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EurekaServer" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="ihrm_eureka" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ihrm.eureka.EurekaServer" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GateApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="ihrm_gate" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ihrm.gate.GateApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SalarysApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="ihrm_salarys" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ihrm.salarys.SalarysApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SocialSecurityApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="ihrm_social_securitys" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ihrm.social.SocialSecurityApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SystemApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="ihrm_system" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ihrm.system.SystemApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.AttendanceApplication" />
+      <item itemvalue="Spring Boot.AuditApplication" />
+      <item itemvalue="Spring Boot.EurekaServer" />
+      <item itemvalue="Spring Boot.CompanyApplication" />
+      <item itemvalue="Spring Boot.SystemApplication" />
+      <item itemvalue="Spring Boot.EmployeeApplication" />
+      <item itemvalue="Spring Boot.GateApplication" />
+      <item itemvalue="Spring Boot.SalarysApplication" />
+      <item itemvalue="Spring Boot.SocialSecurityApplication" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -116,55 +305,215 @@
       <option name="presentableId" value="Default" />
       <updated>1581332468508</updated>
       <workItem from="1581332471860" duration="272000" />
+      <workItem from="1609054044747" duration="51000" />
+      <workItem from="1609054195417" duration="1644000" />
+      <workItem from="1609055901228" duration="1648000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="272000" />
+    <option name="totallyTimeSpent" value="3615000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24962178" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26096824" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Messages" visible="true" weight="0.84075344" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49924356" weight="0.61986303" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Maven" />
-      <window_info anchor="right" id="BPMNPalette" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50075644" side_tool="true" weight="0.32876712" />
+      <window_info anchor="bottom" id="Spring" order="12" />
+      <window_info anchor="bottom" id="Java Enterprise" order="13" />
+      <window_info anchor="bottom" id="Tail" order="14" />
+      <window_info anchor="bottom" id="Run Dashboard" order="15" sideWeight="0.49924356" weight="0.42636988" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Maven" order="5" visible="true" weight="0.32980332" />
+      <window_info anchor="right" id="BPMNPalette" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Database" order="9" weight="0.32980332" />
+      <window_info anchor="right" id="Bean Validation" order="10" weight="0.32980332" />
     </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26096824" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Web" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.32876712" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" />
+      <window_info anchor="bottom" id="Run" order="3" sideWeight="0.49924356" weight="0.2380137" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Database Changes" order="10" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50075644" side_tool="true" weight="0.32876712" />
+      <window_info anchor="bottom" id="Spring" order="13" />
+      <window_info anchor="bottom" id="Java Enterprise" order="14" />
+      <window_info anchor="bottom" id="Tail" order="15" />
+      <window_info anchor="bottom" id="Run Dashboard" order="16" sideWeight="0.49924356" weight="0.42636988" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Theme Preview" order="4" />
+      <window_info anchor="right" id="Maven" order="5" weight="0.32980332" />
+      <window_info anchor="right" id="BPMNPalette" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Database" order="9" weight="0.32980332" />
+      <window_info anchor="right" id="Bean Validation" order="10" weight="0.32980332" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
+    <entry file="file://$PROJECT_DIR$/pom.xml" />
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="325">
+            <caret line="52" column="22" lean-forward="true" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="22" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ihrm_parent/pom.xml">
+      <provider editor-type-id="MavenHelperPluginDependencyAnalyzer" />
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ihrm_parent/ihrm_attendance/src/main/java/com/ihrm/atte/AttendanceApplication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="27" column="28" lean-forward="true" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
+        <state relative-caret-position="-232">
+          <caret line="23" column="13" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ihrm_parent/ihrm_audit/src/main/java/com/ihrm/audit/AuditApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-132">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/xmlbeans/xmlbeans/3.0.2/xmlbeans-3.0.2.jar!/org/apache/xmlbeans/impl/util/Base64.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="39" column="25" selection-start-line="39" selection-start-column="25" selection-end-line="39" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ihrm_parent/ihrm_eureka/src/main/java/com/ihrm/eureka/EurekaServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ihrm_parent/.idea/encodings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="50">
+          <caret line="2" column="102" selection-start-line="2" selection-start-column="102" selection-end-line="2" selection-end-column="102" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ihrm_parent/ihrm_company/src/main/java/com/ihrm/company/CompanyApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.11/commons-codec-1.11.jar!/org/apache/commons/codec/binary/BaseNCodec.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="144" column="34" lean-forward="true" selection-start-line="144" selection-end-line="145" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.11/commons-codec-1.11.jar!/org/apache/commons/codec/binary/Base64.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="215" column="25" selection-start-line="215" selection-start-column="25" selection-end-line="215" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ihrm_parent/ihrm_system/src/main/java/com/ihrm/system/utils/QRCodeUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="356">
+          <caret line="29" column="82" selection-start-line="29" selection-start-column="57" selection-end-line="29" selection-end-column="82" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ihrm_parent/ihrm_system/src/main/java/com/ihrm/system/service/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="93" column="35" selection-start-line="93" selection-start-column="35" selection-end-line="93" selection-end-column="35" />
+          <folding>
+            <element signature="docComment;method#findByMobile#0;class#UserService#0" />
+            <element signature="n#!!block;n#findByMobile#0;n#UserService#0" />
+            <element signature="docComment;method#save#0;class#UserService#0" />
+            <element signature="method#save#0;class#UserService#0" />
+            <element signature="docComment;method#update#0;class#UserService#0" />
+            <element signature="method#update#0;class#UserService#0" />
+            <element signature="e#2318#2555#1" />
+            <element signature="docComment;method#findById#0;class#UserService#0" />
+            <element signature="docComment;method#findAll#0;class#UserService#0" />
+            <element signature="method#findAll#0;class#UserService#0" />
+            <element signature="class#2893:4214" />
+            <element signature="method#toPredicate#0;class#2893:4214" />
+            <element signature="e#3368#3499#1" />
+            <element signature="e#3601#3737#1" />
+            <element signature="e#3835#4117#1" />
+            <element signature="e#3904#3998#1" />
+            <element signature="e#4002#4099#1" />
+            <element signature="docComment;method#deleteById#0;class#UserService#0" />
+            <element signature="n#!!block;n#deleteById#0;n#UserService#0" />
+            <element signature="docComment;method#assignRoles#0;class#UserService#0" />
+            <element signature="method#assignRoles#0;class#UserService#0" />
+            <element signature="e#4794#4890#1" />
+            <element signature="docComment;method#saveAll#0;class#UserService#0" />
+            <element signature="method#saveAll#0;class#UserService#0" />
+            <element signature="e#5253#5982#1" />
+            <element signature="e#5804#5939#1" />
+            <element signature="docComment;method#uploadImage#0;class#UserService#0" />
+            <element signature="method#uploadImage#0;class#UserService#0" />
+            <element signature="e#6637#6717#1" />
+            <element signature="e#6721#6803#1" />
+          </folding>
         </state>
       </provider>
     </entry>

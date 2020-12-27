@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" addBOMForNewFiles="with NO BOM" />
+  <component name="Encoding" addBOMForNewFiles="with NO BOM">
+    <file url="file://$PROJECT_DIR$/ihrm_parent" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ihrm_parent/ihrm_attendance" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ihrm_parent/ihrm_audit" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ihrm_parent/ihrm_common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ihrm_parent/ihrm_common_model" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ihrm_parent/ihrm_company" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ihrm_parent/ihrm_employee" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ihrm_parent/ihrm_eureka" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ihrm_parent/ihrm_gate" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ihrm_parent/ihrm_salarys" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ihrm_parent/ihrm_social_securitys" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ihrm_parent/ihrm_system" charset="UTF-8" />
+  </component>
 </project>
