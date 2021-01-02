@@ -8,9 +8,24 @@
 * Redis： 2.4.5
 
 ## 项目截图
+
+### SaaS管理员模块
 ![](https://img-blog.csdnimg.cn/2021010212211313.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODg4Mzgy,size_16,color_FFFFFF,t_70)
 ![](https://img-blog.csdnimg.cn/2021010212211315.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODg4Mzgy,size_16,color_FFFFFF,t_70)
 ![](https://img-blog.csdnimg.cn/2021010212211315.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODg4Mzgy,size_16,color_FFFFFF,t_70)
+
+### 企业管理员模块
+![](https://img-blog.csdnimg.cn/20210102122320427.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODg4Mzgy,size_16,color_FFFFFF,t_70#pic_center)
+![](https://img-blog.csdnimg.cn/20210102122320406.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODg4Mzgy,size_16,color_FFFFFF,t_70#pic_center)
+![](https://img-blog.csdnimg.cn/20210102122320406.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODg4Mzgy,size_16,color_FFFFFF,t_70#pic_center)
+![](https://img-blog.csdnimg.cn/20210102122320396.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODg4Mzgy,size_16,color_FFFFFF,t_70#pic_center)
+![](https://img-blog.csdnimg.cn/20210102122320386.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODg4Mzgy,size_16,color_FFFFFF,t_70#pic_center)
+![](https://img-blog.csdnimg.cn/20210102122320323.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODg4Mzgy,size_16,color_FFFFFF,t_70#pic_center)
+![](https://img-blog.csdnimg.cn/20210102122320379.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODg4Mzgy,size_16,color_FFFFFF,t_70#pic_center)
+![](https://img-blog.csdnimg.cn/20210102122320355.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODg4Mzgy,size_16,color_FFFFFF,t_70#pic_center)
+![](https://img-blog.csdnimg.cn/20210102122320347.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODg4Mzgy,size_16,color_FFFFFF,t_70#pic_center)
+![](https://img-blog.csdnimg.cn/20210102122320338.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODg4Mzgy,size_16,color_FFFFFF,t_70#pic_center)
+
 
 
 ## 系统架构
