@@ -1,4 +1,4 @@
-基于Saas的IHRM系统
+#  基于Saas的IHRM系统
 
 ## 开发环境
 
@@ -10,21 +10,41 @@
 ## 项目截图
 
 ### SaaS管理员模块
-![](https://img-blog.csdnimg.cn/2021010212211313.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODg4Mzgy,size_16,color_FFFFFF,t_70)
-![](https://img-blog.csdnimg.cn/2021010212211315.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODg4Mzgy,size_16,color_FFFFFF,t_70)
-![](https://img-blog.csdnimg.cn/2021010212211315.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODg4Mzgy,size_16,color_FFFFFF,t_70)
+
+
+![](https://img-blog.csdnimg.cn/2021010212211313.png)
+
+
+![](https://img-blog.csdnimg.cn/2021010212211315.png)
+
+
+![](https://img-blog.csdnimg.cn/2021010212211315.png)
 
 ### 企业管理员模块
-![](https://img-blog.csdnimg.cn/20210102122320427.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODg4Mzgy,size_16,color_FFFFFF,t_70#pic_center)
-![](https://img-blog.csdnimg.cn/20210102122320406.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODg4Mzgy,size_16,color_FFFFFF,t_70#pic_center)
-![](https://img-blog.csdnimg.cn/20210102122320406.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODg4Mzgy,size_16,color_FFFFFF,t_70#pic_center)
-![](https://img-blog.csdnimg.cn/20210102122320396.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODg4Mzgy,size_16,color_FFFFFF,t_70#pic_center)
-![](https://img-blog.csdnimg.cn/20210102122320386.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODg4Mzgy,size_16,color_FFFFFF,t_70#pic_center)
-![](https://img-blog.csdnimg.cn/20210102122320323.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODg4Mzgy,size_16,color_FFFFFF,t_70#pic_center)
-![](https://img-blog.csdnimg.cn/20210102122320379.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODg4Mzgy,size_16,color_FFFFFF,t_70#pic_center)
-![](https://img-blog.csdnimg.cn/20210102122320355.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODg4Mzgy,size_16,color_FFFFFF,t_70#pic_center)
-![](https://img-blog.csdnimg.cn/20210102122320347.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODg4Mzgy,size_16,color_FFFFFF,t_70#pic_center)
-![](https://img-blog.csdnimg.cn/20210102122320338.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3ODg4Mzgy,size_16,color_FFFFFF,t_70#pic_center)
+
+![](https://img-blog.csdnimg.cn/20210102122320427.png)
+
+![](https://img-blog.csdnimg.cn/20210102122320406.png)
+
+![](https://img-blog.csdnimg.cn/20210102122320406.png)
+
+![](https://img-blog.csdnimg.cn/20210102122320396.png)
+
+![](https://img-blog.csdnimg.cn/20210102122320386.png)
+
+![](https://img-blog.csdnimg.cn/20210102122320323.png)
+
+![](https://img-blog.csdnimg.cn/20210102122320379.png)
+
+![](https://img-blog.csdnimg.cn/20210102122320355.png)
+
+![](https://img-blog.csdnimg.cn/20210102122320347.png)   
+
+![](https://img-blog.csdnimg.cn/20210102122320338.png)
+
+
+### 员工模块
+![](https://img-blog.csdnimg.cn/20210102131339896.png)
 
 
 
@@ -54,9 +74,7 @@
 
 各个模块的功能介绍：
 
-![1877030-20200618213828772-1904163693.png](https://camo.githubusercontent.com/d71639cd21e6fdd29e64b34b238d1fde74e9d673/68747470733a2f2f692e6c6f6c692e6e65742f323032302f30362f32342f77356b79346353756a70614e6769582e706e67)
-
-
+![](https://img-blog.csdnimg.cn/20210102135523520.png)
 
 ## 启动顺序
 
@@ -79,7 +97,7 @@
 * 因为system模块通过feign调用了company模块的接口，所以company要在system模块之前启动
 * 因为salarys模块通过feign调用了attendance和social_securitys模块的接口，所以salarys在其之后启动
 * 后面两个顺序可以打乱
-* 模块糅合了某个模块，最好是先去启动被调用的模块
+* 服务调用了其他服务的接口，最好是先去启动被调用的模块
 
 
 
@@ -89,7 +107,7 @@
 
 
 
-# 用户登录
+## 用户登录
 
 登录时用户名为手机号，密码大多为123456。
 
@@ -163,7 +181,9 @@ act ：
 
 ##  项目讲义
 
-市面只有前7章讲义，这边讲义是全17章
+* 市面只有前7章讲义，这边讲义是全17章
+
+* 因为视频适合电脑CPU加密的,所以发出来也没用,但是有后面的PDF，大家可以看下
 
 下载地址
 
@@ -179,9 +199,14 @@ act ：
 
 * 保存用户信息时部门id和name不统一
 
+### 其他
 
+* 有其他问题请提Issues,也可以联系邮箱arvinhyl@gmail.com
+* 其他问题请联系
 
 ## 前端
 
 前端使用Vue编写，地址为：https://github.com/Han-YLun/SaaS_IHRM_Vue
+
+
 
