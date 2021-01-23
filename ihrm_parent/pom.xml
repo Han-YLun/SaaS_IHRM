@@ -22,7 +22,7 @@
 
     <packaging>pom</packaging>
     <name>ihrm_parent</name>
-    <description>IHRM-黑马程序员</description>
+    <description>IHRM 人力资源管理系统</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
