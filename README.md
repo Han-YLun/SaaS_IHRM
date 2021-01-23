@@ -212,7 +212,6 @@ act ：
 ### 其他
 
 * 有其他问题请提Issues,也可以联系邮箱arvinhyl@gmail.com
-* 其他问题请联系
 
 ## 前端
 
