@@ -1,10 +1,10 @@
 #  基于Saas的IHRM系统
 
 [![知识共享协议（CC协议）](https://img.shields.io/badge/License-Creative%20Commons-DC3D24.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)
-[![GitHub stars](https://img.shields.io/github/stars/xingshaocheng/architect-awesome.svg?style=flat&label=Star)](https://github.com/Han-YLun/SaaS_IHRM/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/xingshaocheng/architect-awesome.svg?style=flat&label=Fork)](https://github.com/Han-YLun/SaaS_IHRM/fork)
-[![GitHub watchers](https://img.shields.io/github/watchers/xingshaocheng/architect-awesome.svg?style=flat&label=Watch)](https://github.com/Han-YLun/SaaS_IHRM/watchers)
-[![GitHub followers](https://img.shields.io/github/followers/xingshaocheng.svg?label=%E5%85%B3%E6%B3%A8)](https://github.com/Han-YLun/SaaS_IHRM)
+[![GitHub stars](https://img.shields.io/github/stars/Han-YLun/architect-awesome.svg?style=flat&label=Star)](https://github.com/Han-YLun/SaaS_IHRM/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/Han-YLun/architect-awesome.svg?style=flat&label=Fork)](https://github.com/Han-YLun/SaaS_IHRM/fork)
+[![GitHub watchers](https://img.shields.io/github/watchers/Han-YLun/architect-awesome.svg?style=flat&label=Watch)](https://github.com/Han-YLun/SaaS_IHRM/watchers)
+[![GitHub followers](https://img.shields.io/github/followers/Han-YLun.svg?label=%E5%85%B3%E6%B3%A8)](https://github.com/Han-YLun/SaaS_IHRM)
 
 ## 开发环境
 
