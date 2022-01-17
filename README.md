@@ -1,7 +1,7 @@
 #  基于Saas的IHRM系统
 
 [![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=Han-YLun&repo=SaaS_IHRM)](https://github.com/Han-YLun/SaaS_IHRM)
-[![Stargazers over time](https://starchart.cc/misterchaos/springboot-mybatis-plus-generator.svg)](https://github.com/Han-YLun/SaaS_IHRM)
+[![Stargazers over time](https://github.com/Han-YLun/SaaS_IHRM.svg)](https://github.com/Han-YLun/SaaS_IHRM)
 
 
 [![知识共享协议（CC协议）](https://img.shields.io/badge/License-Creative%20Commons-DC3D24.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)
