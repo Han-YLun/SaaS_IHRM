@@ -9,8 +9,6 @@ import java.io.Serializable;
 @Data
 public class ArchiveInfoVO implements Serializable {
 
-
-
     private String companyId;
 
     private String departmentId;
@@ -22,7 +20,4 @@ public class ArchiveInfoVO implements Serializable {
      * 月份
      */
     private String month;
-
-
-
 }

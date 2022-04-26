@@ -13,29 +13,26 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * 自定义的公共异常处理器
- *      1.声明异常处理器
- *      2.对异常统一处理
+ * 1.声明异常处理器
+ * 2.对异常统一处理
  */
 @ControllerAdvice
 public class BaseExceptionHandler {
 
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
-    public Result error(HttpServletRequest request, HttpServletResponse response,Exception e) {
-        if(e.getClass() == CommonException.class) {
+    public Result error(HttpServletRequest request, HttpServletResponse response, Exception e) {
+        if (e.getClass() == CommonException.class) {
             //类型转型
             CommonException ce = (CommonException) e;
-            Result result = new Result(ce.getResultCode());
-            return result;
-        }else{
-            Result result = new Result(ResultCode.SERVER_ERROR);
-            return result;
+            return new Result(ce.getResultCode());
         }
+        return new Result(ResultCode.SERVER_ERROR);
     }
 
     @ExceptionHandler(value = AuthorizationException.class)
     @ResponseBody
-    public Result error(HttpServletRequest request, HttpServletResponse response,AuthorizationException e) {
+    public Result error(HttpServletRequest request, HttpServletResponse response, AuthorizationException e) {
         return new Result(ResultCode.UNAUTHORISE);
     }
 }

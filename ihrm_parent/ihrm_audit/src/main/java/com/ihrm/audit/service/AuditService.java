@@ -236,13 +236,14 @@ public class AuditService {
             Task nextTask = taskService.createTaskQuery().processInstanceId(processInstanceList.get(0).getId()).singleResult();
             if(nextTask != null) {
                 List<User> users = findCurrUsers(nextTask, user);
-                String usernames = "", userIdS = "";
+                StringBuilder usernames = new StringBuilder();
+                StringBuilder userIdS = new StringBuilder();
                 for (User user1 : users) {
-                    usernames += user1.getUsername() + " ";
-                    userIdS += user1.getId();
+                    usernames.append(user1.getUsername()).append(" ");
+                    userIdS.append(user1.getId());
                 }
-                instance.setProcCurrNodeUserId(userIdS);
-                instance.setProcCurrNodeUserName(usernames);
+                instance.setProcCurrNodeUserId(userIdS.toString());
+                instance.setProcCurrNodeUserName(usernames.toString());
                 instance.setProcessState("1");
             }else{
                 //如果不存在下一个节点,任务结束

@@ -5,14 +5,13 @@ import com.ihrm.domain.system.Role;
 import com.ihrm.domain.system.User;
 import lombok.Getter;
 import lombok.Setter;
-import org.crazycake.shiro.AuthCachePrincipal;
 
 import java.io.Serializable;
 import java.util.*;
 
 @Setter
 @Getter
-public class ProfileResult implements Serializable,AuthCachePrincipal {
+public class ProfileResult implements Serializable {
     private String userId;
     private String mobile;
     private String username;
@@ -77,10 +76,5 @@ public class ProfileResult implements Serializable,AuthCachePrincipal {
         this.roles.put("menus",menus);
         this.roles.put("points",points);
         this.roles.put("apis",apis);
-    }
-
-    @Override
-    public String getAuthCacheKey() {
-        return null;
     }
 }

@@ -10,10 +10,10 @@ spring:
     open-in-view: true
   #2.数据库连接池
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/ihrm?useUnicode=true&characterEncoding=utf8
     username: root
-    password: 111111
+    password: root
     hikari:
       maximum-pool-size: 2
   redis:

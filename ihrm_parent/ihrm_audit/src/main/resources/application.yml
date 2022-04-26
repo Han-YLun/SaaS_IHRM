@@ -9,12 +9,12 @@ spring:
       jdbc-url: jdbc:mysql://localhost:3306/act?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
       username : root
       password : root
-      driver-class-name: com.mysql.jdbc.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
     ihrm:
       jdbc-url: jdbc:mysql://localhost:3306/ihrm?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT
       username : root
       password : root
-      driver-class-name: com.mysql.jdbc.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
   redis:
     host: 127.0.0.1
     port: 6379
@@ -23,6 +23,7 @@ spring:
     database: MySQL
     show-sql: true
     open-in-view: true
+    database-platform: org.hibernate.dialect.MySQLDialect
   activiti:
     history-level: full
     db-history-used: true

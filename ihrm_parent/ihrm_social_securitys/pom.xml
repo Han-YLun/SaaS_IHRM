@@ -23,12 +23,12 @@
         <dependency>
             <groupId>com.ihrm</groupId>
             <artifactId>ihrm_common</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${ihrm_common.version}</version>
         </dependency>
         <dependency>
             <groupId>com.ihrm</groupId>
             <artifactId>ihrm_common_model</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${ihrm_common_model.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -38,29 +38,29 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
-
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>
-            <version>2.8.0</version>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
-            <version>2.8.0</version>
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>29.0-jre</version>
         </dependency>
         <dependency>
             <groupId>com.ihrm</groupId>
             <artifactId>ihrm_system</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <version>${ihrm_common_model.version}</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
+    <properties>
+        <ihrm_common.version>${ihrm_common_model.version}</ihrm_common.version>
+        <ihrm_common_model.version>1.0-SNAPSHOT</ihrm_common_model.version>
+    </properties>
     <build>
         <plugins>
             <plugin>

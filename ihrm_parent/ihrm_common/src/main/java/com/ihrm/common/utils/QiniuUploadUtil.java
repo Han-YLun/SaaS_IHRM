@@ -8,8 +8,6 @@ import com.qiniu.storage.UploadManager;
 import com.qiniu.storage.model.DefaultPutRet;
 import com.qiniu.util.Auth;
 
-import java.util.Date;
-
 public class QiniuUploadUtil {
 
     private static final String accessKey = "JhQMRdGXh1X5coGEbIwootTtle8RssYWqhmaaLBH";
@@ -35,7 +33,7 @@ public class QiniuUploadUtil {
             Response response = manager.put(bytes, imgName, upToken);
             DefaultPutRet putRet = new Gson().fromJson(response.bodyString(), DefaultPutRet.class);
             //返回请求地址
-            return prix+putRet.key+"?t="+new Date().getTime();
+            return prix+putRet.key+"?t="+System.currentTimeMillis();
         } catch (Exception ex) {
             ex.printStackTrace();
         }

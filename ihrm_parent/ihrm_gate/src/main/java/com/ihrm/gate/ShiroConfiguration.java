@@ -94,8 +94,7 @@ public class ShiroConfiguration {
     //配置shiro redisManager
     public RedisManager redisManager() {
         RedisManager redisManager = new RedisManager();
-        redisManager.setHost(host);
-        redisManager.setPort(port);
+        redisManager.setHost(host+":"+port);
         return redisManager;
     }
 

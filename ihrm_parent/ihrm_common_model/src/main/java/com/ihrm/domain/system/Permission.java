@@ -1,5 +1,6 @@
 package com.ihrm.domain.system;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,11 +14,10 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "pe_permission")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
-@DynamicInsert(true)
-@DynamicUpdate(true)
+@DynamicInsert()
+@DynamicUpdate()
 public class Permission implements Serializable {
     private static final long serialVersionUID = -4990810027542971546L;
     /**

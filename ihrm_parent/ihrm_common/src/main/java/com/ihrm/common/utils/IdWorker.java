@@ -35,15 +35,14 @@ public class IdWorker {
     // 数据标识id部分
     private final long datacenterId;
 
-    public IdWorker(){
+    public IdWorker() {
         this.datacenterId = getDatacenterId(maxDatacenterId);
         this.workerId = getMaxWorkerId(datacenterId, maxWorkerId);
     }
+
     /**
-     * @param workerId
-     *            工作机器ID
-     * @param datacenterId
-     *            序列号
+     * @param workerId     工作机器ID
+     * @param datacenterId 序列号
      */
     public IdWorker(long workerId, long datacenterId) {
         if (workerId > maxWorkerId || workerId < 0) {
@@ -55,6 +54,7 @@ public class IdWorker {
         this.workerId = workerId;
         this.datacenterId = datacenterId;
     }
+
     /**
      * 获取下一个ID
      *
@@ -78,9 +78,7 @@ public class IdWorker {
         }
         lastTimestamp = timestamp;
         // ID偏移组合生成最终的ID，并返回ID
-        long nextId = ((timestamp - twepoch) << timestampLeftShift)
-                | (datacenterId << datacenterIdShift)
-                | (workerId << workerIdShift) | sequence;
+        long nextId = ((timestamp - twepoch) << timestampLeftShift) | (datacenterId << datacenterIdShift) | (workerId << workerIdShift) | sequence;
 
         return nextId;
     }
@@ -129,13 +127,17 @@ public class IdWorker {
             InetAddress ip = InetAddress.getLocalHost();
             NetworkInterface network = NetworkInterface.getByInetAddress(ip);
             if (network == null) {
-                id = 1L;
-            } else {
-                byte[] mac = network.getHardwareAddress();
-                id = ((0x000000FF & (long) mac[mac.length - 1])
-                        | (0x0000FF00 & (((long) mac[mac.length - 2]) << 8))) >> 6;
-                id = id % (maxDatacenterId + 1);
+                return 1L;
             }
+
+            byte[] mac = network.getHardwareAddress();
+            if (mac == null){
+                return 1L;
+            }
+
+            id = ((0x000000FF & (long) mac[mac.length - 1]) | (0x0000FF00 & (((long) mac[mac.length - 2]) << 8))) >> 6;
+            id = id % (maxDatacenterId + 1);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

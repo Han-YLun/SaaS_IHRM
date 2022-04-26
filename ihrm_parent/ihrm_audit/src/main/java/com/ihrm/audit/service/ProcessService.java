@@ -29,7 +29,7 @@ public class ProcessService {
     public void deployProcess(MultipartFile file, String companyId) throws IOException {
         //获取上传的文件名称
         String fileName = file.getOriginalFilename();
-        //通过respositoryService进行流程部署
+        //通过repositoryService进行流程部署
         DeploymentBuilder deploymentBuilder = repositoryService.createDeployment();
         deploymentBuilder.addBytes(fileName , file.getBytes());   //部署流程
         deploymentBuilder.tenantId(companyId);
