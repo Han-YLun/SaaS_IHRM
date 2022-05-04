@@ -53,8 +53,10 @@ public class ShiroConfiguration {
         //2.设置安全管理器
         filterFactory.setSecurityManager(securityManager);
         //3.通用配置（跳转登录页面，未授权跳转的页面）
-        filterFactory.setLoginUrl("/autherror?code=1");//跳转url地址
-        filterFactory.setUnauthorizedUrl("/autherror?code=2");//未授权的url
+        //跳转url地址
+        filterFactory.setLoginUrl("/autherror?code=1");
+        //未授权的url
+        filterFactory.setUnauthorizedUrl("/autherror?code=2");
         //4.设置过滤器集合
         Map<String,String> filterMap = new LinkedHashMap<>();
         //anon -- 匿名访问
