@@ -21,7 +21,8 @@ public class CompanySettingsService {
 
 	//保存企业设置
 	public void save(CompanySettings companySettings) {
-		companySettings.setIsSettings(1);//已经完成当月设置
+		//已经完成当月设置
+		companySettings.setIsSettings(1);
 		companySettingsDao.save(companySettings);
 	}
 }

@@ -131,7 +131,7 @@ public class UserService {
                         list.add(cb.isNotNull(root.get("departmentId")));
                     }
                 }
-                return cb.and(list.toArray(new Predicate[list.size()]));
+                return cb.and(list.toArray(new Predicate[0]));
             }
         };
 
