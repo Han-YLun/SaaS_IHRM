@@ -5,23 +5,18 @@ import com.ihrm.common.entity.PageResult;
 import com.ihrm.common.entity.Result;
 import com.ihrm.common.entity.ResultCode;
 import com.ihrm.domain.salarys.UserSalary;
-import com.ihrm.salarys.dao.UserSalaryDao;
 import com.ihrm.salarys.service.SalaryService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.Map;
-import java.util.Optional;
 
 @CrossOrigin
 @RestController
 @RequestMapping(value = "/salarys")
 public class SalaryController extends BaseController {
 
-	@Autowired
+	@Resource
 	private SalaryService salaryService;
 
 	//查询用户薪资

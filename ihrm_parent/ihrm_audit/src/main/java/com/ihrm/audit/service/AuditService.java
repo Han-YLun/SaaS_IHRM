@@ -20,13 +20,13 @@ import org.activiti.engine.task.Task;
 import org.hibernate.SQLQuery;
 import org.hibernate.transform.Transformers;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.criteria.*;
@@ -39,31 +39,31 @@ import java.util.*;
 @Service
 public class AuditService {
 
-    @Autowired
+    @Resource
     private ProcInstanceDao procInstanceDao;
 
-    @Autowired
+    @Resource
     private FeignClientService feignClientService;
 
-    @Autowired
+    @Resource
     private IdWorker idWorker;
 
-    @Autowired
+    @Resource
     private RepositoryService repositoryService;
 
-    @Autowired
+    @Resource
     private RuntimeService runtimeService;
 
-    @Autowired
+    @Resource
     private TaskService taskService;
 
-    @Autowired
+    @Resource
     private ProcTaskInstanceDao procTaskInstanceDao;
 
-    @Autowired
+    @Resource
     private ProcUserGroupDao procUserGroupDao;
 
-    @Autowired
+    @Resource
     private EntityManager entityManager;
 
    /**

@@ -12,11 +12,11 @@ import com.ihrm.social.client.EmployeeFeignClient;
 import com.ihrm.social.dao.ArchiveDao;
 import com.ihrm.social.dao.ArchiveDetailDao;
 import com.ihrm.social.dao.UserSocialSecurityDao;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,29 +27,27 @@ import java.util.Map;
 @Transactional
 public class ArchiveService {
 
-	@Autowired
+	@Resource
 	private ArchiveDao archiveDao;
 
-	@Autowired
+	@Resource
 	private ArchiveDetailDao archiveDetailDao;
 
-	@Autowired
+	@Resource
 	private UserSocialService userSocialService;
 
-	@Autowired
+	@Resource
 	private IdWorker idWorker;
 
-	@Autowired
+	@Resource
 	private UserSocialSecurityDao userSocialSecurityDao;
 
-	@Autowired
+	@Resource
 	private EmployeeFeignClient employeeFeignClient;
 
-	@Autowired
+	@Resource
 	private PaymentItemService paymentItemService;
 
-
-	
 
 	/**
 	 * 根据企业id和年月查询归档历史

@@ -9,7 +9,6 @@ import com.ihrm.common.entity.ResultCode;
 import com.ihrm.domain.atte.entity.ArchiveMonthly;
 import com.ihrm.domain.atte.entity.ArchiveMonthlyInfo;
 import com.ihrm.domain.atte.entity.Attendance;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,10 +25,10 @@ import java.util.Map;
 @RequestMapping("/attendances")
 public class AttendanceController extends BaseController {
 
-    @Autowired
+    @Resource
     private ExcelImportService excelImportService;
 
-    @Autowired
+    @Resource
     private AtteService atteService;
 
     @Resource(name = "ihrm_attendance_archiveService")

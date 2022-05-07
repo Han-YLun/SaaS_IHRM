@@ -14,12 +14,6 @@ import javax.persistence.criteria.Root;
 public class BaseService<T> {
 
     protected Specification<T> getSpec(String companyId){
-        Specification<T> spec = new Specification() {
-            @Override
-            public Predicate toPredicate(Root root, CriteriaQuery query, CriteriaBuilder cb) {
-                return cb.equal(root.get("companyId").as(String.class) , companyId);
-            }
-        };
-        return spec;
+        return (Specification<T>) (Specification) (root, query, cb) -> cb.equal(root.get("companyId").as(String.class) , companyId);
     }
 }

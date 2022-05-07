@@ -4,16 +4,17 @@ import com.alibaba.fastjson.JSON;
 import com.ihrm.common.entity.Result;
 import com.ihrm.domain.atte.entity.ArchiveMonthlyInfo;
 import com.ihrm.domain.social_security.ArchiveDetail;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 @Service
 public class FeignClientService {
 
-	@Autowired
+	@Resource
 	private AttendanceFeignClient attendanceFeignClient;
 
-	@Autowired
+	@Resource
 	private SocialSecurityFeignClient socialFeignClient;
 
 	//考勤

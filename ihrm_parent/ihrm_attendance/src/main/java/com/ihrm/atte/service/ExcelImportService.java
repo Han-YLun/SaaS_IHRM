@@ -11,27 +11,27 @@ import com.ihrm.domain.atte.entity.AttendanceConfig;
 import com.ihrm.domain.atte.vo.AtteUploadVo;
 import com.ihrm.domain.system.User;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Log4j2
 @Service
 public class ExcelImportService {
 
-    @Autowired
+    @Resource
     private UserCDao userDao;
 
-    @Autowired
+    @Resource
     private AttendanceDao attendanceDao;
 
-    @Autowired
+    @Resource
     private AttendanceConfigDao attendanceConfigDao;
 
-    @Autowired
+    @Resource
     private IdWorker idWorker;
 
     @Value("${atte_workingDays}")

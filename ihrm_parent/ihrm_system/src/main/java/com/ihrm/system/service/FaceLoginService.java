@@ -12,13 +12,11 @@ import com.ihrm.system.utils.QRCodeUtil;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import java.util.concurrent.TimeUnit;
 
 @Service
@@ -27,19 +25,19 @@ public class FaceLoginService {
     //@Value("${my.url}")
     private String url;
 
-    @Autowired
+    @Resource
     private IdWorker idWorker;
 
-    @Autowired
+    @Resource
     private QRCodeUtil qrCodeUtil;
 
-    @Autowired
+    @Resource
     private RedisTemplate redisTemplate;
 
-    @Autowired
+    @Resource
     private BaiduAiUtil baiduAiUtil;
 
-    @Autowired
+    @Resource
     private UserDao userDao;
 
 	//创建二维码
@@ -58,8 +56,7 @@ public class FaceLoginService {
 	//根据唯一标识，查询用户是否登录成功
     public FaceLoginResult checkQRCode(String code) {
         String key = getCacheKey(code);
-        FaceLoginResult faceLoginResult = (FaceLoginResult) redisTemplate.opsForValue().get(key);
-        return faceLoginResult;
+        return (FaceLoginResult) redisTemplate.opsForValue().get(key);
     }
 
 	//扫描二维码之后，使用拍摄照片进行登录
@@ -71,15 +68,13 @@ public class FaceLoginService {
         if (userId != null){
             //模拟登陆
             User user = userDao.findById(userId).get();
-            if (user != null){
-                //获取subject
-                Subject subject = SecurityUtils.getSubject();
-                //调用login方法登陆
-                subject.login(new UsernamePasswordToken(user.getMobile() , user.getPassword()));
-                //获取token
-                String token = (String) subject.getSession().getId();
-                result = new FaceLoginResult("1" , token , userId);
-            }
+            //获取subject
+            Subject subject = SecurityUtils.getSubject();
+            //调用login方法登陆
+            subject.login(new UsernamePasswordToken(user.getMobile() , user.getPassword()));
+            //获取token
+            String token = (String) subject.getSession().getId();
+            result = new FaceLoginResult("1" , token , userId);
         }
         //3.修改二维码的状态
         redisTemplate.boundValueOps(getCacheKey(code)).set(result , 10 , TimeUnit.MINUTES);

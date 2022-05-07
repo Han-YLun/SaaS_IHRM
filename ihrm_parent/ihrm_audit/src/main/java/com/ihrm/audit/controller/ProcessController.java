@@ -8,11 +8,11 @@ import com.ihrm.common.controller.BaseController;
 import com.ihrm.common.entity.PageResult;
 import com.ihrm.common.entity.Result;
 import com.ihrm.common.entity.ResultCode;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
@@ -27,10 +27,10 @@ import java.util.Map;
 @RequestMapping("/user/process")
 public class ProcessController extends BaseController {
 
-    @Autowired
+    @Resource
     private ProcessService processService;
 
-    @Autowired
+    @Resource
     private AuditService auditService;
 
     /**
@@ -106,7 +106,7 @@ public class ProcessController extends BaseController {
 
     //查询流程任务明细
     @RequestMapping(value = "/instance/tasks/{id}",method = RequestMethod.GET)
-    public Result tasks(@PathVariable String id) throws IOException {
+    public Result tasks(@PathVariable String id) {
         //调用service
         return new Result(ResultCode.SUCCESS,auditService.findTasksByProcess(id));
     }

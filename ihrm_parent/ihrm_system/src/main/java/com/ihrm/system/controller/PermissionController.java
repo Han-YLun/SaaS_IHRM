@@ -5,9 +5,9 @@ import com.ihrm.common.entity.ResultCode;
 import com.ihrm.common.exception.CommonException;
 import com.ihrm.domain.system.Permission;
 import com.ihrm.system.service.PermissionService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
@@ -22,9 +22,8 @@ import java.util.Map;
 @RequestMapping(value = "/sys")
 public class PermissionController {
 
-    @Autowired
+    @Resource
     private PermissionService permissionService;
-
 
     /**
      * 保存

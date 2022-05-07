@@ -2,13 +2,11 @@ package com.ihrm.company.controller;
 
 import com.ihrm.common.entity.Result;
 import com.ihrm.common.entity.ResultCode;
-import com.ihrm.common.exception.CommonException;
-import com.ihrm.company.dao.CompanyDao;
 import com.ihrm.company.service.CompanyService;
 import com.ihrm.domain.company.Company;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 //解决跨域问题
@@ -17,7 +15,7 @@ import java.util.List;
 @RequestMapping(value="/company")
 public class CompanyController {
 
-    @Autowired
+    @Resource
     private CompanyService companyService;
 
     //保存用户

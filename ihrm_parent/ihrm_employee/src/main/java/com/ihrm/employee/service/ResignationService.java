@@ -2,15 +2,16 @@ package com.ihrm.employee.service;
 
 import com.ihrm.domain.employee.EmployeeResignation;
 import com.ihrm.employee.dao.EmployeeResignationDao;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.Date;
 
 
 @Service
 public class ResignationService {
-    @Autowired
+
+    @Resource
     EmployeeResignationDao resignationDao;
 
     public void save(EmployeeResignation resignation) {

@@ -11,7 +11,6 @@ import com.ihrm.common.poi.ExcelImportUtil;
 import com.ihrm.domain.company.Company;
 import com.ihrm.domain.system.User;
 import com.ihrm.domain.system.response.ProfileResult;
-import com.ihrm.domain.system.response.UserResult;
 import com.ihrm.system.client.CompanyFeignClient;
 import com.ihrm.system.service.UserService;
 import org.apache.shiro.SecurityUtils;
@@ -20,12 +19,12 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -41,10 +40,10 @@ import java.util.Map;
 @RequestMapping(value = "/sys")
 public class UserController extends BaseController {
 
-    @Autowired
+    @Resource
     private UserService userService;
 
-    @Autowired
+    @Resource
     private CompanyFeignClient companyFeignClient;
 
     /**

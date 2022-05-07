@@ -9,11 +9,11 @@ import com.ihrm.domain.system.RoleAndUserRelations;
 import com.ihrm.domain.system.response.RoleResult;
 import com.ihrm.system.service.RoleService;
 import com.ihrm.system.service.UserAndRoleRelationsService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.List;
 import java.util.Map;
 
@@ -28,10 +28,10 @@ import java.util.Map;
 @RequestMapping(value = "/sys")
 public class RoleController extends BaseController {
 
-    @Autowired
+    @Resource
     private RoleService roleService;
 
-    @Autowired
+    @Resource
     private UserAndRoleRelationsService userAndRoleRelationsService;
 
     /**

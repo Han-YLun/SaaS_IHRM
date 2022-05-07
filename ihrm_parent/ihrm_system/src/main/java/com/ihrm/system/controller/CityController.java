@@ -3,13 +3,11 @@ package com.ihrm.system.controller;
 import com.ihrm.common.entity.Result;
 import com.ihrm.common.entity.ResultCode;
 import com.ihrm.common.exception.CommonException;
-
-
 import com.ihrm.domain.system.City;
 import com.ihrm.system.service.CityService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 //解决跨域问题
@@ -18,7 +16,7 @@ import java.util.List;
 @RequestMapping(value="/sys/city")
 public class CityController {
 
-    @Autowired
+    @Resource
     private CityService cityService;
 
     //保存

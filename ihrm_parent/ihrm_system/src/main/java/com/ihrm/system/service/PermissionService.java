@@ -1,6 +1,5 @@
 package com.ihrm.system.service;
 
-import com.ihrm.common.entity.Result;
 import com.ihrm.common.entity.ResultCode;
 import com.ihrm.common.exception.CommonException;
 import com.ihrm.common.utils.BeanMapUtils;
@@ -14,14 +13,12 @@ import com.ihrm.system.dao.PermissionApiDao;
 import com.ihrm.system.dao.PermissionDao;
 import com.ihrm.system.dao.PermissionMenuDao;
 import com.ihrm.system.dao.PermissionPointDao;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.annotation.Resource;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -38,19 +35,19 @@ import java.util.Map;
 @Transactional
 public class PermissionService {
 
-    @Autowired
+    @Resource
     private PermissionDao permissionDao;
 
-    @Autowired
+    @Resource
     private PermissionMenuDao permissionMenuDao;
 
-    @Autowired
+    @Resource
     private PermissionPointDao permissionPointDao;
     
-    @Autowired
+    @Resource
     private PermissionApiDao permissionApiDao;
 
-    @Autowired
+    @Resource
     private IdWorker idWorker;
 
     /**
@@ -238,8 +235,7 @@ public class PermissionService {
      * 查询所有企业可以看到的menu
      */
     public List<Permission> getMenus() throws CommonException {
-        List<Permission> pers = permissionDao.findByTypeAndEnVisible(1, "1");
-        return pers;
+        return permissionDao.findByTypeAndEnVisible(1, "1");
     }
 }
 

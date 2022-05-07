@@ -2,21 +2,21 @@ package com.ihrm.social.service;
 
 import com.ihrm.domain.social_security.CompanySettings;
 import com.ihrm.social.dao.CompanySettingsDao;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.Optional;
 
 @Service
 public class CompanySettingsService {
 	
-    @Autowired
+    @Resource
     private CompanySettingsDao companySettingsDao;
 
     //根据企业id查询
 	public CompanySettings findById(String companyId) {
 		Optional<CompanySettings> optional = companySettingsDao.findById(companyId);
-		return optional.isPresent() ? optional.get() : null;
+		return optional.orElse(null);
 	}
 
 	//保存企业设置

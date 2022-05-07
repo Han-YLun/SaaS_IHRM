@@ -13,13 +13,12 @@ import com.ihrm.employee.service.*;
 import net.sf.jasperreports.engine.*;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.FileInputStream;
@@ -34,22 +33,22 @@ import java.util.Map;
 @RequestMapping("/employees")
 public class EmployeeController extends BaseController {
 
-    @Autowired
+    @Resource
     private UserCompanyPersonalService userCompanyPersonalService;
 
-    @Autowired
+    @Resource
     private UserCompanyJobsService userCompanyJobsService;
 
-    @Autowired
+    @Resource
     private ResignationService resignationService;
 
-    @Autowired
+    @Resource
     private TransferPositionService transferPositionService;
 
-    @Autowired
+    @Resource
     private PositiveService positiveService;
 
-    @Autowired
+    @Resource
     private ArchiveService archiveService;
 
     /**
@@ -58,7 +57,7 @@ public class EmployeeController extends BaseController {
     @RequestMapping(value = "/{id}/pdf" , method = RequestMethod.GET)
     public void pdf(@PathVariable String id) throws IOException {
         //1.引入jasper文件
-        Resource resource = new ClassPathResource("templates/profile.jasper");
+        org.springframework.core.io.Resource resource = new ClassPathResource("templates/profile.jasper");
         FileInputStream fis = new FileInputStream(resource.getFile());
 
         //2.构造数据
@@ -100,9 +99,6 @@ public class EmployeeController extends BaseController {
     @RequestMapping(value = "/{id}/personalInfo", method = RequestMethod.PUT)
     public Result savePersonalInfo(@PathVariable(name = "id") String uid, @RequestBody Map map) throws Exception {
         UserCompanyPersonal sourceInfo = BeanMapUtils.mapToBean(map, UserCompanyPersonal.class);
-        if (sourceInfo == null) {
-            sourceInfo = new UserCompanyPersonal();
-        }
         sourceInfo.setUserId(uid);
         sourceInfo.setCompanyId(super.companyId);
         userCompanyPersonalService.save(sourceInfo);
@@ -113,7 +109,7 @@ public class EmployeeController extends BaseController {
      * 员工个人信息读取
      */
     @RequestMapping(value = "/{id}/personalInfo", method = RequestMethod.GET)
-    public Result findPersonalInfo(@PathVariable(name = "id") String uid) throws Exception {
+    public Result findPersonalInfo(@PathVariable(name = "id") String uid) {
         UserCompanyPersonal info = userCompanyPersonalService.findById(uid);
         if(info == null) {
             info = new UserCompanyPersonal();
@@ -126,7 +122,7 @@ public class EmployeeController extends BaseController {
      * 员工岗位信息保存
      */
     @RequestMapping(value = "/{id}/jobs", method = RequestMethod.PUT)
-    public Result saveJobsInfo(@PathVariable(name = "id") String uid, @RequestBody UserCompanyJobs sourceInfo) throws Exception {
+    public Result saveJobsInfo(@PathVariable(name = "id") String uid, @RequestBody UserCompanyJobs sourceInfo) {
         //更新员工岗位信息
         if (sourceInfo == null) {
             sourceInfo = new UserCompanyJobs();
@@ -141,7 +137,7 @@ public class EmployeeController extends BaseController {
      * 员工岗位信息读取
      */
     @RequestMapping(value = "/{id}/jobs", method = RequestMethod.GET)
-    public Result findJobsInfo(@PathVariable(name = "id") String uid) throws Exception {
+    public Result findJobsInfo(@PathVariable(name = "id") String uid) {
         UserCompanyJobs info = userCompanyJobsService.findById(uid);
         if(info == null) {
             info = new UserCompanyJobs();
@@ -155,7 +151,7 @@ public class EmployeeController extends BaseController {
      * 离职表单保存
      */
     @RequestMapping(value = "/{id}/leave", method = RequestMethod.PUT)
-    public Result saveLeave(@PathVariable(name = "id") String uid, @RequestBody EmployeeResignation resignation) throws Exception {
+    public Result saveLeave(@PathVariable(name = "id") String uid, @RequestBody EmployeeResignation resignation) {
         resignation.setUserId(uid);
         resignationService.save(resignation);
         return new Result(ResultCode.SUCCESS);
@@ -165,7 +161,7 @@ public class EmployeeController extends BaseController {
      * 离职表单读取
      */
     @RequestMapping(value = "/{id}/leave", method = RequestMethod.GET)
-    public Result findLeave(@PathVariable(name = "id") String uid) throws Exception {
+    public Result findLeave(@PathVariable(name = "id") String uid) {
         EmployeeResignation resignation = resignationService.findById(uid);
         if(resignation == null) {
             resignation = new EmployeeResignation();
@@ -178,7 +174,7 @@ public class EmployeeController extends BaseController {
      * 导入员工
      */
     @RequestMapping(value = "/import", method = RequestMethod.POST)
-    public Result importDatas(@RequestParam(name = "file") MultipartFile attachment) throws Exception {
+    public Result importDatas(@RequestParam(name = "file") MultipartFile attachment) {
         return new Result(ResultCode.SUCCESS);
     }
 
@@ -186,7 +182,7 @@ public class EmployeeController extends BaseController {
      * 调岗表单保存
      */
     @RequestMapping(value = "/{id}/transferPosition", method = RequestMethod.PUT)
-    public Result saveTransferPosition(@PathVariable(name = "id") String uid, @RequestBody EmployeeTransferPosition transferPosition) throws Exception {
+    public Result saveTransferPosition(@PathVariable(name = "id") String uid, @RequestBody EmployeeTransferPosition transferPosition) {
         transferPosition.setUserId(uid);
         transferPositionService.save(transferPosition);
         return new Result(ResultCode.SUCCESS);
@@ -196,7 +192,7 @@ public class EmployeeController extends BaseController {
      * 调岗表单读取
      */
     @RequestMapping(value = "/{id}/transferPosition", method = RequestMethod.GET)
-    public Result findTransferPosition(@PathVariable(name = "id") String uid) throws Exception {
+    public Result findTransferPosition(@PathVariable(name = "id") String uid) {
         UserCompanyJobs jobsInfo = userCompanyJobsService.findById(uid);
         if(jobsInfo == null) {
             jobsInfo = new UserCompanyJobs();
@@ -209,7 +205,7 @@ public class EmployeeController extends BaseController {
      * 转正表单保存
      */
     @RequestMapping(value = "/{id}/positive", method = RequestMethod.PUT)
-    public Result savePositive(@PathVariable(name = "id") String uid, @RequestBody EmployeePositive positive) throws Exception {
+    public Result savePositive(@PathVariable(name = "id") String uid, @RequestBody EmployeePositive positive) {
         positiveService.save(positive);
         return new Result(ResultCode.SUCCESS);
     }
@@ -218,7 +214,7 @@ public class EmployeeController extends BaseController {
      * 转正表单读取
      */
     @RequestMapping(value = "/{id}/positive", method = RequestMethod.GET)
-    public Result findPositive(@PathVariable(name = "id") String uid) throws Exception {
+    public Result findPositive(@PathVariable(name = "id") String uid) {
         EmployeePositive positive = positiveService.findById(uid);
         if(positive == null) {
             positive = new EmployeePositive();
@@ -231,7 +227,7 @@ public class EmployeeController extends BaseController {
      * 历史归档详情列表
      */
     @RequestMapping(value = "/archives/{month}", method = RequestMethod.GET)
-    public Result archives(@PathVariable(name = "month") String month, @RequestParam(name = "type") Integer type) throws Exception {
+    public Result archives(@PathVariable(name = "month") String month, @RequestParam(name = "type") Integer type) {
         return new Result(ResultCode.SUCCESS);
     }
 
@@ -239,7 +235,7 @@ public class EmployeeController extends BaseController {
      * 归档更新
      */
     @RequestMapping(value = "/archives/{month}", method = RequestMethod.PUT)
-    public Result saveArchives(@PathVariable(name = "month") String month) throws Exception {
+    public Result saveArchives(@PathVariable(name = "month") String month) {
         return new Result(ResultCode.SUCCESS);
     }
 
@@ -247,7 +243,8 @@ public class EmployeeController extends BaseController {
      * 历史归档列表
      */
     @RequestMapping(value = "/archives", method = RequestMethod.GET)
-    public Result findArchives(@RequestParam(name = "pagesize") Integer pagesize, @RequestParam(name = "page") Integer page, @RequestParam(name = "year") String year) throws Exception {
+    public Result findArchives(@RequestParam(name = "pagesize") Integer pagesize, @RequestParam(name = "page") Integer page,
+                               @RequestParam(name = "year") String year) {
         Map map = new HashMap();
         map.put("year",year);
         map.put("companyId",companyId);
@@ -264,7 +261,7 @@ public class EmployeeController extends BaseController {
         //1.构造报表数据
         List<EmployeeReportResult> list = userCompanyPersonalService.findByReport(companyId , month);
         //2.加载模版
-        Resource resource = new ClassPathResource("excel-template/hr-demo.xlsx");
+        org.springframework.core.io.Resource resource = new ClassPathResource("excel-template/hr-demo.xlsx");
         FileInputStream fis = new FileInputStream(resource.getFile());
 
 

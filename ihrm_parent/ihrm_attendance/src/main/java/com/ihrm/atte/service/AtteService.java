@@ -10,7 +10,6 @@ import com.ihrm.domain.atte.entity.Attendance;
 import com.ihrm.domain.social_security.CompanySettings;
 import com.ihrm.domain.system.User;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -25,21 +24,12 @@ import java.util.Map;
 @Service
 public class AtteService  {
 
-	@Autowired
+	@Resource
 	private IdWorker idWorker;
-
-    @Autowired
+    @Resource
     private AttendanceDao attendanceDao;
-
-    @Autowired
-    private DeductionDictDao deductionDictDao;
-
-    @Autowired
+    @Resource
     private UserCDao userDao;
-
-    @Autowired
-    private AttendanceConfigDao attendanceConfigDao;
-
     @Resource(name = "ihrm_attendance")
     private CompanySettingsDao companySettingsDao;
 

@@ -4,9 +4,9 @@ import com.ihrm.common.service.BaseService;
 import com.ihrm.common.utils.IdWorker;
 import com.ihrm.company.dao.DepartmentDao;
 import com.ihrm.domain.company.Department;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -17,10 +17,10 @@ import java.util.List;
 @Service
 public class DepartmentService extends BaseService {
 
-    @Autowired
+    @Resource
     private DepartmentDao departmentDao;
 
-    @Autowired
+    @Resource
     private IdWorker idWorker;
 
     /**

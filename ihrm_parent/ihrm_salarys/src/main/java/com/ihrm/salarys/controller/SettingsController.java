@@ -5,8 +5,9 @@ import com.ihrm.common.entity.Result;
 import com.ihrm.common.entity.ResultCode;
 import com.ihrm.domain.salarys.Settings;
 import com.ihrm.salarys.service.SettingsService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 /*
  *	津贴controller
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/salarys")
 public class SettingsController extends BaseController {
 
-	@Autowired
+	@Resource
 	private SettingsService settingsService;
 
 	/**
@@ -32,7 +33,7 @@ public class SettingsController extends BaseController {
 	 * 保存企业计薪及津贴设置
 	 */
 	@RequestMapping(value = "/settings", method = RequestMethod.POST)
-	public Result saveSettings(@RequestBody Settings settings) throws Exception {
+	public Result saveSettings(@RequestBody Settings settings) {
 		settings.setCompanyId(companyId);
 		settingsService.save(settings);
 		return new Result(ResultCode.SUCCESS);

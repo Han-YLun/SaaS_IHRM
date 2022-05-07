@@ -6,9 +6,9 @@ import com.ihrm.common.entity.ResultCode;
 import com.ihrm.domain.salarys.SalaryArchive;
 import com.ihrm.domain.salarys.SalaryArchiveDetail;
 import com.ihrm.salarys.service.ArchiveService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,7 +17,7 @@ import java.util.List;
 @RequestMapping(value = "/salarys")
 public class ArchiveController extends BaseController {
 
-    @Autowired
+    @Resource
     private ArchiveService archiveService;
 
     /**

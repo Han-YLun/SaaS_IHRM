@@ -1,6 +1,5 @@
 package com.ihrm.audit;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +11,7 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.PlatformTransactionManager;
 
+import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.util.HashMap;
 
@@ -24,10 +24,10 @@ import java.util.HashMap;
 )
 public class JpaRepositoriesConfig {
 
-	@Autowired
+	@Resource
 	private Environment env;
 
-	@Autowired
+	@Resource
 	@Qualifier("ihrmDataSource")
 	private DataSource ihrmDataSource;
 
@@ -37,7 +37,7 @@ public class JpaRepositoriesConfig {
 	public LocalContainerEntityManagerFactoryBean ihrmEntityManager() {
 		LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
 		em.setDataSource(ihrmDataSource);
-		em.setPackagesToScan(new String[] { "com.ihrm.audit.entity" });
+		em.setPackagesToScan("com.ihrm.audit.entity");
 		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		em.setJpaVendorAdapter(vendorAdapter);
 		HashMap<String, Object> properties = new HashMap<>();

@@ -6,13 +6,11 @@ import com.ihrm.domain.company.Department;
 import com.ihrm.domain.system.Role;
 import com.ihrm.domain.system.User;
 import com.ihrm.system.client.CompanyFeignClient;
-import com.ihrm.system.dao.UserAndRoleRelationsDao;
-import com.ihrm.system.dao.UserDao;
 import com.ihrm.system.dao.RoleDao;
+import com.ihrm.system.dao.UserDao;
 import com.ihrm.system.utils.BaiduAiUtil;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.shiro.crypto.hash.Md5Hash;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
@@ -22,6 +20,7 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -35,19 +34,19 @@ import java.util.*;
 @Service
 public class UserService {
 
-    @Autowired
+    @Resource
     private UserDao userDao;
 
-    @Autowired
+    @Resource
     private RoleDao roleDao;
 
-    @Autowired
+    @Resource
     private IdWorker idWorker;
 
-    @Autowired
+    @Resource
     private CompanyFeignClient companyFeignClient;
 
-    @Autowired
+    @Resource
     private BaiduAiUtil baiduAiUtil;
 
     /**
@@ -137,9 +136,7 @@ public class UserService {
         };
 
         //分页
-        Page<User> pageUser = userDao.findAll(spec, new PageRequest(page-1, size));
-        
-        return pageUser;
+        return userDao.findAll(spec, new PageRequest(page-1, size));
     }
 
     /**

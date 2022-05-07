@@ -7,18 +7,19 @@ import com.ihrm.domain.system.response.FaceLoginResult;
 import com.ihrm.domain.system.response.QRCode;
 import com.ihrm.system.service.FaceLoginService;
 import com.ihrm.system.utils.BaiduAiUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.annotation.Resource;
 
 @RestController
 @RequestMapping("/sys/faceLogin")
 public class FaceLoginController {
 
-    @Autowired
+    @Resource
     private FaceLoginService faceLoginService;
 
-    @Autowired
+    @Resource
     private BaiduAiUtil baiduAiUtil;
 
 
@@ -35,7 +36,7 @@ public class FaceLoginController {
      * 检查二维码：登录页面轮询调用此方法，根据唯一标识code判断用户登录情况
      */
     @RequestMapping(value = "/qrcode/{code}", method = RequestMethod.GET)
-    public Result qrcodeCeck(@PathVariable(name = "code") String code) throws Exception {
+    public Result qrcodeCeck(@PathVariable(name = "code") String code) {
         FaceLoginResult checkQRCode = faceLoginService.checkQRCode(code);
         return new Result(ResultCode.SUCCESS , checkQRCode);
     }

@@ -8,35 +8,30 @@ import com.ihrm.common.utils.IdWorker;
 import com.ihrm.domain.atte.entity.ArchiveMonthly;
 import com.ihrm.domain.atte.entity.ArchiveMonthlyInfo;
 import com.ihrm.domain.system.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import rx.internal.schedulers.CachedThreadScheduler;
 
 import javax.annotation.Resource;
-import javax.naming.Name;
 import java.util.List;
 import java.util.Map;
-import java.util.Vector;
-import java.util.concurrent.Executors;
 
 @Service("ihrm_attendance_archiveService")
 @Transactional
 public class ArchiveService {
 
-	@Autowired
+	@Resource
 	private IdWorker idWorker;
 
 	@Resource(name = "com.ihrm.atte")
 	private UserCDao userDao;
 
-	@Autowired
+	@Resource
 	private ArchiveMonthlyInfoDao archiveMonthlyInfoDao;
 
-	@Autowired
+	@Resource
 	private ArchiveMonthlyDao archiveMonthlyDao;
 
-	@Autowired
+	@Resource
 	private AttendanceDao attendanceDao;
 
 	/**

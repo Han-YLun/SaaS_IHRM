@@ -4,10 +4,10 @@ import com.ihrm.common.service.BaseService;
 import com.ihrm.domain.system.Role;
 import com.ihrm.domain.system.RoleAndUserRelations;
 import com.ihrm.system.dao.UserAndRoleRelationsDao;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,10 +18,10 @@ import java.util.List;
 @Service
 public class UserAndRoleRelationsService extends BaseService {
 
-    @Autowired
+    @Resource
     private UserAndRoleRelationsDao userAndRoleRelationsDao;
 
-    @Autowired
+    @Resource
     private RoleService roleService;
 
     public List<RoleAndUserRelations> findRoleByUserId(String userId){

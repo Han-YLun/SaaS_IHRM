@@ -4,17 +4,18 @@ package com.ihrm.system.service;
 import com.ihrm.common.utils.IdWorker;
 import com.ihrm.domain.system.City;
 import com.ihrm.system.dao.CityDao;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class CityService {
 
-    @Autowired
+    @Resource
     private CityDao cityDao;
 
-    @Autowired
+    @Resource
     private IdWorker idWorker;
 
     /**

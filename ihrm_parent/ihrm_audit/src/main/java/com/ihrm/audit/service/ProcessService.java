@@ -4,10 +4,10 @@ import org.activiti.engine.RepositoryService;
 import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.repository.DeploymentBuilder;
 import org.activiti.engine.repository.ProcessDefinition;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.List;
 
@@ -18,7 +18,7 @@ import java.util.List;
 @Service
 public class ProcessService {
 
-    @Autowired
+    @Resource
     private RepositoryService repositoryService;
 
     /**

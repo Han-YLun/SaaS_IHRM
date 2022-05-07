@@ -4,12 +4,12 @@ import com.ihrm.common.service.BaseService;
 import com.ihrm.common.utils.IdWorker;
 import com.ihrm.domain.employee.EmployeeArchive;
 import com.ihrm.employee.dao.ArchiveDao;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -22,9 +22,10 @@ import java.util.Map;
 
 @Service
 public class ArchiveService extends BaseService {
-    @Autowired
+
+    @Resource
     private ArchiveDao archiveDao;
-    @Autowired
+    @Resource
     private IdWorker idWorker;
 
     public void save(EmployeeArchive archive) {
@@ -34,8 +35,7 @@ public class ArchiveService extends BaseService {
     }
 
     public EmployeeArchive findLast(String companyId, String month) {
-        EmployeeArchive archive = archiveDao.findByLast(companyId, month);
-        return archive;
+        return archiveDao.findByLast(companyId, month);
     }
 
     public List<EmployeeArchive> findAll(Integer page, Integer pagesize, String year, String companyId) {
@@ -69,7 +69,7 @@ public class ArchiveService extends BaseService {
                 if (searchMap.get("year")!=null && !"".equals(searchMap.get("year"))) {
                     predicateList.add(cb.like(root.get("mouth").as(String.class), (String)searchMap.get("year")));
                 }
-                return cb.and(predicateList.toArray(new Predicate[predicateList.size()]));
+                return cb.and(predicateList.toArray(new Predicate[0]));
             }
         };
     }

@@ -7,11 +7,11 @@ import com.ihrm.domain.system.Permission;
 import com.ihrm.domain.system.Role;
 import com.ihrm.system.dao.PermissionDao;
 import com.ihrm.system.dao.RoleDao;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -23,13 +23,13 @@ import java.util.Set;
 @Service
 public class RoleService extends BaseService {
 
-    @Autowired
+    @Resource
     private IdWorker idWorker;
 
-    @Autowired
+    @Resource
     private RoleDao roleDao;
 
-    @Autowired
+    @Resource
     private PermissionDao permissionDao;
 
 

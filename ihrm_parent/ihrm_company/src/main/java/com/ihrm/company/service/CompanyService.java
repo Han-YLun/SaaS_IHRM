@@ -3,17 +3,18 @@ package com.ihrm.company.service;
 import com.ihrm.common.utils.IdWorker;
 import com.ihrm.company.dao.CompanyDao;
 import com.ihrm.domain.company.Company;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class CompanyService {
-    @Autowired
+
+    @Resource
     private CompanyDao companyDao;
 
-    @Autowired
+    @Resource
     private IdWorker idWorker;
     /**
      * 保存用户

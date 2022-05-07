@@ -1,7 +1,6 @@
 package com.ihrm.salarys.service;
 
 import com.alibaba.fastjson.JSON;
-import com.ihrm.common.utils.IdWorker;
 import com.ihrm.domain.atte.entity.ArchiveMonthlyInfo;
 import com.ihrm.domain.salarys.SalaryArchive;
 import com.ihrm.domain.salarys.SalaryArchiveDetail;
@@ -12,15 +11,14 @@ import com.ihrm.salarys.dao.ArchiveDao;
 import com.ihrm.salarys.dao.ArchiveDetailDao;
 import com.ihrm.salarys.dao.UserSalaryDao;
 import com.ihrm.salarys.feign.AttendanceFeignClient;
-import com.ihrm.salarys.feign.FeignClientService;
 import com.ihrm.salarys.feign.SocialSecurityFeignClient;
-import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Type;
-import java.util.*;
+import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 归档service
@@ -28,28 +26,25 @@ import java.util.*;
 @Service
 public class ArchiveService {
 
-    @Autowired
+    @Resource
     private ArchiveDao archiveDao;
 
-    @Autowired
+    @Resource
     private ArchiveDetailDao archiveDetailDao;
 
-    @Autowired
-    private FeignClientService feignClientService;
-
-    @Autowired
+    @Resource
     private AttendanceFeignClient attendanceFeignClient;
 
-    @Autowired
+    @Resource
     private SocialSecurityFeignClient socialSecurityFeignClient;
 
-    @Autowired
+    @Resource
     private SettingsService settingsService;
 
-    @Autowired
+    @Resource
     private UserSalaryDao userSalaryDao;
 
-    @Autowired
+    @Resource
     private SalaryService salaryService;
 
 
@@ -95,19 +90,17 @@ public class ArchiveService {
                 ArchiveDetail socialInfo = JSON.parseObject(JSON.toJSONString(obj),  ArchiveDetail.class);
                 if (socialInfo != null){
                     saDetail.setSocialInfo(socialInfo);
+                    obj = attendanceFeignClient.historyData(saDetail.getUserId(), yearMonth).getData();
                     if (obj != null){
-                        obj = attendanceFeignClient.historyData(saDetail.getUserId(), yearMonth).getData();
-                        if (obj != null){
-                            ArchiveMonthlyInfo atteInfo = JSON.parseObject(JSON.toJSONString(obj),  ArchiveMonthlyInfo.class);
-                            if (atteInfo != null){
-                                saDetail.setAtteInfo(atteInfo);
-                                //获取每个用户的薪资
-                                UserSalary userSalary = salaryService.findUserSalary(saDetail.getUserId());
-                                if (userSalary != null){
-                                    saDetail.setUserSalary(userSalary);
-                                    //计算工资
-                                    saDetail.calSalary(setting);
-                                }
+                        ArchiveMonthlyInfo atteInfo = JSON.parseObject(JSON.toJSONString(obj),  ArchiveMonthlyInfo.class);
+                        if (atteInfo != null){
+                            saDetail.setAtteInfo(atteInfo);
+                            //获取每个用户的薪资
+                            UserSalary userSalary = salaryService.findUserSalary(saDetail.getUserId());
+                            if (userSalary != null){
+                                saDetail.setUserSalary(userSalary);
+                                //计算工资
+                                saDetail.calSalary(setting);
                             }
                         }
                     }
