@@ -79,7 +79,6 @@ public class UserController extends BaseController {
         return new Result(ResultCode.SUCCESS);
     }
 
-
     /**
      * 分配角色
      */

@@ -4,6 +4,7 @@ import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -12,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author: hyl
  * @date: 2020/03/13
  **/
-//@Component
+@Component
 public class LoginFilter extends ZuulFilter {
 
     /**
@@ -51,10 +52,9 @@ public class LoginFilter extends ZuulFilter {
     /**
      * 过滤器中负责的具体业务逻辑
      * @return  返回NULL,继续向后执行
-     * @throws ZuulException
      */
     @Override
-    public Object run() throws ZuulException {
+    public Object run() {
         //登录校验逻辑
         //获取Zuul提供的请求上下文对象
         RequestContext ctx = RequestContext.getCurrentContext();
