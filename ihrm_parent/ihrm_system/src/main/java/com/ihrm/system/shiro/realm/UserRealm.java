@@ -11,7 +11,6 @@ import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -32,8 +31,8 @@ public class UserRealm extends IhrmRealm {
 
     /**
      * 认证方法
-     * @param authenticationToken
-     * @return
+     * @param authenticationToken   权限token
+     * @return  权限token对应的权限Info
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) {
@@ -52,15 +51,12 @@ public class UserRealm extends IhrmRealm {
             if (Constant.UserLevel.USER.equals(user.getLevel())){
                 result = new ProfileResult(user);
             }else{
-                Map<String,Object> map = new HashMap(1);
+                Map<String,Object> map = new HashMap<>(1);
                 //如果是企业管理员,就查询企业管理员可见的
                 if (Constant.UserLevel.COADMIN.equals(user.getLevel())){
                     map.put("enVisible" , "1");
                 }else if (Constant.UserLevel.SAASADMIN.equals(user.getLevel())){
-                    //如果是SaaS管理员，只显示企业不显示的
-                    /**
-                     * 即只显示企业管理和模块管理
-                     */
+                    //如果是SaaS管理员，只显示企业不显示的，即只显示企业管理和模块管理
                     map.put("enVisible" , "0");
                 }
                 List<Permission> list = permissionService.findAll(map);
