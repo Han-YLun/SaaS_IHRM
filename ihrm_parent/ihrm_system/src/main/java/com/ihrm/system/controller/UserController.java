@@ -35,7 +35,7 @@ import java.util.Map;
  * @date: 2020/01/09
  **/
 //解决跨域
-@CrossOrigin
+//@CrossOrigin
 @RestController
 @RequestMapping(value = "/sys")
 public class UserController extends BaseController {
@@ -125,7 +125,6 @@ public class UserController extends BaseController {
         return new Result(ResultCode.SUCCESS , pageResult);
     }
 
-
     /**
      * 根据Id查询
      */
@@ -159,7 +158,7 @@ public class UserController extends BaseController {
     /**
      * 用户登录
      */
-    @RequestMapping(value = "/login" , method = RequestMethod.POST)
+    @PostMapping(value = "/login")
     public Result login(@RequestBody Map<String,Object> loginMap){
         String mobile = (String) loginMap.get("mobile");
         String password = (String) loginMap.get("password");
@@ -191,6 +190,7 @@ public class UserController extends BaseController {
             //构造返回结果
             return new Result(ResultCode.SUCCESS , sessionId);
         }catch (Exception e){
+            System.out.println("error : " + e);
             return new Result(ResultCode.MOBILEORPASSWORDERROR);
         }
     }
@@ -199,15 +199,13 @@ public class UserController extends BaseController {
      * 用户登录成功之后,获取用户信息
      */
     @RequestMapping(value = "/profile" , method = RequestMethod.POST)
-    public Result profile(HttpServletRequest request) throws Exception {
-
+    public Result profile() {
         //获取session中的安全数据
         Subject subject = SecurityUtils.getSubject();
         //subject获取所有的安全集合
         PrincipalCollection principals = subject.getPrincipals();
         //获取安全数据
         ProfileResult result = (ProfileResult) principals.getPrimaryPrincipal();
-
         return new Result(ResultCode.SUCCESS,result);
     }
 

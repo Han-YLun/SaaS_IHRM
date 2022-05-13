@@ -136,7 +136,7 @@ public class UserService {
         };
 
         //分页
-        return userDao.findAll(spec, new PageRequest(page-1, size));
+        return userDao.findAll(spec, PageRequest.of(page - 1, size));
     }
 
     /**

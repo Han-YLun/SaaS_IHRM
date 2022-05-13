@@ -11,6 +11,7 @@ import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -36,7 +37,6 @@ public class UserRealm extends IhrmRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) {
-
         //获取用户的手机号和密码
         UsernamePasswordToken upToken = (UsernamePasswordToken) authenticationToken;
         String mobile = upToken.getUsername();

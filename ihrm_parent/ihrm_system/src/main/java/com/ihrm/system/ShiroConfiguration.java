@@ -37,7 +37,6 @@ public class ShiroConfiguration {
         securityManager.setSessionManager(sessionManager());
         //将自定义的redis缓存管理器注册到安全管理器中
         securityManager.setCacheManager(cacheManager());
-
         return securityManager;
     }
 
@@ -69,7 +68,6 @@ public class ShiroConfiguration {
         filterMap.put("/**","authc");
         //perms -- 具有某中权限 (使用注解配置授权)
         filterFactory.setFilterChainDefinitionMap(filterMap);
-
         return filterFactory;
     }
 

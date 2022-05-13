@@ -45,7 +45,7 @@ public class AtteService  {
         CompanySettings css = companySettingsDao.findById(companyId).get();
         String dataMonth = css.getDataMonth();
         //分页查询用户
-        Page<User> users = userDao.findPage(companyId, new PageRequest(page - 1, pageSize));
+        Page<User> users = userDao.findPage(companyId, PageRequest.of(page - 1, pageSize));
         List<AtteItemBO> list = new ArrayList<>();
         //循环所有的用户,获取每个用户每天的考勤情况
         for (User user : users.getContent()) {

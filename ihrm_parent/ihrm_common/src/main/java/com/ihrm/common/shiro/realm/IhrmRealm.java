@@ -18,10 +18,10 @@ import java.util.Set;
  **/
 public class IhrmRealm extends AuthorizingRealm {
 
+    @Override
     public void setName(String name){
         super.setName("IhrmRealm");
     }
-
 
     //授权方法
     @Override

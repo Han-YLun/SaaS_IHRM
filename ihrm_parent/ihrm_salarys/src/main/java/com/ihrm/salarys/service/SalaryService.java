@@ -29,7 +29,7 @@ public class SalaryService {
 
 	//分页查询当月薪资列表
 	public PageResult findAll(Integer page, Integer pageSize, String companyId) {
-		Page page1 = userSalaryDao.findPage(companyId, new PageRequest(page - 1, pageSize));
+        Page page1 = userSalaryDao.findPage(companyId, PageRequest.of(page - 1, pageSize));
 		page1.getContent();
 		return new PageResult(page1.getTotalElements(),page1.getContent());
 	}

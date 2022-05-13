@@ -30,6 +30,11 @@ spring:
     database: MySQL
     show-sql: true
     open-in-view: true
+feign:
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false
 my:
   appId: 15191935
   apiKey: cyWSHgas93Vtdmt42OwbW8pu

@@ -23,7 +23,6 @@ import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
 @EnableFeignClients
 public class SystemApplication {
 
-
     /**
      * 启动方法
      */

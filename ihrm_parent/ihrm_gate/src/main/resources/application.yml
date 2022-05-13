@@ -17,6 +17,8 @@ spring:
   redis:
     host: 127.0.0.1
     port: 6379
+  main:
+    allow-bean-definition-overriding: true
 #配置路由规则
 zuul:
   host:
