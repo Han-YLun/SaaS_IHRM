@@ -8,14 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "sa_company_settings")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CompanySettings implements Serializable {
+public class SalaryCompanySettings implements Serializable {
     private static final long serialVersionUID = -2620680846592406186L;
     /**
      * 企业id

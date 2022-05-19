@@ -26,7 +26,7 @@ public class UserSocialService {
      */
     public PageResult<Object> findAll(int page, int pageSize, String companyId) {
 
-        Page<Map<String,Object>> pageData = userSocialSecurityDao.findPage(companyId, new PageRequest(page - 1, pageSize));
+        Page<Map<String,Object>> pageData = userSocialSecurityDao.findPage(companyId, PageRequest.of(page - 1, pageSize));
         return new PageResult(pageData.getTotalElements() , pageData.getContent());
     }
 

@@ -1,6 +1,6 @@
 package com.ihrm.social.service;
 
-import com.ihrm.domain.social_security.CompanySettings;
+import com.ihrm.domain.social_security.SocialsecurityCompanySettings;
 import com.ihrm.social.dao.CompanySettingsDao;
 import org.springframework.stereotype.Service;
 
@@ -14,15 +14,15 @@ public class CompanySettingsService {
     private CompanySettingsDao companySettingsDao;
 
     //根据企业id查询
-	public CompanySettings findById(String companyId) {
-		Optional<CompanySettings> optional = companySettingsDao.findById(companyId);
+	public SocialsecurityCompanySettings findById(String companyId) {
+		Optional<SocialsecurityCompanySettings> optional = companySettingsDao.findById(companyId);
 		return optional.orElse(null);
 	}
 
 	//保存企业设置
-	public void save(CompanySettings companySettings) {
+	public void save(SocialsecurityCompanySettings socialsecurityCompanySettings) {
 		//已经完成当月设置
-		companySettings.setIsSettings(1);
-		companySettingsDao.save(companySettings);
+		socialsecurityCompanySettings.setIsSettings(1);
+		companySettingsDao.save(socialsecurityCompanySettings);
 	}
 }

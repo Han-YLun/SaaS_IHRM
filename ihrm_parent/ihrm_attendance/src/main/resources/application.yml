@@ -11,6 +11,8 @@ server:
   port: 9005
 #spring配置
 spring:
+  main:
+    allow-bean-definition-overriding: true
   #1.应用配置
   application:
     name: ihrm-attendance #指定服务名

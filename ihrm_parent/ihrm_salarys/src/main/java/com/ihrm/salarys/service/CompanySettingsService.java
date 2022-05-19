@@ -1,7 +1,7 @@
 package com.ihrm.salarys.service;
 
-import com.ihrm.domain.salarys.CompanySettings;
-import com.ihrm.salarys.dao.CompanySettingsDao;
+import com.ihrm.domain.salarys.SalaryCompanySettings;
+import com.ihrm.salarys.dao.SalaryCompanySettingsDao;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -11,17 +11,17 @@ import java.util.Optional;
 public class CompanySettingsService {
 	
     @Resource
-    private CompanySettingsDao companySettingsDao;
+    private SalaryCompanySettingsDao salaryCompanySettingsDao;
 
     //根据id获取查询
-    public CompanySettings findById(String companyId) {
-        Optional<CompanySettings> optionalCompanySettins = companySettingsDao.findById(companyId);
+    public SalaryCompanySettings findById(String companyId) {
+        Optional<SalaryCompanySettings> optionalCompanySettins = salaryCompanySettingsDao.findById(companyId);
         return optionalCompanySettins.orElse(null);
     }
 
     //保存配置
-    public void save(CompanySettings companySettings) {
+    public void save(SalaryCompanySettings companySettings) {
         companySettings.setIsSettings(1);
-        companySettingsDao.save(companySettings);
+        salaryCompanySettingsDao.save(companySettings);
     }
 }

@@ -46,7 +46,7 @@ public class SocialSecurityController extends BaseController {
      */
     @RequestMapping(value = "/settings" , method = RequestMethod.GET)
     public Result settings(){
-        CompanySettings cs = companySettingsService.findById(companyId);
+        SocialsecurityCompanySettings cs = companySettingsService.findById(companyId);
         return new Result(ResultCode.SUCCESS , cs);
     }
 
@@ -54,9 +54,9 @@ public class SocialSecurityController extends BaseController {
      * 保存企业设置
      */
     @RequestMapping(value = "/settings" , method = RequestMethod.POST)
-    public Result saveSettings(@RequestBody CompanySettings companySettings){
-        companySettings.setCompanyId(companyId);
-        companySettingsService.save(companySettings);
+    public Result saveSettings(@RequestBody SocialsecurityCompanySettings socialsecurityCompanySettings){
+        socialsecurityCompanySettings.setCompanyId(companyId);
+        companySettingsService.save(socialsecurityCompanySettings);
         return new Result(ResultCode.SUCCESS);
     }
 
@@ -145,9 +145,9 @@ public class SocialSecurityController extends BaseController {
      */
     @RequestMapping(value = "/historys/{yearMonth}/newReport" , method = RequestMethod.PUT)
     public Result newReport(@PathVariable String yearMonth){
-        CompanySettings cs = companySettingsService.findById(companyId);
+        SocialsecurityCompanySettings cs = companySettingsService.findById(companyId);
         if (cs == null){
-            cs = new CompanySettings();
+            cs = new SocialsecurityCompanySettings();
         }
         cs.setCompanyId(companyId);
         cs.setDataMonth(yearMonth);

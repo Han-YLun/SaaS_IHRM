@@ -9,6 +9,8 @@ eureka:
 server:
   port: 9004
 spring:
+  main:
+    allow-bean-definition-overriding: true
   application:
     name: ihrm-social-securitys #指定服务名
   datasource:

@@ -75,33 +75,30 @@ public class AuditService {
      */
     public Page getInstanceList(ProcInstance instance, int page, int size) {
         //使用Specification进行查询
-        Specification<ProcInstance> spec = new Specification<ProcInstance>() {
-            @Override
-            public Predicate toPredicate(Root<ProcInstance> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-                List<Predicate> list = new ArrayList<>();
-                //审批类型
-                if (!StringUtils.isEmpty(instance.getProcessKey())){
-                    list.add(cb.equal(root.get("processKey").as(String.class) , instance.getProcessKey()));
-                }
-                //审批状态
-                if (!StringUtils.isEmpty(instance.getProcessState())){
-                    Expression<String> exp =root.get("processState");
-                    list.add(exp.in(instance.getProcessState().split(",")));
-                }
-                //当前节点的待处理人
-                if (!StringUtils.isEmpty(instance.getProcCurrNodeUserId())){
-                    list.add(cb.like(root.get("procCurrNodeUserId").as(String.class) , "%" + instance.getProcCurrNodeUserId() + "%"));
-                }
-                //发起人 -- userId
-                if(!StringUtils.isEmpty(instance.getUserId())) {
-                    list.add(cb.equal(root.get("userId").as(String.class),instance.getUserId()));
-                }
-                return cb.and(list.toArray(new Predicate[list.size()]));
+        Specification<ProcInstance> spec = (root, query, cb) -> {
+            List<Predicate> list = new ArrayList<>();
+            //审批类型
+            if (!StringUtils.isEmpty(instance.getProcessKey())){
+                list.add(cb.equal(root.get("processKey").as(String.class) , instance.getProcessKey()));
             }
+            //审批状态
+            if (!StringUtils.isEmpty(instance.getProcessState())){
+                Expression<String> exp =root.get("processState");
+                list.add(exp.in(instance.getProcessState().split(",")));
+            }
+            //当前节点的待处理人
+            if (!StringUtils.isEmpty(instance.getProcCurrNodeUserId())){
+                list.add(cb.like(root.get("procCurrNodeUserId").as(String.class) , "%" + instance.getProcCurrNodeUserId() + "%"));
+            }
+            //发起人 -- userId
+            if(!StringUtils.isEmpty(instance.getUserId())) {
+                list.add(cb.equal(root.get("userId").as(String.class),instance.getUserId()));
+            }
+            return cb.and(list.toArray(new Predicate[0]));
         };
         //构造查询条件
         //调用dao进行specification查询
-        return procInstanceDao.findAll(spec , new PageRequest(page-1 , size));
+        return procInstanceDao.findAll(spec , PageRequest.of(page-1 , size));
     }
 
     /**

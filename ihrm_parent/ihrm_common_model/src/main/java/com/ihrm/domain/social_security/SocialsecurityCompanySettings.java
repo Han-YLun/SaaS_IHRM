@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CompanySettings implements Serializable {
+public class SocialsecurityCompanySettings implements Serializable {
     private static final long serialVersionUID = 5753095342370704726L;
     /**
      * 企业id

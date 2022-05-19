@@ -7,7 +7,7 @@ import com.ihrm.common.utils.IdWorker;
 import com.ihrm.domain.atte.bo.AtteItemBO;
 import com.ihrm.domain.atte.entity.ArchiveMonthlyInfo;
 import com.ihrm.domain.atte.entity.Attendance;
-import com.ihrm.domain.social_security.CompanySettings;
+import com.ihrm.domain.social_security.SocialsecurityCompanySettings;
 import com.ihrm.domain.system.User;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
@@ -31,7 +31,7 @@ public class AtteService  {
     @Resource
     private UserCDao userDao;
     @Resource(name = "ihrm_attendance")
-    private CompanySettingsDao companySettingsDao;
+    private SocialSecurityCompanySettingsDao socialSecurityCompanySettingsDao;
 
     /**
      * 获取用户的考勤数据
@@ -42,7 +42,7 @@ public class AtteService  {
      */
     public Map getAtteDate(String companyId, int page, int pageSize) throws ParseException {
         //考勤月
-        CompanySettings css = companySettingsDao.findById(companyId).get();
+        SocialsecurityCompanySettings css = socialSecurityCompanySettingsDao.findById(companyId).get();
         String dataMonth = css.getDataMonth();
         //分页查询用户
         Page<User> users = userDao.findPage(companyId, PageRequest.of(page - 1, pageSize));
@@ -126,8 +126,8 @@ public class AtteService  {
      * @param companyId 企业id
      */
     public void newReports(String atteDate, String companyId) {
-        CompanySettings companySettings = companySettingsDao.findById(companyId).get();
-        companySettings.setDataMonth(atteDate);
-        companySettingsDao.save(companySettings);
+        SocialsecurityCompanySettings socialsecurityCompanySettings = socialSecurityCompanySettingsDao.findById(companyId).get();
+        socialsecurityCompanySettings.setDataMonth(atteDate);
+        socialSecurityCompanySettingsDao.save(socialsecurityCompanySettings);
     }
 }
