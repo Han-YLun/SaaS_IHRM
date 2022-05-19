@@ -26,5 +26,5 @@ public interface AttendanceDao extends CrudRepository<Attendance,Long> , JpaRepo
                     "       COUNT(CASE WHEN adt_statu=8 THEN 1 END) at8," +
                     "       COUNT(CASE WHEN adt_statu=17 THEN 1 END) at17" +
                     "       FROM atte_attendance WHERE  user_id=?1 AND DAY LIKE ?2")
-    Map statisByUser(String id, String s);
+    Map<String,String> statisByUser(String id, String s);
 }

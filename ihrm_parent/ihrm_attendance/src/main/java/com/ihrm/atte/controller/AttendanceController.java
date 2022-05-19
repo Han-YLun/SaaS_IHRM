@@ -48,7 +48,7 @@ public class AttendanceController extends BaseController {
      */
     @RequestMapping(value = "" , method = RequestMethod.GET)
     public Result list(int page,int pagesize) throws ParseException {
-        Map map = atteService.getAtteDate(companyId , page , pagesize);
+        Map<String,Object> map = atteService.getAtteDate(companyId , page , pagesize);
         return new Result(ResultCode.SUCCESS , map);
     }
 
@@ -57,7 +57,7 @@ public class AttendanceController extends BaseController {
      */
     @RequestMapping(value = "/{id}" , method = RequestMethod.PUT)
     public Result editAtte(@RequestBody Attendance attendance){
-        atteService.ehitAtte(attendance);
+        atteService.editAtte(attendance);
         return new Result(ResultCode.SUCCESS);
     }
 

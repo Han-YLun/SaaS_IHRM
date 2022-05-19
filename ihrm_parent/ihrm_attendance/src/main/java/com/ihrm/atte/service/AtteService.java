@@ -16,10 +16,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 public class AtteService  {
@@ -40,9 +37,14 @@ public class AtteService  {
      * @param pageSize  每页大小
      * @return  获取对应公司的对应月份的考勤数据
      */
-    public Map getAtteDate(String companyId, int page, int pageSize) throws ParseException {
+    public Map<String,Object> getAtteDate(String companyId, int page, int pageSize) throws ParseException {
         //考勤月
-        SocialsecurityCompanySettings css = socialSecurityCompanySettingsDao.findById(companyId).get();
+        Optional<SocialsecurityCompanySettings> socialSecurityCompanySettingsOptional = socialSecurityCompanySettingsDao.findById(companyId);
+        if (!socialSecurityCompanySettingsOptional.isPresent()){
+            return Collections.emptyMap();
+        }
+
+        SocialsecurityCompanySettings css = socialSecurityCompanySettingsOptional.get();
         String dataMonth = css.getDataMonth();
         //分页查询用户
         Page<User> users = userDao.findPage(companyId, PageRequest.of(page - 1, pageSize));
@@ -59,7 +61,8 @@ public class AtteService  {
                 Attendance atte = attendanceDao.findByUserIdAndDay(user.getId(), day);
                 if (atte == null){
                     atte = new Attendance();
-                    atte.setAdtStatu(2);    //旷工
+                    //旷工
+                    atte.setAdtStatu(2);
                     atte.setId(user.getId());
                     atte.setDay(day);
                 }
@@ -69,7 +72,7 @@ public class AtteService  {
             bo.setAttendanceRecord(attendanceRecord);
             list.add(bo);
         }
-        Map map = new HashMap();
+        Map<String,Object> map = new HashMap<>(3);
 
         //分页对象数据
         PageResult<AtteItemBO> pr = new PageResult<>(users.getTotalElements(), list);
@@ -87,7 +90,7 @@ public class AtteService  {
      * 编辑考勤
      * @param attendance 考勤数据
      */
-    public void ehitAtte(Attendance attendance) {
+    public void editAtte(Attendance attendance) {
         //查询考勤记录是否存在
         Attendance ac = attendanceDao.findByUserIdAndDay(attendance.getUserId(), attendance.getDay());
         if (ac == null){
@@ -113,7 +116,7 @@ public class AtteService  {
         for (User user : users) {
             ArchiveMonthlyInfo info = new ArchiveMonthlyInfo(user);
             //统计每个用户的考勤数量
-            Map map = attendanceDao.statisByUser(user.getId() , atteDate+"%");
+            Map<String,String> map = attendanceDao.statisByUser(user.getId() , atteDate+"%");
             info.setStatisData(map);
             list.add(info);
         }
