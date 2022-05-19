@@ -70,7 +70,7 @@
         <guava.version>31.1-jre</guava.version>
         <springfox-swagger2.version>3.0.0</springfox-swagger2.version>
         <hibernate-jpa-2.1-api.version>1.0.2.Final</hibernate-jpa-2.1-api.version>
-        <org-springframework-boot.version>2.2.5.RELEASE</org-springframework-boot.version>
+        <org-springframework-boot.version>2.5.12</org-springframework-boot.version>
         <org-springframework-cloud-version>2.2.0.RELEASE</org-springframework-cloud-version>
     </properties>
 
