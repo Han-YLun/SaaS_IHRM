@@ -49,7 +49,6 @@
         <qiniu-java-sdk.version>7.9.4</qiniu-java-sdk.version>
         <poi-ooxml-schemas.version>4.1.2</poi-ooxml-schemas.version>
         <poi-ooxml.version>5.2.2</poi-ooxml.version>
-        <spring-cloud-dependencies.version>Finchley.SR1</spring-cloud-dependencies.version>
         <javase.version>3.4.1</javase.version>
         <java-sdk.version>4.16.7</java-sdk.version>
         <springfox-swagger-ui.version>3.0.0</springfox-swagger-ui.version>
@@ -64,7 +63,6 @@
         <spring-boot-starter-test.version>2.6.7</spring-boot-starter-test.version>
         <spring-boot-starter-test.scope>test</spring-boot-starter-test.scope>
         <mysql-connector-java.version>8.0.28</mysql-connector-java.version>
-        <spring-cloud-starter-openfeign.version>3.1.1</spring-cloud-starter-openfeign.version>
         <lowagie.itext.version>2.1.7</lowagie.itext.version>
         <org.olap4j.version>1.2.0</org.olap4j.version>
         <net.sf.jasperreports.version>6.4.0</net.sf.jasperreports.version>
@@ -72,19 +70,12 @@
         <guava.version>31.1-jre</guava.version>
         <springfox-swagger2.version>3.0.0</springfox-swagger2.version>
         <hibernate-jpa-2.1-api.version>1.0.2.Final</hibernate-jpa-2.1-api.version>
-        <spring-cloud-starter-netflix-zuul.version>2.2.10.RELEASE</spring-cloud-starter-netflix-zuul.version>
         <org-springframework-boot.version>2.2.5.RELEASE</org-springframework-boot.version>
-        <org-springframework-cloud-version>Hoxton.SR8</org-springframework-cloud-version>
+        <org-springframework-cloud-version>2.2.0.RELEASE</org-springframework-cloud-version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-            <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-                <version>${org-springframework-boot.version}</version>
-            </dependency>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-actuator</artifactId>
@@ -94,25 +85,25 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
-                <version>2.2.0.RELEASE</version>
+                <version>${org-springframework-cloud-version}</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-openfeign -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-openfeign</artifactId>
-                <version>2.2.0.RELEASE</version>
+                <version>${org-springframework-cloud-version}</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-eureka-client -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-                <version>2.2.0.RELEASE</version>
+                <version>${org-springframework-cloud-version}</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-eureka-server -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-                <version>2.2.0.RELEASE</version>
+                <version>${org-springframework-cloud-version}</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-web -->
             <dependency>
