@@ -37,7 +37,7 @@
         <fastjson.version>1.2.80</fastjson.version>
         <lombok.version>1.18.22</lombok.version>
         <shiro-spring.version>1.9.0</shiro-spring.version>
-        <shiro-core.version>1.9.0</shiro-core.version>
+        <shiro-core.version>1.9.1</shiro-core.version>
         <shiro-redis.version>3.${maven-compiler-plugin.version}</shiro-redis.version>
         <poi.version>${poi-ooxml.version}</poi.version>
         <maven-surefire-plugin.version>2.12.4</maven-surefire-plugin.version>
