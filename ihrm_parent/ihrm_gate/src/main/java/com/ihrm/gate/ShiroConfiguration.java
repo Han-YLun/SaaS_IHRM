@@ -17,6 +17,9 @@ import org.springframework.context.annotation.Configuration;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * @author arvinyl
+ */
 @Configuration("ihrm_gate")
 public class ShiroConfiguration {
 
@@ -26,13 +29,19 @@ public class ShiroConfiguration {
     @Value("${spring.redis.port}")
     private int port;
 
-    //配置自定义的Realm
+    /**
+     * 配置自定义的Realm
+     * @return  IhrmRealm
+     */
     @Bean
     public IhrmRealm getRealm() {
         return new IhrmRealm();
     }
 
-    //配置安全管理器
+    /**
+     * 配置安全管理器
+     * @return  SecurityManager
+     */
     @Bean
     public SecurityManager securityManager() {
         //使用默认的安全管理器
@@ -46,7 +55,11 @@ public class ShiroConfiguration {
         return securityManager;
     }
 
-    //Filter工厂，设置对应的过滤条件和跳转条件
+    /**
+     * Filter工厂，设置对应的过滤条件和跳转条件
+     * @param securityManager 安全管理器
+     * @return ShiroFilterFactoryBean
+     */
     @Bean
     public ShiroFilterFactoryBean shirFilter(SecurityManager securityManager) {
         //1.创建shiro过滤器工厂
@@ -54,17 +67,16 @@ public class ShiroConfiguration {
         //2.设置安全管理器
         filterFactory.setSecurityManager(securityManager);
         //3.通用配置（配置登录页面，登录成功页面，验证未成功页面）
-        filterFactory.setLoginUrl("/autherror?code=1"); //设置登录页面
-        filterFactory.setUnauthorizedUrl("/autherror?code=2"); //授权失败跳转页面
+        //设置登录页面
+        //授权失败跳转页面
+        filterFactory.setLoginUrl("/autherror?code=1");
+        filterFactory.setUnauthorizedUrl("/autherror?code=2");
         //4.配置过滤器集合
-        /**
-         * key  ：访问连接
-         *      支持通配符的形式
-         * value：过滤器类型
-         *      shiro常用过滤器
-         *          anon    ：匿名访问（表明此链接所有人可以访问）
-         *          authc   ：认证后访问（表明此链接需登录认证成功之后可以访问）
-         */
+
+        //key   : 访问连接,支持通配符的形式
+        //value : 过滤器类型,shiro常用过滤器
+        //anon  : 匿名访问（表明此链接所有人可以访问
+        //authc : 认证后访问（表明此链接需登录认证成功之后可以访问）
         Map<String,String> filterMap = new LinkedHashMap<String,String>();
         //配置请求连接过滤器配置
         //匿名访问（所有人员可以使用）
@@ -73,17 +85,18 @@ public class ShiroConfiguration {
         filterMap.put("/employees/export/*" , "anon");
         filterMap.put("/employees/*/pdf" , "anon");
         filterMap.put("/sys/faceLogin/**" , "anon");
-
-
         //认证之后访问（登录之后可以访问）
         filterMap.put("/**", "authc");
-
         //5.设置过滤器
         filterFactory.setFilterChainDefinitionMap(filterMap);
         return filterFactory;
     }
 
-    //配置shiro注解支持
+    /**
+     * 配置shiro注解支持
+     * @param securityManager   安全管理器
+     * @return  AuthorizationAttributeSourceAdvisor
+     */
     @Bean
     public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(SecurityManager securityManager) {
         AuthorizationAttributeSourceAdvisor advisor = new AuthorizationAttributeSourceAdvisor();
@@ -91,14 +104,20 @@ public class ShiroConfiguration {
         return advisor;
     }
 
-    //配置shiro redisManager
+    /**
+     * 配置shiro redisManager
+     * @return  RedisManager
+     */
     public RedisManager redisManager() {
         RedisManager redisManager = new RedisManager();
         redisManager.setHost(host+":"+port);
         return redisManager;
     }
 
-    //cacheManager缓存 redis实现
+    /**
+     * 配置shiro redisSessionDAO
+     * @return  RedisSessionDAO
+     */
     public RedisCacheManager cacheManager() {
         RedisCacheManager redisCacheManager = new RedisCacheManager();
         redisCacheManager.setRedisManager(redisManager());
