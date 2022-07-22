@@ -1,6 +1,9 @@
 #  基于Saas的IHRM系统
 
-[![Star History Chart](https://api.star-history.com/svg?repos=Han-YLun/SaaS_IHRM&type=Timeline)](https://star-history.com/#lafjs/laf&Han-YLun/SaaS_IHRM&Timeline)
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=Han-YLun/SaaS_IHRM&type=Date)](https://star-history.com/#Han-YLun/SaaS_IHRM&Date)
+
 
 
 
