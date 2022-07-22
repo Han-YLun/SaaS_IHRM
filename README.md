@@ -1,6 +1,6 @@
 #  基于Saas的IHRM系统
 
-[![Stargazers over time](https://starchart.cc/Han-YLun/SaaS_IHRM.svg)](https://starchart.cc/Han-YLun/SaaS_IHRM)
+[![Star History Chart](https://api.star-history.com/svg?repos=Han-YLun/SaaS_IHRM&type=Timeline)](https://star-history.com/#lafjs/laf&Han-YLun/SaaS_IHRM&Timeline)
 
 
 
