@@ -15,6 +15,11 @@ import javax.annotation.Resource;
 import javax.sql.DataSource;
 import java.util.HashMap;
 
+
+
+/**
+ * @author arvinyl
+ */
 @Configuration
 @EnableJpaRepositories(
 	//代理的dao接口所在的包
@@ -31,7 +36,10 @@ public class JpaRepositoriesConfig {
 	@Qualifier("ihrmDataSource")
 	private DataSource ihrmDataSource;
 
-	//创建entityManagerFactory工厂
+	/**
+	 * 创建entityManagerFactory工厂
+	 * @return LocalContainerEntityManagerFactoryBean
+	 */
 	@Bean
 	@Primary
 	public LocalContainerEntityManagerFactoryBean ihrmEntityManager() {
@@ -47,7 +55,10 @@ public class JpaRepositoriesConfig {
 		return em;
 	}
 
-	//创建事务管理器
+	/**
+	 * 创建事务管理器
+	 * @return LocalContainerEntityManagerFactoryBean
+	 */
 	@Primary
 	@Bean
 	public PlatformTransactionManager ihrmTransactionManager() {

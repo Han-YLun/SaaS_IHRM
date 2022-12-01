@@ -65,7 +65,8 @@ public class UserService {
         //md5加密密码
         String password = new Md5Hash("123456", user.getMobile(), 3).toString();
         user.setLevel("user");
-        user.setPassword(password);//设置初始密码
+        //设置初始密码
+        user.setPassword(password);
         user.setEnableState(1);
         user.setId(id);
         //调用dao保存用户
