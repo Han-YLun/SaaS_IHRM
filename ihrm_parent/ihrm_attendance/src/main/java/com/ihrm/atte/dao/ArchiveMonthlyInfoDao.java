@@ -11,20 +11,22 @@ import java.util.Map;
 /**
  * @author arvinyl
  */
-public interface ArchiveMonthlyInfoDao extends CrudRepository<ArchiveMonthlyInfo,String>, JpaRepository<ArchiveMonthlyInfo,String>, JpaSpecificationExecutor<ArchiveMonthlyInfo> {
+public interface ArchiveMonthlyInfoDao extends CrudRepository<ArchiveMonthlyInfo, String>, JpaRepository<ArchiveMonthlyInfo, String>, JpaSpecificationExecutor<ArchiveMonthlyInfo> {
 
     /**
      * 根据归档列表查询月归档详情
-     * @param atteArchiveMonthlyId
-     * @return
+     *
+     * @param atteArchiveMonthlyId atte_archive_monthly_id
+     * @return 月归档记录
      */
     List<ArchiveMonthlyInfo> findByAtteArchiveMonthlyId(String atteArchiveMonthlyId);
 
     /**
      * 根据用户id和年月查询归档明细
-     * @param userId	用户id
-     * @param yearMonth	年月
-     * @return	用户id和对应年月的归档明细
+     *
+     * @param userId    用户id
+     * @param yearMonth 年月
+     * @return 用户id和对应年月的归档明细
      */
     ArchiveMonthlyInfo findByUserIdAndArchiveDate(String userId, String yearMonth);
 }

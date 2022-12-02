@@ -2,7 +2,7 @@ package com.ihrm.atte.service;
 
 import com.ihrm.atte.dao.AttendanceConfigDao;
 import com.ihrm.atte.dao.AttendanceDao;
-import com.ihrm.atte.dao.UserCDao;
+import com.ihrm.atte.dao.UserDao;
 import com.ihrm.common.poi.ExcelImportUtil;
 import com.ihrm.common.utils.DateUtil;
 import com.ihrm.common.utils.IdWorker;
@@ -26,7 +26,7 @@ import java.util.List;
 public class ExcelImportService {
 
     @Resource
-    private UserCDao userDao;
+    private UserDao userDao;
 
     @Resource
     private AttendanceDao attendanceDao;

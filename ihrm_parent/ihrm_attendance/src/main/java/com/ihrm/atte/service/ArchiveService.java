@@ -3,7 +3,7 @@ package com.ihrm.atte.service;
 import com.ihrm.atte.dao.ArchiveMonthlyDao;
 import com.ihrm.atte.dao.ArchiveMonthlyInfoDao;
 import com.ihrm.atte.dao.AttendanceDao;
-import com.ihrm.atte.dao.UserCDao;
+import com.ihrm.atte.dao.UserDao;
 import com.ihrm.common.utils.IdWorker;
 import com.ihrm.domain.atte.entity.ArchiveMonthly;
 import com.ihrm.domain.atte.entity.ArchiveMonthlyInfo;
@@ -26,7 +26,7 @@ public class ArchiveService {
     private IdWorker idWorker;
 
     @Resource(name = "com.ihrm.atte")
-    private UserCDao userDao;
+    private UserDao userDao;
 
     @Resource
     private ArchiveMonthlyInfoDao archiveMonthlyInfoDao;

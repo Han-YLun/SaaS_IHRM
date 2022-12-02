@@ -31,7 +31,7 @@ public class AtteService {
     @Resource
     private AttendanceDao attendanceDao;
     @Resource
-    private UserCDao userDao;
+    private UserDao userDao;
     @Resource(name = "ihrm_attendance")
     private SocialSecurityCompanySettingsDao socialSecurityCompanySettingsDao;
 
