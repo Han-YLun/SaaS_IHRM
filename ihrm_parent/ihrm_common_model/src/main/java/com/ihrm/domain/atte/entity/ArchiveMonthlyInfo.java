@@ -135,12 +135,12 @@ public class ArchiveMonthlyInfo extends BaseEntity implements Serializable {
 
 
     public void setStatisData(Map map) {
-        this.normalDays = (String) map.get("at1").toString();
-        this.absenceDays = (String) map.get("at2").toString();
-        this.laterTimes = (String) map.get("at3").toString();
-        this.earlyTimes = (String) map.get("at4").toString();
-        this.leaveDays = (String) map.get("at8").toString();
-        this.dayOffLeaveDays = (String) map.get("at17").toString();
+        this.normalDays = map.get("at1").toString();
+        this.absenceDays = map.get("at2").toString();
+        this.laterTimes = map.get("at3").toString();
+        this.earlyTimes = map.get("at4").toString();
+        this.leaveDays = map.get("at8").toString();
+        this.dayOffLeaveDays = map.get("at17").toString();
         //平均工作日21.75
         this.workingDays="21.75";
         //是否全勤

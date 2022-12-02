@@ -8,8 +8,10 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author arvinyl
+ */
 public interface ArchiveMonthlyInfoDao extends CrudRepository<ArchiveMonthlyInfo,String>, JpaRepository<ArchiveMonthlyInfo,String>, JpaSpecificationExecutor<ArchiveMonthlyInfo> {
-
 
     /**
      * 根据归档列表查询月归档详情

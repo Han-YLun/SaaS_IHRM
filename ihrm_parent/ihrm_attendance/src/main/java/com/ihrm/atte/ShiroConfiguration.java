@@ -17,30 +17,44 @@ import org.springframework.context.annotation.Configuration;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * @author arvinyl
+ */
 @Configuration(value = "ihrm_attendance_shiroConfiguration")
 public class ShiroConfiguration {
 
-    //1.创建realm
+    @Value("${spring.redis.host}")
+    private String host;
+
+    @Value("${spring.redis.port}")
+    private int port;
+
+    /**
+     * 创建realm
+     *
+     * @return IhrmRealm
+     */
     @Bean
     public IhrmRealm getRealm() {
         return new IhrmRealm();
     }
 
-    //2.创建安全管理器
+    /**
+     * 创建安全管理器
+     *
+     * @param realm IhrmRealm
+     * @return SecurityManager
+     */
     @Bean
     public SecurityManager getSecurityManager(IhrmRealm realm) {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         securityManager.setRealm(realm);
-
         //将自定义的会话管理器注册到安全管理器中
         securityManager.setSessionManager(sessionManager());
         //将自定义的redis缓存管理器注册到安全管理器中
         securityManager.setCacheManager(cacheManager());
-
         return securityManager;
     }
-
-
 
     /**
      * 配置shiro的过滤器工厂
@@ -53,41 +67,40 @@ public class ShiroConfiguration {
         //2.设置安全管理器
         filterFactory.setSecurityManager(securityManager);
         //3.通用配置（跳转登录页面，未授权跳转的页面）
-        filterFactory.setLoginUrl("/autherror?code=1");//跳转url地址
-        filterFactory.setUnauthorizedUrl("/autherror?code=2");//未授权的url
+        //跳转url地址
+        filterFactory.setLoginUrl("/autherror?code=1");
+        //未授权的url
+        filterFactory.setUnauthorizedUrl("/autherror?code=2");
         //4.设置过滤器集合
-        Map<String,String> filterMap = new LinkedHashMap<>();
+        Map<String, String> filterMap = new LinkedHashMap<>();
         //anon -- 匿名访问
-        filterMap.put("/sys/login","anon");
-        filterMap.put("/sys/city/**","anon");
-        filterMap.put("/sys/faceLogin/**","anon");
-        filterMap.put("/autherror","anon");
+        filterMap.put("/sys/login", "anon");
+        filterMap.put("/sys/city/**", "anon");
+        filterMap.put("/sys/faceLogin/**", "anon");
+        filterMap.put("/autherror", "anon");
         //注册
         //authc -- 认证之后访问（登录）
-        filterMap.put("/**","authc");
+        filterMap.put("/**", "authc");
         //perms -- 具有某中权限 (使用注解配置授权)
         filterFactory.setFilterChainDefinitionMap(filterMap);
-
         return filterFactory;
     }
 
-
-    @Value("${spring.redis.host}")
-    private String host;
-    @Value("${spring.redis.port}")
-    private int port;
-
     /**
-     * 1.redis的控制器，操作redis
+     * redis的控制器，操作redis
+     *
+     * @return RedisManager
      */
     public RedisManager redisManager() {
         RedisManager redisManager = new RedisManager();
-	    redisManager.setHost(host+":"+port);
+        redisManager.setHost(host + ":" + port);
         return redisManager;
     }
 
     /**
-     * 2.sessionDao
+     * set sessionDao
+     *
+     * @return RedisSessionDAO
      */
     public RedisSessionDAO redisSessionDAO() {
         RedisSessionDAO sessionDAO = new RedisSessionDAO();
@@ -96,20 +109,21 @@ public class ShiroConfiguration {
     }
 
     /**
-     * 3.会话管理器
+     * 会话管理器
+     *
+     * @return DefaultWebSessionManager
      */
     public DefaultWebSessionManager sessionManager() {
         CustomSessionManager sessionManager = new CustomSessionManager();
         sessionManager.setSessionDAO(redisSessionDAO());
-        //禁用cookie
-        //sessionManager.setSessionIdCookieEnabled(false);
-        //禁用url重写   url;jsessionid=id
         sessionManager.setSessionIdUrlRewritingEnabled(false);
         return sessionManager;
     }
 
     /**
-     * 4.缓存管理器
+     * 缓存管理器
+     *
+     * @return 缓存管理器
      */
     public RedisCacheManager cacheManager() {
         RedisCacheManager redisCacheManager = new RedisCacheManager();
@@ -117,10 +131,12 @@ public class ShiroConfiguration {
         return redisCacheManager;
     }
 
-
-
-
-    //开启对shior注解的支持
+    /**
+     * 开启对shiro注解的支持
+     *
+     * @param securityManager 安全管理器
+     * @return AuthorizationAttributeSourceAdvisor
+     */
     @Bean
     public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(SecurityManager securityManager) {
         AuthorizationAttributeSourceAdvisor advisor = new AuthorizationAttributeSourceAdvisor();

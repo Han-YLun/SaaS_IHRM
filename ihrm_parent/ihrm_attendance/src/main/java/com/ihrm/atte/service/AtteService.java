@@ -9,6 +9,7 @@ import com.ihrm.domain.atte.entity.ArchiveMonthlyInfo;
 import com.ihrm.domain.atte.entity.Attendance;
 import com.ihrm.domain.social_security.SocialsecurityCompanySettings;
 import com.ihrm.domain.system.User;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -18,11 +19,15 @@ import javax.annotation.Resource;
 import java.text.ParseException;
 import java.util.*;
 
+/**
+ * @author arvinyl
+ */
+@Slf4j
 @Service
-public class AtteService  {
+public class AtteService {
 
-	@Resource
-	private IdWorker idWorker;
+    @Resource
+    private IdWorker idWorker;
     @Resource
     private AttendanceDao attendanceDao;
     @Resource
@@ -32,15 +37,16 @@ public class AtteService  {
 
     /**
      * 获取用户的考勤数据
+     *
      * @param companyId 公司id
-     * @param page  页码
+     * @param page      页码
      * @param pageSize  每页大小
-     * @return  获取对应公司的对应月份的考勤数据
+     * @return 获取对应公司的对应月份的考勤数据
      */
-    public Map<String,Object> getAtteDate(String companyId, int page, int pageSize) throws ParseException {
+    public Map<String, Object> getAtteDate(String companyId, int page, int pageSize) throws ParseException {
         //考勤月
         Optional<SocialsecurityCompanySettings> socialSecurityCompanySettingsOptional = socialSecurityCompanySettingsDao.findById(companyId);
-        if (!socialSecurityCompanySettingsOptional.isPresent()){
+        if (!socialSecurityCompanySettingsOptional.isPresent()) {
             return Collections.emptyMap();
         }
 
@@ -52,14 +58,14 @@ public class AtteService  {
         //循环所有的用户,获取每个用户每天的考勤情况
         for (User user : users.getContent()) {
             AtteItemBO bo = new AtteItemBO();
-            BeanUtils.copyProperties(user , bo);
+            BeanUtils.copyProperties(user, bo);
             List<Attendance> attendanceRecord = new ArrayList<>();
             //获取当前月所有的天数
             String[] days = DateUtil.getDaysByYearMonth(dataMonth);
             //循环每天查询考勤记录
             for (String day : days) {
                 Attendance atte = attendanceDao.findByUserIdAndDay(user.getId(), day);
-                if (atte == null){
+                if (atte == null) {
                     atte = new Attendance();
                     //旷工
                     atte.setAdtStatu(2);
@@ -72,31 +78,32 @@ public class AtteService  {
             bo.setAttendanceRecord(attendanceRecord);
             list.add(bo);
         }
-        Map<String,Object> map = new HashMap<>(3);
+        Map<String, Object> map = new HashMap<>(3);
 
         //分页对象数据
         PageResult<AtteItemBO> pr = new PageResult<>(users.getTotalElements(), list);
         //待处理的考勤数据
-        map.put("data" , pr);
+        map.put("data", pr);
         //待处理的考勤数量
-        map.put("tobeTaskCount" , 0);
+        map.put("tobeTaskCount", 0);
         //当前的考勤月份
         int month = Integer.parseInt(dataMonth.substring(4));
-        map.put("monthOfReport" , month);
+        map.put("monthOfReport", month);
         return map;
     }
 
     /**
      * 编辑考勤
+     *
      * @param attendance 考勤数据
      */
     public void editAtte(Attendance attendance) {
         //查询考勤记录是否存在
         Attendance ac = attendanceDao.findByUserIdAndDay(attendance.getUserId(), attendance.getDay());
-        if (ac == null){
+        if (ac == null) {
             //如果不存在,需要设置id
             attendance.setId(idWorker.nextId() + "");
-        }else{
+        } else {
             attendance.setId(ac.getId());
         }
         attendanceDao.save(attendance);
@@ -104,9 +111,10 @@ public class AtteService  {
 
     /**
      * 查询归档数据
+     *
      * @param atteDate  日期
      * @param companyId 企业id
-     * @return  对应日期和对应企业id的归档数据
+     * @return 对应日期和对应企业id的归档数据
      */
     public List<ArchiveMonthlyInfo> getReports(String atteDate, String companyId) {
         //查询所有企业用户
@@ -116,7 +124,7 @@ public class AtteService  {
         for (User user : users) {
             ArchiveMonthlyInfo info = new ArchiveMonthlyInfo(user);
             //统计每个用户的考勤数量
-            Map<String,String> map = attendanceDao.statisByUser(user.getId() , atteDate+"%");
+            Map<String, String> map = attendanceDao.statisByUser(user.getId(), atteDate + "%");
             info.setStatisData(map);
             list.add(info);
         }
@@ -125,11 +133,18 @@ public class AtteService  {
 
     /**
      * 新建报表,将atte_company_settings中的月份修改为指定的数据
-     * @param atteDate 年月
+     *
+     * @param atteDate  年月
      * @param companyId 企业id
      */
     public void newReports(String atteDate, String companyId) {
-        SocialsecurityCompanySettings socialsecurityCompanySettings = socialSecurityCompanySettingsDao.findById(companyId).get();
+        Optional<SocialsecurityCompanySettings> sscsOptional = socialSecurityCompanySettingsDao.findById(companyId);
+        if (!sscsOptional.isPresent()) {
+            log.error("find company id result is null,company_id = {}", companyId);
+            return;
+        }
+
+        SocialsecurityCompanySettings socialsecurityCompanySettings = sscsOptional.get();
         socialsecurityCompanySettings.setDataMonth(atteDate);
         socialSecurityCompanySettingsDao.save(socialsecurityCompanySettings);
     }
