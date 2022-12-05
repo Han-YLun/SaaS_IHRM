@@ -6,6 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
+/**
+ * @author arvinyl
+ */
 @Repository("ihrm_attendance")
 public interface SocialSecurityCompanySettingsDao extends JpaRepository<SocialsecurityCompanySettings,String> ,JpaSpecificationExecutor<SocialsecurityCompanySettings> {
 }
