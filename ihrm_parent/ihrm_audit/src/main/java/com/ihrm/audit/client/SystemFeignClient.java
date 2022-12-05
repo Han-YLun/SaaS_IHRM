@@ -9,13 +9,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * 声明接口，通过feign调用其他微服务
+ *
  * @author Administrator
  */
 @FeignClient("ihrm-system")
 public interface SystemFeignClient {
+
+
     /**
-     * 调用微服务的接口
+     * 查询用户信息
+     *
+     * @param id 用户id
+     * @return 用户信息
      */
-    @RequestMapping(value="/sys/user/{id}",method = RequestMethod.GET)
+    @RequestMapping(value = "/sys/user/{id}", method = RequestMethod.GET)
     Result findById(@PathVariable(value = "id") String id);
 }

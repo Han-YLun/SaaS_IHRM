@@ -73,7 +73,6 @@ public class ProcessController extends BaseController {
         return new Result(ResultCode.SUCCESS , pr);
     }
 
-
     /**
      * 查询申请的详细数据
      */
@@ -100,7 +99,7 @@ public class ProcessController extends BaseController {
     @RequestMapping(value = "/instance/commit", method = RequestMethod.PUT)
     public Result commit(@RequestBody ProcTaskInstance procTaskInstance) {
         //调用service
-        auditService.commit(procTaskInstance , companyId);
+        auditService.commit(procTaskInstance);
         return new Result(ResultCode.SUCCESS);
     }
 
@@ -110,9 +109,4 @@ public class ProcessController extends BaseController {
         //调用service
         return new Result(ResultCode.SUCCESS,auditService.findTasksByProcess(id));
     }
-
-
-
-
-
 }
