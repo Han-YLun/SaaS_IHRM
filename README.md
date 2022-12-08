@@ -16,6 +16,8 @@
 
 ## 项目截图
 
+前端使用Vue编写，地址为：https://github.com/Han-YLun/SaaS_IHRM_Vue
+
 ### SaaS管理员模块
 
 
@@ -226,10 +228,6 @@ act ：
 
 
 ![https://img2020.cnblogs.com/blog/1877030/202102/1877030-20210228194759279-1012620345.jpg](https://img2020.cnblogs.com/blog/1877030/202102/1877030-20210228194759279-1012620345.jpg)
-
-## 前端
-
-前端使用Vue编写，地址为：https://github.com/Han-YLun/SaaS_IHRM_Vue
 
 
 
