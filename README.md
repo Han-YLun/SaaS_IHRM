@@ -4,8 +4,8 @@
 
 [![Star History Chart](https://api.star-history.com/svg?repos=Han-YLun/SaaS_IHRM&type=Date)](https://star-history.com/#Han-YLun/SaaS_IHRM&Date)
 
-
-
+## 部署教程
+ [https://www.cnblogs.com/ArvinYL/p/14460255.html](https://www.cnblogs.com/ArvinYL/p/14460255.html)
 
 ## 开发环境
 
@@ -15,6 +15,8 @@
 * Redis： 2.4.5
 
 ## 项目截图
+
+前端使用Vue编写，地址为：https://github.com/Han-YLun/SaaS_IHRM_Vue
 
 ### SaaS管理员模块
 
@@ -220,16 +222,10 @@ act ：
 
 ### 其他
 
-部署教程 : [https://www.cnblogs.com/ArvinYL/p/14460255.html](https://www.cnblogs.com/ArvinYL/p/14460255.html)
-
 * 有其他问题请提Issues,也可以关注公众号回复```微信```加我好友
 
 
 ![https://img2020.cnblogs.com/blog/1877030/202102/1877030-20210228194759279-1012620345.jpg](https://img2020.cnblogs.com/blog/1877030/202102/1877030-20210228194759279-1012620345.jpg)
-
-## 前端
-
-前端使用Vue编写，地址为：https://github.com/Han-YLun/SaaS_IHRM_Vue
 
 
 
