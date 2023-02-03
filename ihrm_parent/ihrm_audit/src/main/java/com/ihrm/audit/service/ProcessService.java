@@ -23,7 +23,8 @@ public class ProcessService {
 
     /**
      * 进行流程部署
-     * @param file  上传的bpmn文件
+     *
+     * @param file      上传的bpmn文件
      * @param companyId 企业id
      */
     public void deployProcess(MultipartFile file, String companyId) throws IOException {
@@ -31,7 +32,8 @@ public class ProcessService {
         String fileName = file.getOriginalFilename();
         //通过repositoryService进行流程部署
         DeploymentBuilder deploymentBuilder = repositoryService.createDeployment();
-        deploymentBuilder.addBytes(fileName , file.getBytes());   //部署流程
+        //部署流程
+        deploymentBuilder.addBytes(fileName, file.getBytes());
         deploymentBuilder.tenantId(companyId);
         Deployment deploy = deploymentBuilder.deploy();
         //打印部署结果
@@ -40,26 +42,26 @@ public class ProcessService {
 
     /**
      * 查询企业id对应的所有已部署流程
+     *
      * @param companyId 企业id
-     * @return  企业id对应的所有已部署流程
+     * @return 企业id对应的所有已部署流程
      */
     public List getProcessDefinitionList(String companyId) {
-        return repositoryService.createProcessDefinitionQuery()
-                .processDefinitionTenantId(companyId).latestVersion().list();
+        return repositoryService.createProcessDefinitionQuery().processDefinitionTenantId(companyId).latestVersion().list();
     }
 
     /**
-     *  挂起和恢复流程
-     * @param processKey    流程的key
+     * 挂起和恢复流程
+     *
+     * @param processKey 流程的key
      */
     public void suspendProcess(String processKey) {
-        ProcessDefinition definition =
-                repositoryService.createProcessDefinitionQuery()
-                        .processDefinitionKey(processKey).latestVersion().singleResult();
-        if(definition.isSuspended()) { //如果是挂起状态，这里激活此流程
+        ProcessDefinition definition = repositoryService.createProcessDefinitionQuery().processDefinitionKey(processKey).latestVersion().singleResult();
+        //如果是挂起状态，这里激活此流程
+        if (definition.isSuspended()) {
             repositoryService.activateProcessDefinitionById(definition.getId());
-        }else{
-//如果不是挂起状态，这里挂起此流程
+        } else {
+            //如果不是挂起状态，这里挂起此流程
             repositoryService.suspendProcessDefinitionById(definition.getId());
         }
     }
