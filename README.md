@@ -4,8 +4,8 @@
 
 [![Star History Chart](https://api.star-history.com/svg?repos=Han-YLun/SaaS_IHRM&type=Date)](https://star-history.com/#Han-YLun/SaaS_IHRM&Date)
 
-
-
+## 部署教程
+ [https://www.cnblogs.com/ArvinYL/p/14460255.html](https://www.cnblogs.com/ArvinYL/p/14460255.html)
 
 ## 开发环境
 
@@ -221,8 +221,6 @@ act ：
 * 保存用户信息时部门id和name不统一
 
 ### 其他
-
-部署教程 : [https://www.cnblogs.com/ArvinYL/p/14460255.html](https://www.cnblogs.com/ArvinYL/p/14460255.html)
 
 * 有其他问题请提Issues,也可以关注公众号回复```微信```加我好友
 
