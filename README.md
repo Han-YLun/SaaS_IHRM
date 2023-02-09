@@ -66,11 +66,6 @@
 
 
 
-
-此图为博学谷宣传图，图中的招聘模块没有，也没有RabbitMq，其他都有，大家也可以对其进行改进。
-
-
-
 ![f2654072e7e6f8b481250d26910ef1c6.png](https://i.loli.net/2020/06/18/VDxlzhP1u4vM2cA.png)
 
 
@@ -198,20 +193,12 @@ act ：
 
 
 
-##  项目讲义
-
-* 市面只有前7章讲义，这边讲义是全17章
-
-* 因为视频适合电脑CPU加密的,所以发出来也没用,但是有后面的PDF，大家可以看下
-
-下载地址
+##  项目资料
 
 * 链接：https://pan.baidu.com/s/1HHVlKG4DlNFtm05UYyeb4Q 
 * 提取码：z1sp 
   
-视频下载链接
 * https://open.163.com/newview/movie/courseintro?newurl=FG6PM61DF
-
 
 
 ## 项目存在的问题
