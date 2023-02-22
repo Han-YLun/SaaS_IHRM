@@ -57,7 +57,7 @@
         <activiti-spring-boot-starter.version>7.0.0.SR1</activiti-spring-boot-starter.version>
         <junit.version>4.13.2</junit.version>
         <activiti-image-generator.version>7.1.0.M2</activiti-image-generator.version>
-        <commons-fileupload.version>1.4</commons-fileupload.version>
+        <commons-fileupload.version>1.5</commons-fileupload.version>
         <core.version>3.4.1</core.version>
         <shiro-web.version>1.9.0</shiro-web.version>
         <spring-boot-starter-test.version>2.6.7</spring-boot-starter-test.version>
