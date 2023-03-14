@@ -57,7 +57,7 @@
         <activiti-spring-boot-starter.version>7.0.0.SR1</activiti-spring-boot-starter.version>
         <junit.version>4.13.2</junit.version>
         <activiti-image-generator.version>7.1.0.M2</activiti-image-generator.version>
-        <commons-fileupload.version>1.4</commons-fileupload.version>
+        <commons-fileupload.version>1.5</commons-fileupload.version>
         <core.version>3.4.1</core.version>
         <shiro-web.version>1.9.0</shiro-web.version>
         <spring-boot-starter-test.version>2.6.7</spring-boot-starter-test.version>
@@ -72,6 +72,7 @@
         <hibernate-jpa-2.1-api.version>1.0.2.Final</hibernate-jpa-2.1-api.version>
         <org-springframework-boot.version>2.2.5.RELEASE</org-springframework-boot.version>
         <org-springframework-cloud-version>2.2.0.RELEASE</org-springframework-cloud-version>
+        <commons-io.version>2.7</commons-io.version>
     </properties>
 
     <dependencyManagement>
@@ -219,6 +220,13 @@
                 <groupId>commons-fileupload</groupId>
                 <artifactId>commons-fileupload</artifactId>
                 <version>${commons-fileupload.version}</version>
+                <!--  这里fileupload依赖是2.2版本的会冲突，所以排除掉-->
+                <exclusions>
+                    <exclusion>
+                        <artifactId>commons-io</artifactId>
+                        <groupId>commons-io</groupId>
+                    </exclusion>
+                </exclusions>
             </dependency>
             <!-- https://mvnrepository.com/artifact/org.activiti/activiti-spring-boot-starter -->
             <dependency>
@@ -265,6 +273,12 @@
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql-connector-java.version}</version>
+            </dependency>
+            <!-- 这里新加一个common版本-->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
