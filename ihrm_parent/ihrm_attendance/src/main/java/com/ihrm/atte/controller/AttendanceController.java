@@ -3,12 +3,14 @@ package com.ihrm.atte.controller;
 import com.ihrm.atte.service.ArchiveService;
 import com.ihrm.atte.service.AtteService;
 import com.ihrm.atte.service.ExcelImportService;
+import com.ihrm.atte.service.LeaveApplicationService;
 import com.ihrm.common.controller.BaseController;
 import com.ihrm.common.entity.Result;
 import com.ihrm.common.entity.ResultCode;
 import com.ihrm.domain.atte.entity.ArchiveMonthly;
 import com.ihrm.domain.atte.entity.ArchiveMonthlyInfo;
 import com.ihrm.domain.atte.entity.Attendance;
+import com.ihrm.domain.atte.entity.LeaveApplication;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -33,6 +35,9 @@ public class AttendanceController extends BaseController {
 
     @Resource(name = "ihrm_attendance_archiveService")
     private ArchiveService archiveService;
+
+    @Resource
+    private LeaveApplicationService leaveApplicationService;
 
     /**
      * 上传考勤数据
@@ -114,5 +119,50 @@ public class AttendanceController extends BaseController {
         ArchiveMonthlyInfo archiveMonthlyInfo = archiveService.findUserArchiveDetail(userId , yearMonth);
         return new Result(ResultCode.SUCCESS , archiveMonthlyInfo);
     }
-    
+
+    /**
+     * 提交请假申请
+     */
+    @RequestMapping(value = "/leave" , method = RequestMethod.POST)
+    public Result applyLeave(@RequestBody LeaveApplication leaveApplication) {
+        LeaveApplication result = leaveApplicationService.apply(leaveApplication, companyId);
+        return new Result(ResultCode.SUCCESS, result);
+    }
+
+    /**
+     * 查询当前公司所有请假申请
+     */
+    @RequestMapping(value = "/leave" , method = RequestMethod.GET)
+    public Result listLeaveApplications() {
+        List<LeaveApplication> list = leaveApplicationService.findByCompanyId(companyId);
+        return new Result(ResultCode.SUCCESS, list);
+    }
+
+    /**
+     * 根据用户id查询请假申请
+     */
+    @RequestMapping(value = "/leave/user/{userId}" , method = RequestMethod.GET)
+    public Result listLeaveApplicationsByUserId(@PathVariable String userId) {
+        List<LeaveApplication> list = leaveApplicationService.findByUserId(userId);
+        return new Result(ResultCode.SUCCESS, list);
+    }
+
+    /**
+     * 根据请假申请id查询详情
+     */
+    @RequestMapping(value = "/leave/{id}" , method = RequestMethod.GET)
+    public Result getLeaveApplicationById(@PathVariable String id) {
+        LeaveApplication leaveApplication = leaveApplicationService.findById(id);
+        return new Result(ResultCode.SUCCESS, leaveApplication);
+    }
+
+    /**
+     * 审批请假申请
+     */
+    @RequestMapping(value = "/leave/{id}/approve" , method = RequestMethod.PUT)
+    public Result approveLeave(@PathVariable String id, String approverId, Boolean approved) {
+        LeaveApplication result = leaveApplicationService.approve(id, approverId, approved);
+        return new Result(ResultCode.SUCCESS, result);
+    }
+
 }

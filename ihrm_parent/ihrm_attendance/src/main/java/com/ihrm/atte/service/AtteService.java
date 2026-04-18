@@ -19,9 +19,6 @@ import javax.annotation.Resource;
 import java.text.ParseException;
 import java.util.*;
 
-/**
- * @author arvinyl
- */
 @Slf4j
 @Service
 public class AtteService {
@@ -34,6 +31,8 @@ public class AtteService {
     private UserDao userDao;
     @Resource(name = "ihrm_attendance")
     private SocialSecurityCompanySettingsDao socialSecurityCompanySettingsDao;
+    @Resource
+    private LeaveApplicationService leaveApplicationService;
 
     /**
      * 获取用户的考勤数据
@@ -126,9 +125,69 @@ public class AtteService {
             //统计每个用户的考勤数量
             Map<String, String> map = attendanceDao.statisByUser(user.getId(), atteDate + "%");
             info.setStatisData(map);
+            //统计请假天数
+            setLeaveStatistics(info, user.getId(), atteDate);
             list.add(info);
         }
         return list;
+    }
+
+    private void setLeaveStatistics(ArchiveMonthlyInfo info, String userId, String yearMonth) {
+        //年假 60000
+        Double yearLeaveDays = leaveApplicationService.getLeaveDaysByTypeAndMonth(userId, "60000", yearMonth);
+        info.setYearLeaveDays(yearLeaveDays == null ? "0" : yearLeaveDays.intValue() + "");
+        
+        //事假 60100
+        Double leaveDays = leaveApplicationService.getLeaveDaysByTypeAndMonth(userId, "60100", yearMonth);
+        info.setLeaveDays(leaveDays == null ? "0" : leaveDays.intValue() + "");
+        
+        //病假 60200
+        Double sickLeaveDays = leaveApplicationService.getLeaveDaysByTypeAndMonth(userId, "60200", yearMonth);
+        info.setSickLeaveDays(sickLeaveDays == null ? "0" : sickLeaveDays.intValue() + "");
+        
+        //婚假 60300
+        Double marraiageLeaveDays = leaveApplicationService.getLeaveDaysByTypeAndMonth(userId, "60300", yearMonth);
+        info.setMarraiageLeaveDays(marraiageLeaveDays == null ? "0" : marraiageLeaveDays.intValue() + "");
+        
+        //丧假 60400
+        Double funeralLeaveDays = leaveApplicationService.getLeaveDaysByTypeAndMonth(userId, "60400", yearMonth);
+        info.setFuneralLeaveDays(funeralLeaveDays == null ? "0" : funeralLeaveDays.intValue() + "");
+        
+        //产假 60500
+        Double maternityLeaveDays = leaveApplicationService.getLeaveDaysByTypeAndMonth(userId, "60500", yearMonth);
+        info.setMaternityLeaveDays(maternityLeaveDays == null ? "0" : maternityLeaveDays.intValue() + "");
+        
+        //奖励产假 60600
+        Double rewardMaternityLeaveDays = leaveApplicationService.getLeaveDaysByTypeAndMonth(userId, "60600", yearMonth);
+        info.setRewardMaternityLeaveDays(rewardMaternityLeaveDays == null ? "0" : rewardMaternityLeaveDays.intValue() + "");
+        
+        //陪产假 60700
+        Double paternityLeaveDays = leaveApplicationService.getLeaveDaysByTypeAndMonth(userId, "60700", yearMonth);
+        info.setPaternityLeaveDays(paternityLeaveDays == null ? "0" : paternityLeaveDays.intValue() + "");
+        
+        //探亲假 60800
+        Double homeLeavaDays = leaveApplicationService.getLeaveDaysByTypeAndMonth(userId, "60800", yearMonth);
+        info.setHomeLeavaDays(homeLeavaDays == null ? "0" : homeLeavaDays.intValue() + "");
+        
+        //工伤假 60900
+        Double accidentialLeaveDays = leaveApplicationService.getLeaveDaysByTypeAndMonth(userId, "60900", yearMonth);
+        info.setAccidentialLeaveDays(accidentialLeaveDays == null ? "0" : accidentialLeaveDays.intValue() + "");
+        
+        //调休假 61000
+        Double dayOffLeaveDays = leaveApplicationService.getLeaveDaysByTypeAndMonth(userId, "61000", yearMonth);
+        info.setDayOffLeaveDays(dayOffLeaveDays == null ? "0" : dayOffLeaveDays.intValue() + "");
+        
+        //产检假 61100
+        Double doctorOffLeaveDays = leaveApplicationService.getLeaveDaysByTypeAndMonth(userId, "61100", yearMonth);
+        info.setDoctorOffLeaveDays(doctorOffLeaveDays == null ? "0" : doctorOffLeaveDays.intValue() + "");
+        
+        //流产假 61200
+        Double abortionLeaveDays = leaveApplicationService.getLeaveDaysByTypeAndMonth(userId, "61200", yearMonth);
+        info.setAbortionLeaveDays(abortionLeaveDays == null ? "0" : abortionLeaveDays.intValue() + "");
+        
+        //长期病假 61300
+        Double longSickLeaveDays = leaveApplicationService.getLeaveDaysByTypeAndMonth(userId, "61300", yearMonth);
+        info.setLongSickLeaveDays(longSickLeaveDays == null ? "0" : longSickLeaveDays.intValue() + "");
     }
 
     /**
