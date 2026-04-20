@@ -51,6 +51,9 @@ public class EmployeeController extends BaseController {
     @Resource
     private ArchiveService archiveService;
 
+    @Resource
+    private EmployeeContractService employeeContractService;
+
     /**
      * 打印员工pdf报表
      */
@@ -221,6 +224,40 @@ public class EmployeeController extends BaseController {
             positive.setUserId(uid);
         }
         return new Result(ResultCode.SUCCESS,positive);
+    }
+
+    /**
+     * 合同信息保存
+     */
+    @RequestMapping(value = "/{id}/contract", method = RequestMethod.PUT)
+    public Result saveContract(@PathVariable(name = "id") String uid, @RequestBody EmployeeContract contract) {
+        contract.setUserId(uid);
+        contract.setCompanyId(super.companyId);
+        employeeContractService.save(contract);
+        return new Result(ResultCode.SUCCESS);
+    }
+
+    /**
+     * 合同信息读取
+     */
+    @RequestMapping(value = "/{id}/contract", method = RequestMethod.GET)
+    public Result findContract(@PathVariable(name = "id") String uid) {
+        EmployeeContract contract = employeeContractService.findById(uid);
+        if(contract == null) {
+            contract = new EmployeeContract();
+            contract.setUserId(uid);
+            contract.setCompanyId(companyId);
+        }
+        return new Result(ResultCode.SUCCESS,contract);
+    }
+
+    /**
+     * 合同即将到期提醒
+     * @param days 即将到期的天数（默认30天）
+     */
+    @RequestMapping(value = "/contract/expiring", method = RequestMethod.GET)
+    public Result findExpiringContracts(@RequestParam(name = "days", defaultValue = "30") Integer days) {
+        return new Result(ResultCode.SUCCESS, employeeContractService.findExpiringContracts(companyId, days));
     }
 
     /**
